@@ -37,7 +37,7 @@ addLayer("cc", {
         13: {
             title: "placeholder",
             description: "will update later",
-            cost: new Decimal(e308),
+            cost: new Decimal(1e303),
         },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
