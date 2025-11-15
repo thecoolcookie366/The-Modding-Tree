@@ -665,6 +665,12 @@ addLayer("sin", {
             cost: new Decimal(1),
         },
 
+        12: {
+            title: "[#2sin] The End",
+            description: "May you escape this indefinite paradox. GG.",
+            cost: new Decimal("1e1e1e1e1e3"),
+        },
+
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}

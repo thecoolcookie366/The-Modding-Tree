@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.11",
-	name: "The Inverse of Cookie",
+	num: "0.12",
+	name: "The End (still WIP)",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -24,6 +24,9 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update that adds a new upgrade <br>
 	<br>
 
+	<h3>v0.12</h3><br>
+		- Singularity - the end is here. <br>
+		<br>
 	<h3>v0.11</h3><br>
 		- Vanilla Cookies - nobody likes these! unless it's The Cookie Tree. <br>
 		<br>
@@ -111,6 +114,7 @@ function getPointGen() {
 	if (hasUpgrade('tp', 11)) gain = gain.times(1e16)	
 	if (hasUpgrade('fr', 11)) gain = gain.times(1e150)	
 	if (hasUpgrade('sin', 11)) gain = gain.times("1e1e1e1e1e3")
+	if (hasUpgrade('sin', 12)) gain = gain.times("1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1")
 	return gain
 }
 
@@ -124,7 +128,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e1000000000000000000000000000000"))
+	return player.points.gte(new Decimal("1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1"))
 }
 
 
