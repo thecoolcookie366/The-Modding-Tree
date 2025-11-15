@@ -626,7 +626,7 @@ addLayer("fr", {
         12: {
             title: "[#2fr] yay fr",
             description: "you win a fr",
-            cost: new Decimal(5),
+            cost: new Decimal(12345),
         },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
