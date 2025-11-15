@@ -49,7 +49,7 @@ addLayer("cc", {
         14: {
             title: "[#4cc] Back and Forth",
             description: "Boost chocolate cookies based on cookies.",
-            cost: new Decimal(1e3),
+            cost: new Decimal(125),
                 effect() {
         return player.points.add(1).pow(0.15)
     },
