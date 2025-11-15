@@ -25,13 +25,13 @@ addLayer("cc", {
         11: {
             title: "Cookie Duplication",
             description: "Your first upgrade. Get x2 cookies.",
-            cost: new Decimal(3),
+            cost: new Decimal(1),
         },
 
         12: {
             title: "Strong Cookie Duplication",
-            description: "Cookie gain go big. x25 cookies!",
-            cost: new Decimal(50),
+            description: "Cookie gain go big. x3 cookies!",
+            cost: new Decimal(5),
         },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)

@@ -19,7 +19,7 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.01b</h3><br>
 		- Added chocolate cookies, along with 2 upgrades. <br>
-		- This totals to a x50 cookie boost. `
+		- This totals to a x6 cookie boost. `
 
 let winText = `Congrats! The universe is now filled with cookies.`
 
@@ -43,7 +43,7 @@ function getPointGen() {
 
 	let gain = new Decimal(1)
 	if (hasUpgrade('cc', 11)) gain = gain.times(2)
-	if (hasUpgrade('cc', 12)) gain = gain.times(25)
+	if (hasUpgrade('cc', 12)) gain = gain.times(3)
 	return gain
 }
 
