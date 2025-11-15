@@ -12,12 +12,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.01c",
-	name: "Going Red",
+	num: "0.02",
+	name: "They're Dark!",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
 	<br>
+	<h3>v0.02</h3><br>
+		- Dark Chocolate Cookies Layer - better than before. <br>
+		<br>
 	<h3>v0.01c</h3><br>
 		- Red Layer - now with 1 upgrade. <br>
 		<br>
