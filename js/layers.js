@@ -233,12 +233,6 @@ addLayer("r", {
             description: "Uh... okay? x12 cookies.",
             cost: new Decimal(1),
         },
-
-        12: {
-            title: "[#2r] Red Tomatos",
-            description: "Did you really think this upgrade would give a cookie boost? No!",
-            cost: new Decimal(5),
-        },
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
