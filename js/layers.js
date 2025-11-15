@@ -144,6 +144,14 @@ addLayer("dcc", {
             canComplete: function() {return player.points.gte("1e5e23")},
         },
     },
+
+    milestones: {
+    0: {
+        requirementDescription: "40 Dark Chocolate Cookies (#2dcc)",
+        effectDescription: "Try to reset multiple times at a certain amount of DCC.",
+        done() { return player.dcc.points.gte(40) }
+        },   
+    },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "d", description: "D: Reset for dark chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
