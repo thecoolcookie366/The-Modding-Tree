@@ -243,8 +243,8 @@ addLayer("l", {
 
 addLayer("ml", {
     name: "megaloops", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "L+", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    symbol: "ML", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -267,61 +267,61 @@ addLayer("ml", {
     upgrades: {
         11: {
             title: "[ Mega Loop ]",
-            description: "x1e3,003 cookies.",
+            description: "x1e63 cookies.",
             cost: new Decimal(1),
         },
 
         12: {
             title: "[ Mega Loop ]",
-            description: "x1e3,003 cookies.",
+            description: "x1e63 cookies.",
             cost: new Decimal(1),
         },
 
         13: {
             title: "[ Mega Loop ]",
-            description: "x1e3,003 cookies.",
+            description: "x1e63 cookies.",
             cost: new Decimal(1),
         },
 
         14: {
             title: "[ Mega Loop ]",
-            description: "x1e3,003 cookies.",
+            description: "x1e63 cookies.",
             cost: new Decimal(1),
         },
 
         21: {
             title: "[ Mega Loop ]",
-            description: "x1e3,003 cookies.",
+            description: "x1e63 cookies.",
             cost: new Decimal(1),
         },
 
         22: {
             title: "[ Mega Loop ]",
-            description: "x1e3,003 cookies.",
+            description: "x1e63 cookies.",
             cost: new Decimal(1),
         },
 
         23: {
             title: "[ Mega Loop ]",
-            description: "x1e3,003 cookies.",
+            description: "x1e63 cookies.",
             cost: new Decimal(1),
         },
 
         31: {
             title: "[ Mega Loop ]",
-            description: "x1e3,003 cookies.",
+            description: "x1e63 cookies.",
             cost: new Decimal(1),
         },
 
         32: {
             title: "[ Mega Loop ]",
-            description: "x1e3,003 cookies.",
+            description: "x1e63 cookies.",
             cost: new Decimal(1),
         },
 
         41: {
             title: "[ Mega Loop ]",
-            description: "x1e3,003 cookies.",
+            description: "x1e63 cookies.",
             cost: new Decimal(1),
         },
     },
