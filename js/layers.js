@@ -601,7 +601,7 @@ addLayer("rp", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#a1a646ff",
+    color: "#95599aff",
     requires: new Decimal(1e200), // Can be a function that takes requirement increases into account
     resource: "reincarnation points?", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on
