@@ -91,7 +91,7 @@ addLayer("dcc", {
         11: {
             title: "[#1dcc] Darker Than the Last",
             description: "does nothing yet",
-            cost: new Decimal(1e1.79e308),
+            cost: new Decimal(1.79e308),
         },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
