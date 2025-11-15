@@ -24,19 +24,19 @@ addLayer("cc", {
     },
     upgrades: {
         11: {
-            title: "Cookie Duplication",
+            title: "[#1] Cookie Duplication",
             description: "Your first upgrade. Get x2 cookies.",
             cost: new Decimal(1),
         },
 
         12: {
-            title: "Strong Cookie Duplication",
+            title: "[#2] Strong Cookie Duplication",
             description: "Cookie gain go big. x3 cookies!",
             cost: new Decimal(5),
         },
 
         13: {
-            title: "Chocolate!",
+            title: "[#3] Chocolate!",
             description: "Boost cookies based on chocolate cookies.",
             cost: new Decimal(15),
                 effect() {
@@ -46,7 +46,7 @@ addLayer("cc", {
         },
 
         14: {
-            title: "Back and Forth",
+            title: "[#4] Back and Forth",
             description: "Boost chocolate cookies based on cookies.",
             cost: new Decimal(1e3),
                 effect() {
