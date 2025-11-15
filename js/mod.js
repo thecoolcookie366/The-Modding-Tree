@@ -12,12 +12,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.06",
-	name: "Row -1",
+	num: "0.10",
+	name: "Fruit or Color",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
 	<br>
+	<h2>v0.10</h3><br>
+		- Orange - is it an entire rainbow? <br>
+		<br>
 	<h3>v0.06</h3><br>
 		- fr - the layer of all time <br>
 		<br>
@@ -36,10 +39,10 @@ let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.01</h3><br>
 		- Red Layer - boosts that are very powerful. <br>
 		<br>
-	<h3>v0.00</h3><br>
+	<h1>v0.00</h3><br>
 		- Chocolate Cookies Layer - what makes cookies duplicate. <br>
 		<br>
-	<h3>-v0.01</h3><br>
+	<h1>-v0.01</h3><br>
 		- Release - this is where everything starts.`
 
 let winText = `Congrats! The universe is now filled with cookies.`
@@ -68,7 +71,9 @@ function getPointGen() {
 	if (hasUpgrade('cc', 13)) gain = gain.times(upgradeEffect('cc', 13))
 	if (hasUpgrade('cc', 21)) gain = gain.times(upgradeEffect('cc', 21))
 	if (hasUpgrade('r', 11)) gain = gain.times(22.222)
+	if (hasUpgrade('o', 11)) gain = gain.times(123)
 	if (hasUpgrade('dcc', 11)) gain = gain.times(5)
+	if (hasUpgrade('dcc', 11)) gain = gain.times(100)
 	if (hasUpgrade('l', 11)) gain = gain.times(1e33)
 	if (hasUpgrade('l', 12)) gain = gain.times(1e33)
 	if (hasUpgrade('l', 13)) gain = gain.times(1e33)
@@ -106,7 +111,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e303"))
+	return player.points.gte(new Decimal("1e1000000000000000000"))
 }
 
 

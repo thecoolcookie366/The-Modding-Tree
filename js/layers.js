@@ -114,6 +114,12 @@ addLayer("dcc", {
             description: "x5 cookies.",
             cost: new Decimal(1),
         },
+
+        12: {
+            title: "[#2dcc] Big Multipliers",
+            description: "A x100 cookie boost wouldn't hurt, right?",
+            cost: new Decimal(25),
+        },
     },
     challenges: {
         11: {
@@ -166,6 +172,46 @@ addLayer("r", {
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "r", description: "R: Reset for red", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){return true}
+
+    
+})
+
+addLayer("o", {
+    name: "orange", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "O", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#ff8400ff",
+    requires: new Decimal(1e12), // Can be a function that takes requirement increases into account
+    resource: "orange", // Name of prestige currency
+    baseResource: "cookies", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.001, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    upgrades: {
+        11: {
+            title: "[#1o] Colo(u)r",
+            description: "It's time to get colo(u)rful. x123 cookies!",
+            cost: new Decimal(1),
+        },
+    },
+    
+    row: 3, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "o", description: "O: Reset for orange", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
 
