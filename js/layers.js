@@ -99,7 +99,7 @@ addLayer("dcc", {
             name: "[#1a] First Debuff",
             challengeDescription: "Welcome to your first challenge! You start with -500 cookies.",
             goalDescription: "Reach 1e9 cookies.",
-            onEnter: function() {return player.points.gte(-500)},
+            onEnter: function() {return player.points.resource(-500)},
             canComplete: function() {return player.points.gte(1e9)},
         },
     },
