@@ -20,6 +20,13 @@ addLayer("cc", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    upgrades: {
+        11: {
+            title: "Cookie Duplication",
+            description: "Your first upgrade. Get x2 cookies.",
+            cost: new Decimal(3),
+        },
+    },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "c", description: "C: Reset for chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
