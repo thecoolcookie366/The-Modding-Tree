@@ -18,7 +18,13 @@ let VERSION = {
 
 let changelog = `<h1>Changelog:</h1><br>
 	<br>
-	<h2>v0.10</h3><br>
+	<h3>Changelog Guide: vA.BC </h3><br>
+	A = insane update that adds so many features <br>
+	B = big update that adds a new layer <br>
+	C = small update that adds a new upgrade <br>
+	<br>
+
+	<h2>v0.10</h2><br>
 		- Orange - is it an entire rainbow? <br>
 		<br>
 	<h3>v0.06</h3><br>
@@ -39,10 +45,10 @@ let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.01</h3><br>
 		- Red Layer - boosts that are very powerful. <br>
 		<br>
-	<h1>v0.00</h3><br>
+	<h1>v0.00</h1><br>
 		- Chocolate Cookies Layer - what makes cookies duplicate. <br>
 		<br>
-	<h1>-v0.01</h3><br>
+	<h1>-v0.01</h1><br>
 		- Release - this is where everything starts.`
 
 let winText = `Congrats! The universe is now filled with cookies.`
