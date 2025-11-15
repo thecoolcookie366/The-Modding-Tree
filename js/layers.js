@@ -175,7 +175,7 @@ addLayer("vc", {
     baseResource: "cookies", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.000125, // Prestige currency exponent
+    exponent: 0.25, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -194,8 +194,8 @@ addLayer("vc", {
     buyables: {
         11: {
             title: "Special Cookies",
-            cost(x) { return new Decimal("1e1e10").mul(x) },
-            display() { return "Get a Special Cookie. Cost: e1e10 cookies." },
+            cost(x) { return new Decimal("0").mul(x) },
+            display() { return "Get a Special Cookie (why do you need this anyway)" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
             player[this.layer].points = player[this.layer].points.sub(this.cost())
