@@ -33,13 +33,13 @@ let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.02</h3><br>
 		- Dark Chocolate Cookies Layer - better than before. <br>
 		<br>
-	<h3>v0.01c</h3><br>
+	<h3>v0.01</h3><br>
 		- Red Layer - boosts that are very powerful. <br>
 		<br>
-	<h3>v0.01b</h3><br>
+	<h3>v0.00</h3><br>
 		- Chocolate Cookies Layer - what makes cookies duplicate. <br>
 		<br>
-	<h3>v0.01a</h3><br>
+	<h1>-v0.01</h1><br>
 		- Release - this is where everything starts.`
 
 let winText = `Congrats! The universe is now filled with cookies.`
