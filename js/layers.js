@@ -73,12 +73,12 @@ addLayer("dcc", {
 		points: new Decimal(0),
     }},
     color: "#745c0dff",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+    requires: new Decimal(250000), // Can be a function that takes requirement increases into account
     resource: "dark chocolate cookies", // Name of prestige currency
     baseResource: "chocolate cookies", // Name of resource prestige is based on
     baseAmount() {return player.cc.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1, // Prestige currency exponent
+    exponent: 0.05, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -96,7 +96,7 @@ addLayer("dcc", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "c", description: "C: Reset for chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "d", description: "D: Reset for dark chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
 
