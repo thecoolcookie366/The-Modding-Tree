@@ -272,6 +272,12 @@ addLayer("o", {
             description: "It's time to get colo(u)rful. x10 cookies!",
             cost: new Decimal(1),
         },
+
+        12: {
+            title: "[#2o] No Inflation Yet",
+            description: "Nuh uh, you thought there would be inflation. x[placeholer] cookies.",
+            cost: new Decimal(1),
+        },
     },
 
     row: 3, // Row the layer is in on the tree (0 is the first row)
