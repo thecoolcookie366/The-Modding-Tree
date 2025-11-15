@@ -164,7 +164,7 @@ addLayer("l", {
     resource: "loops", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.000001, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -250,11 +250,11 @@ addLayer("ml", {
 		points: new Decimal(0),
     }},
     color: "#3dc912ff",
-    requires: new Decimal(100), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1.79e308), // Can be a function that takes requirement increases into account
     resource: "mega loops", // Name of prestige currency
     baseResource: "loops", // Name of resource prestige is based on
     baseAmount() {return player.l.points}, // Get the current amount of baseResource
-    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.000000001, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
