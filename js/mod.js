@@ -18,7 +18,11 @@ let VERSION = {
 
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.01c</h3><br>
-		- Red Layer!`
+		- Red Layer! <br>
+	<h3>v0.01b</h3><br>
+		- Chocolate Cookies Layer! <br>
+	<h3>v0.01a</h3><br>
+		- Release!`
 
 let winText = `Congrats! The universe is now filled with cookies.`
 
