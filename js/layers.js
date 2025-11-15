@@ -51,7 +51,7 @@ addLayer("cc", {
             description: "Boost chocolate cookies based on cookies.",
             cost: new Decimal(125),
                 effect() {
-        return player.points.add(1).pow(0.15)
+        return player.points.add(1).pow(0.125)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
