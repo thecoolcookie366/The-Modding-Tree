@@ -54,6 +54,16 @@ addLayer("cc", {
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
+
+        21: {
+            title: "[#5cc] Chocolate++",
+            description: "An improved version of [#3cc].",
+            cost: new Decimal(1e9),
+                effect() {
+        return player[this.layer].points.add(1).pow(0.8)
+    },
+    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
