@@ -132,8 +132,16 @@ addLayer("dcc", {
             name: "[#1a] Regrind",
             challengeDescription: "[WARNING: Challenges are optional and are not required.] Welcome to your first challenge! Performs a Row 1 reset.",
             goalDescription: "Reach 1e9 cookies.",
-            rewardDescription: "x1 cookies",
+            rewardDescription: "x1.000 cookies",
             canComplete: function() {return player.points.gte(1e9)},
+        },
+
+        12: {
+            name: "[#2a] Explosive",
+            challengeDescription: "[WARNING: Challenges are optional and are not required.] The second one! Performs a Row 1 reset.",
+            goalDescription: "Reach e5e23 cookies.",
+            rewardDescription: "x1.001 cookies",
+            canComplete: function() {return player.points.gte("1e5e23")},
         },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
