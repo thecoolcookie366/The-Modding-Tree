@@ -661,7 +661,7 @@ addLayer("sin", {
     upgrades: {
         11: {
             title: "[#1sin] Godspeed",
-            description: "You're almost there.",
+            description: "You're almost there. x3.871F5 cookies.",
             cost: new Decimal(1),
         },
 
