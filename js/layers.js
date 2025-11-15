@@ -441,7 +441,7 @@ addLayer("ap", {
 
 addLayer("fr", {
     name: "fr", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "fr", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "FR", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -467,6 +467,12 @@ addLayer("fr", {
             title: "[#1fr] big boost fr",
             description: "x1e150 cookies fr",
             cost: new Decimal(1),
+        },
+
+        12: {
+            title: "[#2fr] yay fr",
+            description: "you win a fr",
+            cost: new Decimal(5),
         },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
