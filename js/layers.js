@@ -34,10 +34,14 @@ addLayer("cc", {
             cost: new Decimal(5),
         },
 
-        21: {
-            title: "placeholder",
-            description: "will update later",
+        13: {
+            title: "Some Other Boost",
+            description: "Testing 123",
             cost: new Decimal(1e303),
+                effect() {
+        return player[this.layer].points.add(1).pow(0.5)
+    },
+    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -45,4 +49,6 @@ addLayer("cc", {
         {key: "c", description: "C: Reset for chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
+
+    
 })
