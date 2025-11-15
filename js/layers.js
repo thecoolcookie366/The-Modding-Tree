@@ -175,6 +175,18 @@ addLayer("vc", {
             cost: new Decimal(1),
         },
     },
+    buyables: {
+        11: {
+            title: "Special Cookies",
+            cost(x) { return new Decimal("1e1e10").mul(x) },
+            display() { return "asdf" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+            player[this.layer].points = player[this.layer].points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+                },
+        },
+    },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "V", description: "V: Reset for vanilla cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
