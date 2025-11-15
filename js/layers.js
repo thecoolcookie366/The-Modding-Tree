@@ -94,6 +94,14 @@ addLayer("dcc", {
             cost: new Decimal(1.79e308),
         },
     },
+    milestones: {
+        0: {
+            requirementDescription: "1 Dark Chocolate Cookie",
+            effectDescription: "Good job on your first DCC! These Row 0 layers give huge boosts.",
+            done() { return player.dcc.points.gte(1) }
+        },   
+    },
+
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "d", description: "D: Reset for dark chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
