@@ -55,7 +55,7 @@ addLayer("cc", {
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "c", description: "C: Reset for chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -103,7 +103,7 @@ addLayer("dcc", {
             canComplete: function() {return player.points.gte(1e9)},
         },
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "d", description: "D: Reset for dark chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -142,7 +142,7 @@ addLayer("r", {
             cost: new Decimal(1),
         },
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
+    row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "r", description: "R: Reset for red", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -235,7 +235,7 @@ addLayer("l", {
             cost: new Decimal(1),
         },
     },
-    row: 2, // Row the layer is in on the tree (0 is the first row)
+    row: 3, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -325,7 +325,7 @@ addLayer("ml", {
             cost: new Decimal(1),
         },
     },
-    row: 2, // Row the layer is in on the tree (0 is the first row)
+    row: 3, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -361,7 +361,7 @@ addLayer("p", {
             cost: new Decimal(1),
         },
     },
-    row: -1, // Row the layer is in on the tree (0 is the first row)
+    row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
