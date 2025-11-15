@@ -275,8 +275,8 @@ addLayer("o", {
 
         12: {
             title: "[#2o] No Inflation Yet",
-            description: "Nuh uh, you thought there would be inflation. x[placeholer] cookies.",
-            cost: new Decimal(1),
+            description: "Nuh uh, you thought there would be inflation. x2.14 cookies.",
+            cost: new Decimal(5),
         },
     },
 
