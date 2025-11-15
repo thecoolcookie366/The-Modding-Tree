@@ -129,7 +129,7 @@ addLayer("dcc", {
     },
     challenges: {
         11: {
-            name: "[#1a] Regrind",
+            name: "[#1chal] Regrind",
             challengeDescription: "[WARNING: Challenges are optional and are not required.] Welcome to your first challenge! Performs a Row 1 reset.",
             goalDescription: "Reach 1e9 cookies.",
             rewardDescription: "x1.000 cookies",
@@ -137,7 +137,7 @@ addLayer("dcc", {
         },
 
         12: {
-            name: "[#2a] Explosive",
+            name: "[#2chal] Explosive",
             challengeDescription: "[WARNING: Challenges are optional and are not required.] The second one! Performs a Row 1 reset.",
             goalDescription: "Reach e5e23 cookies.",
             rewardDescription: "x1.001 cookies",
