@@ -230,7 +230,7 @@ addLayer("r", {
     upgrades: {
         11: {
             title: "[#1r] WHY IS IT RED",
-            description: "Uh... okay? x22.222 cookies.",
+            description: "Uh... okay? x12 cookies.",
             cost: new Decimal(1),
         },
 
