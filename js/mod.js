@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.12",
-	name: "The End (still WIP)",
+	num: "0.13",
+	name: "Specialties",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -24,6 +24,9 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update that adds a new upgrade <br>
 	<br>
 
+	<h3>v0.13</h3><br>
+		- Buyables - found in VC, repeatedly buy to get boosts. <br>
+		<br>
 	<h3>v0.12</h3><br>
 		- Singularity - the end is here. <br>
 		<br>
