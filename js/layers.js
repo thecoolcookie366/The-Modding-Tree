@@ -179,7 +179,7 @@ addLayer("vc", {
         11: {
             title: "Special Cookies",
             cost(x) { return new Decimal("1e1e10").mul(x) },
-            display() { return "asdf" },
+            display() { return "Get a Special Cookie. Cost: e1e10 cookies." },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
             player[this.layer].points = player[this.layer].points.sub(this.cost())
