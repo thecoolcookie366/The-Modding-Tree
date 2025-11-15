@@ -12,12 +12,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.03",
-	name: "Challenging",
+	num: "0.04",
+	name: "Loopy",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
 	<br>
+	<h3>v0.04</h3><br>
+		- Loops - reset everything and get big boosts! <br>
+		<br>
 	<h3>v0.03</h3><br>
 		- Challenges - found in DCC, get boosts and stuff. <br>
 		<br>
