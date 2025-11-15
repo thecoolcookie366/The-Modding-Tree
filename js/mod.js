@@ -6,20 +6,19 @@ let modInfo = {
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (1), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 24,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.01b",
-	name: "Chocolate Cookies",
+	num: "0.01c",
+	name: "Going Red",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.01b</h3><br>
-		- Added chocolate cookies, along with 2 upgrades. <br>
-		- This totals to a x6 cookie boost. `
+	<h3>v0.01c</h3><br>
+		- Red Layer!`
 
 let winText = `Congrats! The universe is now filled with cookies.`
 
@@ -45,7 +44,7 @@ function getPointGen() {
 	if (hasUpgrade('cc', 11)) gain = gain.times(2)
 	if (hasUpgrade('cc', 12)) gain = gain.times(3)
 	if (hasUpgrade('cc', 13)) gain = gain.times(upgradeEffect('cc', 13))
-	if (hasUpgrade('r', 11)) gain = gain.times(1.1)
+	if (hasUpgrade('r', 11)) gain = gain.times(5)
 	return gain
 }
 

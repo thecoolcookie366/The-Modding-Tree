@@ -58,12 +58,12 @@ addLayer("r", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
-		points: new Decimal(100),
+		points: new Decimal(0),
     }},
     color: "#ff0000ff",
     requires: new Decimal(1e6), // Can be a function that takes requirement increases into account
     resource: "red", // Name of prestige currency
-    baseResource: "chocolate cookies", // Name of resource prestige is based on
+    baseResource: "cookies", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.01, // Prestige currency exponent
@@ -78,7 +78,7 @@ addLayer("r", {
     upgrades: {
         11: {
             title: "WHY IS IT RED",
-            description: "Uh... okay? x1.1 chocolate cookies.",
+            description: "Uh... okay? x5 cookies.",
             cost: new Decimal(1),
         },
     },
