@@ -72,7 +72,7 @@ addLayer("dcc", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#745c0dff",
+    color: "#43360aff",
     requires: new Decimal(250000), // Can be a function that takes requirement increases into account
     resource: "dark chocolate cookies", // Name of prestige currency
     baseResource: "chocolate cookies", // Name of resource prestige is based on
