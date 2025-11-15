@@ -170,7 +170,7 @@ addLayer("vc", {
 		points: new Decimal(0),
     }},
     color: "#a49e87ff",
-    requires: new Decimal("1e7777777777"), // Can be a function that takes requirement increases into account
+    requires: new Decimal(55e6), // Can be a function that takes requirement increases into account
     resource: "vanilla cookies", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
