@@ -250,7 +250,7 @@ addLayer("ml", {
 		points: new Decimal(0),
     }},
     color: "#3dc912ff",
-    requires: new Decimal(25), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e303), // Can be a function that takes requirement increases into account
     resource: "mega loops", // Name of prestige currency
     baseResource: "loops", // Name of resource prestige is based on
     baseAmount() {return player.l.points}, // Get the current amount of baseResource
