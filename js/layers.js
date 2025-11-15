@@ -58,7 +58,7 @@ addLayer("r", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
-		points: new Decimal(0),
+		points: new Decimal(100),
     }},
     color: "#ff0000ff",
     requires: new Decimal(1e6), // Can be a function that takes requirement increases into account
