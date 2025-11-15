@@ -198,6 +198,42 @@ addLayer("l", {
             description: "x1e33 cookies.",
             cost: new Decimal(1),
         },
+
+        21: {
+            title: "[ Loop ]",
+            description: "x1e33 cookies.",
+            cost: new Decimal(1),
+        },
+
+        22: {
+            title: "[ Loop ]",
+            description: "x1e33 cookies.",
+            cost: new Decimal(1),
+        },
+
+        23: {
+            title: "[ Loop ]",
+            description: "x1e33 cookies.",
+            cost: new Decimal(1),
+        },
+
+        31: {
+            title: "[ Loop ]",
+            description: "x1e33 cookies.",
+            cost: new Decimal(1),
+        },
+
+        32: {
+            title: "[ Loop ]",
+            description: "x1e33 cookies.",
+            cost: new Decimal(1),
+        },
+
+        41: {
+            title: "[ Loop ]",
+            description: "x1e33 cookies.",
+            cost: new Decimal(1),
+        },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
