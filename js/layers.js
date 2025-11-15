@@ -55,7 +55,7 @@ addLayer("cc", {
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
+    row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "c", description: "C: Reset for chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -103,7 +103,7 @@ addLayer("dcc", {
             canComplete: function() {return player.points.gte(1e9)},
         },
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
+    row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "d", description: "D: Reset for dark chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -142,7 +142,7 @@ addLayer("r", {
             cost: new Decimal(1),
         },
     },
-    row: 2, // Row the layer is in on the tree (0 is the first row)
+    row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "r", description: "R: Reset for red", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -159,7 +159,7 @@ addLayer("l", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#1258c9ff",
+    color: "#00fbffff",
     requires: new Decimal(1e303), // Can be a function that takes requirement increases into account
     resource: "loops", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on
@@ -235,7 +235,7 @@ addLayer("l", {
             cost: new Decimal(1),
         },
     },
-    row: 3, // Row the layer is in on the tree (0 is the first row)
+    row: 4, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -249,7 +249,7 @@ addLayer("ml", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#3dc912ff",
+    color: "#00ffaaff",
     requires: new Decimal(1e303), // Can be a function that takes requirement increases into account
     resource: "mega loops", // Name of prestige currency
     baseResource: "loops", // Name of resource prestige is based on
@@ -325,7 +325,7 @@ addLayer("ml", {
             cost: new Decimal(1),
         },
     },
-    row: 3, // Row the layer is in on the tree (0 is the first row)
+    row: 4, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -361,7 +361,7 @@ addLayer("p", {
             cost: new Decimal(1),
         },
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -397,7 +397,7 @@ addLayer("pr", {
             cost: new Decimal(1),
         },
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -433,7 +433,7 @@ addLayer("ap", {
             cost: new Decimal(1),
         },
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
