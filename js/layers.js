@@ -64,6 +64,16 @@ addLayer("cc", {
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
+
+        22: {
+            title: "[#6cc] Cookie Go Up",
+            description: "Boost chocolate cookies based on cookies.",
+            cost: new Decimal("1e19777777"),
+                effect() {
+        return player.points.add(1).pow(0.15)
+    },
+    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
