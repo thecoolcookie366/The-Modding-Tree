@@ -37,7 +37,7 @@ addLayer("cc", {
         13: {
             title: "Chocolate!",
             description: "Boost cookies based on chocolate cookies.",
-            cost: new Decimal(1e303),
+            cost: new Decimal(25),
                 effect() {
         return player[this.layer].points.add(1).pow(0.5)
     },
@@ -61,12 +61,12 @@ addLayer("r", {
 		points: new Decimal(0),
     }},
     color: "#ff0000ff",
-    requires: new Decimal(1e33), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e6), // Can be a function that takes requirement increases into account
     resource: "red", // Name of prestige currency
-    baseResource: "cookies", // Name of resource prestige is based on
+    baseResource: "chocolate cookies", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1, // Prestige currency exponent
+    exponent: 0.01, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -77,8 +77,8 @@ addLayer("r", {
     },
     upgrades: {
         11: {
-            title: "Cookie Duplication",
-            description: "Your first upgrade. Get x2 cookies.",
+            title: "WHY IS IT RED",
+            description: "Uh... okay? x1.1 chocolate cookies.",
             cost: new Decimal(1),
         },
     },
