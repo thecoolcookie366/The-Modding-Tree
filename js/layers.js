@@ -557,6 +557,42 @@ addLayer("ap", {
     
 })
 
+addLayer("tp", {
+    name: "transcensionpoints", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "TP?", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 3, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#9b1c1cff",
+    requires: new Decimal(1e100), // Can be a function that takes requirement increases into account
+    resource: "transcension points?", // Name of prestige currency
+    baseResource: "cookies", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.0005, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    upgrades: {
+        11: {
+            title: "[#1tp] Last warning...",
+            description: "Don't. x1e16 cookies.",
+            cost: new Decimal(1),
+        },
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true}
+
+    
+})
+
 addLayer("fr", {
     name: "fr", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "FR", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -592,6 +628,43 @@ addLayer("fr", {
             description: "you win a fr",
             cost: new Decimal(5),
         },
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true}
+
+    
+})
+
+addLayer("sin", {
+    name: "singularity", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "SIN", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#c1225a90",
+    requires: new Decimal("1e1.796e308"), // Can be a function that takes requirement increases into account
+    resource: "singularities", // Name of prestige currency
+    baseResource: "cookies", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1e-50000, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(0.05)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(0.98)
+    },
+    upgrades: {
+        11: {
+            title: "[#1sin] Godspeed",
+            description: "You're almost there.",
+            cost: new Decimal(1),
+        },
+
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
