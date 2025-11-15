@@ -357,7 +357,7 @@ addLayer("p", {
     upgrades: {
         11: {
             title: "[#1p] What?",
-            description: "You are outside of the cookie tree. Things are weird outside it. x0.001 cookies.",
+            description: "You are outside of the cookie tree. Things are weird outside it. x1.1 cookies.",
             cost: new Decimal(1),
         },
     },
