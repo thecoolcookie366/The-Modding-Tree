@@ -90,18 +90,18 @@ addLayer("dcc", {
     upgrades: {
         11: {
             title: "[#1dcc] Darker Than the Last",
-            description: "does nothing yet",
-            cost: new Decimal(1.79e308),
+            description: "x5 cookies.",
+            cost: new Decimal(1),
         },
     },
-    milestones: {
-        0: {
-            requirementDescription: "1 Dark Chocolate Cookie",
-            effectDescription: "Good job on your first DCC! These Row 0 layers give huge boosts.",
-            done() { return player.dcc.points.gte(1) }
-        },   
+    challenges: {
+        11: {
+            name: "[#1a] First Debuff",
+            challengeDescription: "Welcome to your first challenge! Decrease ",
+            goalDescription: "Reach 1e9 cookies.",
+            canComplete: function() {return player.points.gte(1e9)},
+        },
     },
-
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "d", description: "D: Reset for dark chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -137,7 +137,7 @@ addLayer("r", {
     upgrades: {
         11: {
             title: "[#1r] WHY IS IT RED",
-            description: "Uh... okay? x5 cookies.",
+            description: "Uh... okay? x22.222 cookies.",
             cost: new Decimal(1),
         },
     },
