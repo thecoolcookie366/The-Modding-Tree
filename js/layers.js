@@ -339,7 +339,7 @@ addLayer("p", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#000000ff",
+    color: "#5f5f5fff",
     requires: new Decimal(1e10), // Can be a function that takes requirement increases into account
     resource: "points?", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on
@@ -358,6 +358,42 @@ addLayer("p", {
         11: {
             title: "[#1p] What?",
             description: "You are outside of the cookie tree. Things are weird outside it. x1.1 cookies.",
+            cost: new Decimal(1),
+        },
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true}
+
+    
+})
+
+addLayer("pr", {
+    name: "prestigepoints", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "PR?", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#4a7b91ff",
+    requires: new Decimal(1e1000), // Can be a function that takes requirement increases into account
+    resource: "prestige points?", // Name of prestige currency
+    baseResource: "points?", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 5, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    upgrades: {
+        11: {
+            title: "[#1pr] This is weird.",
+            description: "Stop going this path. x50 cookies.",
             cost: new Decimal(1),
         },
     },
