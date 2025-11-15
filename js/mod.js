@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.10",
-	name: "Fruit or Color",
+	num: "0.11",
+	name: "The Inverse of Cookie",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -24,6 +24,9 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update that adds a new upgrade <br>
 	<br>
 
+	<h3>v0.11</h3><br>
+		- Vanilla Cookies - nobody likes these! unless it's The Cookie Tree. <br>
+		<br>
 	<h2>v0.10</h2><br>
 		- Orange - is it an entire rainbow? <br>
 		<br>
@@ -74,6 +77,7 @@ function getPointGen() {
 	let gain = new Decimal(1)
 	if (hasUpgrade('cc', 11)) gain = gain.times(2)
 	if (hasUpgrade('cc', 12)) gain = gain.times(3)
+	if (hasUpgrade('cc', 23)) gain = gain.times("1e1000000000")
 	if (hasUpgrade('cc', 13)) gain = gain.times(upgradeEffect('cc', 13))
 	if (hasUpgrade('cc', 21)) gain = gain.times(upgradeEffect('cc', 21))
 	if (hasUpgrade('r', 11)) gain = gain.times(22.222)
@@ -117,7 +121,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e1000000000000000000"))
+	return player.points.gte(new Decimal("1e1000000000000000000000000000000"))
 }
 
 

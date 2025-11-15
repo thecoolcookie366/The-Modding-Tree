@@ -75,6 +75,12 @@ addLayer("cc", {
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
+
+        23: {
+            title: "[#7cc] Extremely Strong Cookie Duplication",
+            description: "Let's bring it back! xe1e9 cookies.",
+            cost: new Decimal("5.5555e55555555"),
+        },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -124,7 +130,7 @@ addLayer("dcc", {
     challenges: {
         11: {
             name: "[#1a] Regrind",
-            challengeDescription: "Welcome to your first challenge (optional)! Performs a Row 1 reset.",
+            challengeDescription: "[WARNING: Challenges are optional and are not required.] Welcome to your first challenge! Performs a Row 1 reset.",
             goalDescription: "Reach 1e9 cookies.",
             rewardDescription: "x1 cookies",
             canComplete: function() {return player.points.gte(1e9)},
@@ -133,6 +139,45 @@ addLayer("dcc", {
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "d", description: "D: Reset for dark chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){return true}
+
+    
+})
+
+addLayer("vc", {
+    name: "vanillacookies", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "VC", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#a49e87ff",
+    requires: new Decimal(1e999999999999), // Can be a function that takes requirement increases into account
+    resource: "vanilla cookies", // Name of prestige currency
+    baseResource: "cookies", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.000125, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    upgrades: {
+        11: {
+            title: "[#1vc] Darker Than the Last",
+            description: "x5 cookies.",
+            cost: new Decimal(1),
+        },
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "V", description: "V: Reset for vanilla cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
 
