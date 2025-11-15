@@ -12,14 +12,17 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.05",
-	name: "Outside the Cookie Tree",
+	num: "0.06",
+	name: "Row -1",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
 	<br>
-	,h3>v0.05</h3><br>
-		- Points- wait, these aren't the points i remember... <br>
+	<h3>v0.06</h3><br>
+		- fr - the layer of all time <br>
+		<br>
+	<h3>v0.05</h3><br>
+		- Points? - wait, these aren't the points i remember... <br>
 		<br>
 	<h3>v0.04</h3><br>
 		- Loops - reset everything and get big boosts! <br>
