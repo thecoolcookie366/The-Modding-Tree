@@ -16,6 +16,7 @@ addLayer("cc", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('cc', 14)) mult = mult.times(upgradeEffect('cc', 14))
+        if (hasUpgrade('cc', 22)) mult = mult.times(upgradeEffect('cc', 22))
         return mult
 
     },
@@ -67,10 +68,10 @@ addLayer("cc", {
 
         22: {
             title: "[#6cc] Cookie Go Up",
-            description: "Boost chocolate cookies based on cookies.",
+            description: "Improved version of [#4cc]. (too much inflation)",
             cost: new Decimal("1e19777777"),
                 effect() {
-        return player.points.add(1).pow(0.15)
+        return player.points.add(1).pow(0.25)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
