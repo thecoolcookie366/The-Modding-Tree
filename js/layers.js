@@ -96,10 +96,10 @@ addLayer("dcc", {
     },
     challenges: {
         11: {
-            name: "[#1a] First Debuff",
-            challengeDescription: "Welcome to your first challenge! You start with -500 cookies.",
+            name: "[#1a] Regrind",
+            challengeDescription: "Welcome to your first challenge! Performs a Row 0 reset.",
             goalDescription: "Reach 1e9 cookies.",
-            onEnter: function() {return player.points.resource(-500)},
+            rewardDescription: "x1 cookies",
             canComplete: function() {return player.points.gte(1e9)},
         },
     },
