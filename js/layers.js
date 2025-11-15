@@ -34,7 +34,7 @@ addLayer("cc", {
             cost: new Decimal(5),
         },
 
-        13: {
+        21: {
             title: "placeholder",
             description: "will update later",
             cost: new Decimal(1e303),
