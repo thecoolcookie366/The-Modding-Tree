@@ -15,6 +15,7 @@ addLayer("cc", {
     exponent: 1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('cc', 14)) mult = mult.times(upgradeEffect('cc', 14))
         return mult
 
     },
@@ -37,9 +38,19 @@ addLayer("cc", {
         13: {
             title: "Chocolate!",
             description: "Boost cookies based on chocolate cookies.",
-            cost: new Decimal(25),
+            cost: new Decimal(15),
                 effect() {
         return player[this.layer].points.add(1).pow(0.5)
+    },
+    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+
+        14: {
+            title: "Back and Forth",
+            description: "Boost chocolate cookies based on cookies.",
+            cost: new Decimal(1e3),
+                effect() {
+        return player.points.add(1).pow(0.15)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
