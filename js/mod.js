@@ -18,12 +18,8 @@ let VERSION = {
 
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.01b</h3><br>
-		- Added chocolate cookies. <br>
-		- Chocolate cookies have 2 upgrades, which in total give x50 cookies.`
-
-	`<h3>v0.01a</h3><br>
-		- The game starts here! <br>
-		- Added cookies.`
+		- Added chocolate cookies, along with 2 upgrades. <br>
+		- This totals to a x50 cookie boost. `
 
 let winText = `Congrats! The universe is now filled with cookies.`
 
