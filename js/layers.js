@@ -117,7 +117,7 @@ addLayer("dcc", {
     upgrades: {
         11: {
             title: "[#1dcc] Darker Than the Last",
-            description: "x5 cookies.",
+            description: "x4 cookies.",
             cost: new Decimal(1),
         },
 
