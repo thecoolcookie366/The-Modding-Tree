@@ -12,20 +12,23 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.02",
-	name: "They're Dark!",
+	num: "0.03",
+	name: "Challenging",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
 	<br>
+	<h3>v0.03</h3><br>
+		- Challenges - found in DCC, get boosts and stuff. <br>
+		<br>
 	<h3>v0.02</h3><br>
 		- Dark Chocolate Cookies Layer - better than before. <br>
 		<br>
 	<h3>v0.01c</h3><br>
-		- Red Layer - now with 1 upgrade. <br>
+		- Red Layer - boosts that are very powerful. <br>
 		<br>
 	<h3>v0.01b</h3><br>
-		- Chocolate Cookies Layer - includes 4 upgrades. <br>
+		- Chocolate Cookies Layer - what makes cookies duplicate. <br>
 		<br>
 	<h3>v0.01a</h3><br>
 		- Release - this is where everything starts.`
