@@ -33,6 +33,12 @@ addLayer("cc", {
             description: "Cookie gain go big. x3 cookies!",
             cost: new Decimal(5),
         },
+
+        13: {
+            title: "placeholder",
+            description: "will update later",
+            cost: new Decimal(e308),
+        },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
