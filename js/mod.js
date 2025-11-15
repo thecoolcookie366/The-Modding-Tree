@@ -39,7 +39,7 @@ let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.00</h3><br>
 		- Chocolate Cookies Layer - what makes cookies duplicate. <br>
 		<br>
-	<h1>-v0.01</h1><br>
+	<h3>-v0.01</h3><br>
 		- Release - this is where everything starts.`
 
 let winText = `Congrats! The universe is now filled with cookies.`
