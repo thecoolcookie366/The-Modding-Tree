@@ -60,7 +60,7 @@ addLayer("cc", {
             description: "An improved version of [#3cc].",
             cost: new Decimal(1e9),
                 effect() {
-        return player[this.layer].points.add(1).pow(0.8)
+        return player[this.layer].points.add(1).pow(0.55)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
