@@ -853,7 +853,7 @@ addLayer("sin", {
 addLayer("a", {
     startData() { return {
         unlocked: true,
-        points: new Decimal(-1),
+        points: new Decimal(0),
     }},
     color: "yellow",
     resource: "achievement power", 
@@ -866,7 +866,29 @@ addLayer("a", {
         11: {
             name: "Red!",
             done() {return player.r.points.gte(1)},
-            tooltip: "Get your first rainbow color.", // Showed when the achievement is completed
+            tooltip: "Get your first red.", // Showed when the achievement is completed
+        },
+    },
+})
+
+// A side layer with achievements, with no prestige
+addLayer("sa", {
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "blue",
+    resource: "secret achievement power", 
+    row: "side",
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Secret Achievements")
+    },
+    achievementPopups: true,
+    achievements: {
+        11: {
+            name: "Patience is key.",
+            done() {return player.r.points.gte(250)},
+            tooltip: "Get 250 red.", // Showed when the achievement is completed
         },
     },
 })
