@@ -550,7 +550,7 @@ addLayer("p", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    branches: ['pr','ap','tp','rp'],
+    branches: ['pr','ap','tp','rp','vc'],
     upgrades: {
         11: {
             title: "[#1p] What?",
@@ -695,6 +695,7 @@ addLayer("rp", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    branches: ['sin'],
     upgrades: {
         11: {
             title: "[#1rp] Just stop.",
