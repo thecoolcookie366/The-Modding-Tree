@@ -27,6 +27,7 @@ let changelog = `<h1>Changelog:</h1><br>
 	<h1>v1.00</h1><br>
 		<h3>WARNING: THIS LIST WILL BE UPDATED OVER TIME AS 1.00 IS NOT DONE YET.</h3> <br>
 		- Balancing - fixed a bunch of things and prevented inflation (maybe) <br>
+		- Layers - added so many layers you'll never get bored! <br>
 		<br>
 	<h3>v0.13</h3><br>
 		- Buyables - found in VC, repeatedly buy to get boosts. <br>

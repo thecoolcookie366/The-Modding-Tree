@@ -300,13 +300,53 @@ addLayer("o", {
         12: {
             title: "[#2o] No Inflation Yet",
             description: "Nuh uh, you thought there would be inflation. x2.14 cookies.",
-            cost: new Decimal(5),
+            cost: new Decimal(3),
         },
     },
 
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "o", description: "O: Reset for orange", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){return true}
+
+    
+})
+
+addLayer("y", {
+    name: "yellow", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "Y", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#eeff00ff",
+    requires: new Decimal(1.25e6), // Can be a function that takes requirement increases into account
+    resource: "yellow", // Name of prestige currency
+    baseResource: "cookies", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.0001, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    upgrades: {
+        11: {
+            title: "[#1y] Yellow Like a Banana",
+            description: "Nice fruit. Wait no wrong topic. Take x[placeholder] cookies.",
+            cost: new Decimal(1),
+        },
+    },
+
+    row: 3, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "y", description: "Y: Reset for yellow", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
 
