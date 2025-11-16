@@ -277,7 +277,7 @@ addLayer("o", {
     upgrades: {
         11: {
             title: "[#1o] Colo(u)r",
-            description: "It's time to get colo(u)rful. x10 cookies!",
+            description: "It's time to get colo(u)rful. x6 cookies!",
             cost: new Decimal(1),
         },
 
