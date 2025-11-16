@@ -327,7 +327,7 @@ addLayer("y", {
     upgrades: {
         11: {
             title: "[#1y] Yellow Like a Banana",
-            description: "Nice fruit. Wait no wrong topic. Take x[placeholder] cookies.",
+            description: "Nice fruit. Wait no wrong topic. Take x4 cookies.",
             cost: new Decimal(1),
         },
     },
