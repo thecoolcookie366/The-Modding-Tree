@@ -407,6 +407,56 @@ addLayer("g", {
     
 })
 
+addLayer("b", {
+    name: "blue", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "B", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 4, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#0077ffff",
+    requires: new Decimal(6e11), // Can be a function that takes requirement increases into account
+    resource: "blue", // Name of prestige currency
+    baseResource: "cookies", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.000001, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    branches:['pr'],
+    upgrades: {
+        11: {
+            title: "[#1b] The Sky",
+            description: "Ah yes. Sky. x2 skies- wait this isn't The Sky Tree. I meant x[placeholder] cookies.",
+            cost: new Decimal(1),
+        },
+
+        12: {
+            title: "[#2b] What else is Blue?",
+            description: "Blue? Oh yes, I think cookies are blue, wait they're not. x[placeholder] cookies and move on.",
+            cost: new Decimal(1),
+        },
+
+        13: {
+            title: "[#3b] Decimals",
+            description: "Decimals just make numbers go to F1.79e308 instead of e1.79e308. That said, you aren't getting a multiplier of either of those. You are however getting x[placeholder] cookies. <h3>And I have a big surprise that surely nobody could guess...</h3>",
+            cost: new Decimal(2),
+        },
+    },
+
+    row: 3, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true}
+
+    
+})
+
 addLayer("l", {
     name: "loops", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "L", // This appears on the layer's node. Default is the id with the first letter capitalized
