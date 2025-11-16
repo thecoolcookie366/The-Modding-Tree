@@ -384,7 +384,7 @@ addLayer("g", {
     upgrades: {
         11: {
             title: "[#1g] What are Fruits?",
-            description: "Do you like salad? x2 cookies. I think that's good enough.",
+            description: "Do you like salad? x3 cookies. I think that's good enough.",
             cost: new Decimal(1),
         },
 
@@ -434,7 +434,7 @@ addLayer("b", {
     upgrades: {
         11: {
             title: "[#1b] The Sky",
-            description: "Ah yes. Sky. x2 skies- wait this isn't The Sky Tree. I meant x1.75 cookies.",
+            description: "Ah yes. Sky. x1.23 skies- wait this isn't The Sky Tree. I meant x2 cookies.",
             cost: new Decimal(1),
         },
 
