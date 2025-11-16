@@ -374,7 +374,19 @@ addLayer("g", {
     upgrades: {
         11: {
             title: "[#1g] What are Fruits?",
-            description: "Do you like salad? x[placeholder] cookies. I think that's good enough.",
+            description: "Do you like salad? x2 cookies. I think that's good enough.",
+            cost: new Decimal(1),
+        },
+
+        12: {
+            title: "[#2g] Middle of the Road",
+            description: "Green is actually halfway through the color layers. (maybe not) - x1.5 things, wait no i meant <h3>cookies.</h3>",
+            cost: new Decimal(1),
+        },
+
+        13: {
+            title: "[#3g] What are Vegetables?",
+            description: "Oh wait, there are green fruits too... Wait wrong topic again. x1.25 cookies.",
             cost: new Decimal(1),
         },
     },
