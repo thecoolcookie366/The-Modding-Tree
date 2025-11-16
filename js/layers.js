@@ -892,3 +892,25 @@ addLayer("ha", {
         },
     },
 })
+
+// A side layer with achievements, with no prestige
+addLayer("ia", {
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "red",
+    resource: "impossible achievement power", 
+    row: "side",
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Impossible Achievements")
+    },
+    achievementPopups: true,
+    achievements: {
+        11: {
+            name: "Are we fr?",
+            done() {return player.r.points.gte(10000)},
+            tooltip: "Get 10,000 red. Whatever you did, that's crazy.", // Showed when the achievement is completed
+        },
+    },
+})
