@@ -865,7 +865,7 @@ addLayer("a", {
     achievements: {
         11: {
             name: "Red!",
-            done() {return player.r.points.gte(0)},
+            done() {return player.r.points.gte(1)},
             tooltip: "Get your first rainbow color.", // Showed when the achievement is completed
         },
     },
