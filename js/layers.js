@@ -126,6 +126,16 @@ addLayer("dcc", {
             description: "A x3 cookie boost wouldn't hurt, right?",
             cost: new Decimal(40),
         },
+
+        21: {
+            title: "[#3dcc] Yet Another [#3cc] Upgrade",
+            description: "Boost cookies based on DCC.",
+            cost: new Decimal(120),
+                effect() {
+        return player.points.add(1).pow(0.25)
+    },
+    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     },
     challenges: {
         11: {
