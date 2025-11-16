@@ -596,7 +596,7 @@ addLayer("pr", {
         11: {
             title: "[#1pr] This is weird.",
             description: "Stop going this path. x2.454545454545 cookies.",
-            cost: new Decimal(200),
+            cost: new Decimal(45),
         },
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
