@@ -163,9 +163,9 @@ addLayer("dcc", {
         },
 
     1: {
-        requirementDescription: "[#2mil] 120 Dark Chocolate Cookies (#3dcc)",
+        requirementDescription: "[#2mil] 300 Dark Chocolate Cookies (#3dcc)",
         effectDescription: "Might be powerful, who knows?",
-        done() { return player.dcc.points.gte(120) }
+        done() { return player.dcc.points.gte(300) }
         },    
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
