@@ -207,7 +207,7 @@ addLayer("vc", {
         12: {
             title: "[#2vc] Heavily Nerfed Self Boosting",
             description: "Boost cookies based on... themselfs? What?",
-            cost: new Decimal(50),
+            cost: new Decimal(500),
                 effect() {
         return player.points.add(1).pow(0.001)
     },
