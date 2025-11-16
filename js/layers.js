@@ -83,9 +83,6 @@ addLayer("cc", {
         },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "c", description: "C: Reset for chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
     layerShown(){return true}
 
     
@@ -169,9 +166,6 @@ addLayer("dcc", {
         },    
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "d", description: "D: Reset for dark chocolate cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
     layerShown(){return true}
 
     
@@ -220,9 +214,6 @@ addLayer("vc", {
         },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "V", description: "V: Reset for vanilla cookies", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
     layerShown(){return true}
 
     
@@ -259,9 +250,6 @@ addLayer("r", {
         },
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "r", description: "R: Reset for red", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
     layerShown(){return true}
 
     
@@ -305,9 +293,6 @@ addLayer("o", {
     },
 
     row: 3, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "o", description: "O: Reset for orange", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
     layerShown(){return true}
 
     
@@ -322,7 +307,7 @@ addLayer("y", {
 		points: new Decimal(0),
     }},
     color: "#eeff00ff",
-    requires: new Decimal(1.25e6), // Can be a function that takes requirement increases into account
+    requires: new Decimal(5e9), // Can be a function that takes requirement increases into account
     resource: "yellow", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -345,9 +330,6 @@ addLayer("y", {
     },
 
     row: 3, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "y", description: "Y: Reset for yellow", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
     layerShown(){return true}
 
     
