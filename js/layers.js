@@ -854,6 +854,48 @@ addLayer("aaa", {
         unlocked: true,
         points: new Decimal(0),
     }},
+    color: "blue",
+    resource: "achievement-- power", 
+    row: "side",
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Achievements--")
+    },
+    achievementPopups: false,
+    achievements: {
+        11: {
+            name: "Free Achievement",
+            done() {return player.points.gte(-999)},
+            tooltip: "There really is no point in making easier achievements, so...", // Showed when the achievement is completed
+        },
+        12: {
+            name: "Free Achievement",
+            done() {return player.points.gte(-999)},
+            tooltip: "There really is no point in making easier achievements, so...", // Showed when the achievement is completed
+        },
+        13: {
+            name: "Free Achievement",
+            done() {return player.points.gte(-999)},
+            tooltip: "There really is no point in making easier achievements, so...", // Showed when the achievement is completed
+        },
+        14: {
+            name: "Free Achievement",
+            done() {return player.points.gte(-999)},
+            tooltip: "There really is no point in making easier achievements, so...", // Showed when the achievement is completed
+        },
+        15: {
+            name: "Free Achievement",
+            done() {return player.points.gte(-999)},
+            tooltip: "There really is no point in making easier achievements, so...", // Showed when the achievement is completed
+        },
+    },
+})
+
+// A side layer with achievements, with no prestige
+addLayer("bbb", {
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
     color: "green",
     resource: "achievement- power", 
     row: "side",
@@ -871,16 +913,16 @@ addLayer("aaa", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("bbb", {
+addLayer("ccc", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
     }},
     color: "yellow",
-    resource: "achievement= power", 
+    resource: "achievement power", 
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Achievements=")
+        return ("Achievements")
     },
     achievementPopups: true,
     achievements: {
@@ -893,7 +935,7 @@ addLayer("bbb", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("ccc", {
+addLayer("ddd", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
@@ -915,7 +957,7 @@ addLayer("ccc", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("ddd", {
+addLayer("eee", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
@@ -937,7 +979,7 @@ addLayer("ddd", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("eee", {
+addLayer("fff", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
