@@ -853,7 +853,7 @@ addLayer("sin", {
 addLayer("a", {
     startData() { return {
         unlocked: true,
-        points: new Decimal(0),
+        points: new Decimal(-1),
     }},
     color: "yellow",
     resource: "achievement power", 
