@@ -420,6 +420,14 @@ addLayer("l", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    infoboxes:{
+            coolInfo: {
+                title: "Loops",
+                titleStyle: {'color': '#13cec8ff'},
+                body: "Loops are post-game content, you do not have to grind these!",
+                bodyStyle: {'background-color': "#10707eff"}
+            }
+        },
     branches: ['ml'],
     upgrades: {
         11: {
