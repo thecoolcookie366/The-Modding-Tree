@@ -759,7 +759,7 @@ addLayer("sin", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#c1225a90",
+    color: "#c1225aff",
     requires: new Decimal("1e1.796e308"), // Can be a function that takes requirement increases into account
     resource: "singularities", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on
