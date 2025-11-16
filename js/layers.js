@@ -248,6 +248,7 @@ addLayer("r", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    branches: ['o'],
     upgrades: {
         11: {
             title: "[#1r] WHY IS IT RED",
@@ -284,6 +285,7 @@ addLayer("o", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    branches: ['y'],
     upgrades: {
         11: {
             title: "[#1o] Colo(u)r",
