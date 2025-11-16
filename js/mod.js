@@ -138,7 +138,8 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-1)) return "Endgame: <h3>??? cookies</h3> as of v0.13"},
+	function() {if (player.points.gt(-1)) return "Endgame: <h3>??? cookies</h3> as of v0.13."},
+	function() {if (inChallenge("dcc", 11)) return "You are trying to get to <h3>1e9 cookies</h3> for <h2>absolutely nothing.</h2>"},
 ]
 
 // Determines when the game "ends"
