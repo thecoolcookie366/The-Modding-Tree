@@ -63,7 +63,7 @@ let changelog = `<h1>Changelog:</h1><br>
 	<h1>v0.00</h1><br>
 		- Chocolate Cookies Layer - what makes cookies duplicate. <br>
 		<br>
-	<h3>-v0.01</h3><br>
+	-v0.01<br>
 		- Release - this is where everything starts.`
 
 let winText = `Congrats! The universe is now filled with cookies.`
@@ -105,24 +105,12 @@ function getPointGen() {
 	if (hasUpgrade('vc', 11)) gain = gain.times(2.5)
 	if (hasUpgrade('dcc', 12)) gain = gain.times(3)
 	if (hasUpgrade('l', 11)) gain = gain.times(1e33)
-	if (hasUpgrade('l', 12)) gain = gain.times(1e33)
-	if (hasUpgrade('l', 13)) gain = gain.times(1e33)
-	if (hasUpgrade('l', 14)) gain = gain.times(1e33)
 	if (hasUpgrade('l', 21)) gain = gain.times(1e33)
-	if (hasUpgrade('l', 22)) gain = gain.times(1e33)
-	if (hasUpgrade('l', 23)) gain = gain.times(1e33)
 	if (hasUpgrade('l', 31)) gain = gain.times(1e33)
-	if (hasUpgrade('l', 32)) gain = gain.times(1e33)
 	if (hasUpgrade('l', 41)) gain = gain.times(1e33)
 	if (hasUpgrade('ml', 11)) gain = gain.times(1e63)
-	if (hasUpgrade('ml', 12)) gain = gain.times(1e63)
-	if (hasUpgrade('ml', 13)) gain = gain.times(1e63)
-	if (hasUpgrade('ml', 14)) gain = gain.times(1e63)
 	if (hasUpgrade('ml', 21)) gain = gain.times(1e63)
-	if (hasUpgrade('ml', 22)) gain = gain.times(1e63)
-	if (hasUpgrade('ml', 23)) gain = gain.times(1e63)
 	if (hasUpgrade('ml', 31)) gain = gain.times(1e63)
-	if (hasUpgrade('ml', 32)) gain = gain.times(1e63)
 	if (hasUpgrade('ml', 41)) gain = gain.times(1e63)
 	if (hasUpgrade('p', 11)) gain = gain.times(1.99999)
 	if (hasUpgrade('pr', 11)) gain = gain.times(50)
