@@ -649,6 +649,7 @@ function loadVue() {
 			constructParticleStyle,
 			VERSION,
 			LAYERS,
+			hotkeys,
 			activePopups,
 			particles,
 			mouseX,
