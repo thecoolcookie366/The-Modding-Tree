@@ -29,6 +29,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Balancing - fixed a bunch of things and prevented inflation (maybe) <br>
 		- Layers - added so many layers you'll never get bored! <br>
 		- Infoboxes - only necessarily for Loops but sure? <br>
+		- Achievements - do things for absolutely nothing! <br>
 		<br>
 	<h3>v0.13</h3><br>
 		- Buyables - found in VC, repeatedly buy to get boosts. <br>
