@@ -380,7 +380,7 @@ addLayer("g", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    branches:['p'],
+    branches:['p','b'],
     upgrades: {
         11: {
             title: "[#1g] What are Fruits?",
