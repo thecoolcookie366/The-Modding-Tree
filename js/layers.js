@@ -522,7 +522,7 @@ addLayer("ml", {
     infoboxes:{
             coolInfo: {
                 title: "Mega Loops",
-                titleStyle: {'color': '#00ffaaff'},
+                titleStyle: {'color': '#14e29dff'},
                 body: "Mega Loops is post-game content (you should know this already from Loops), you do <h1>not</h1> have to grind these",
                 bodyStyle: {'background-color': "#117e5aff"}
             }
