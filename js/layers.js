@@ -372,6 +372,7 @@ addLayer("l", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    branches: ['ml'],
     upgrades: {
         11: {
             title: "[ Loop ]",
