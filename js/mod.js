@@ -138,7 +138,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-1)) return "Endgame: ??? cookies"},
+	function() {if (player.points.gt(-1)) return "Endgame: <h3>??? cookies</h3> as of v0.13"},
 ]
 
 // Determines when the game "ends"
