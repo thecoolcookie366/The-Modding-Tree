@@ -59,7 +59,7 @@ addLayer("cc", {
         21: {
             title: "[#5cc] Chocolate++",
             description: "If [#3cc] wasn't enough...",
-            cost: new Decimal(1e9),
+            cost: new Decimal(35e6),
                 effect() {
         return player[this.layer].points.add(1).pow(0.07)
     },
