@@ -132,7 +132,7 @@ addLayer("dcc", {
             description: "Boost cookies based on DCC.",
             cost: new Decimal(120),
                 effect() {
-        return player.points.add(1).pow(1e303)
+        return player.points.add(1).pow("1e1e303")
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
