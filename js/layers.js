@@ -70,9 +70,9 @@ addLayer("cc", {
         22: {
             title: "[#6cc] Cookie Go Up",
             description: "If [#4cc] wasn't enough...",
-            cost: new Decimal("1e19777777"),
+            cost: new Decimal(7e12),
                 effect() {
-        return player.points.add(1).pow(0.25)
+        return player.points.add(1).pow(0.06)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
