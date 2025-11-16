@@ -848,6 +848,27 @@ addLayer("sin", {
 
     
 })
+// A side layer with achievements, with no prestige
+addLayer("ba", {
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "green",
+    resource: "achievement- power", 
+    row: "side",
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Achievements-")
+    },
+    achievementPopups: true,
+    achievements: {
+        11: {
+            name: "Welcome!",
+            done() {return player.points.gte(1)},
+            tooltip: "Welcome to The Cookie Tree... well where are the cookies?", // Showed when the achievement is completed
+        },
+    },
+})
 
 // A side layer with achievements, with no prestige
 addLayer("a", {
