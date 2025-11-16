@@ -209,7 +209,7 @@ addLayer("vc", {
             description: "Boost cookies based on... themselfs? What?",
             cost: new Decimal(500),
                 effect() {
-        return player.points.add(1).pow(0.25)
+        return player.points.add(1).pow(0.025)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
