@@ -914,3 +914,25 @@ addLayer("abc", {
         },
     },
 })
+
+// A side layer with achievements, with no prestige
+addLayer("abcd", {
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "pink",
+    resource: "achievement+++ power", 
+    row: "side",
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Achievements+++")
+    },
+    achievementPopups: true,
+    achievements: {
+        11: {
+            name: "what",
+            done() {return player.r.points.gte(1e6)},
+            tooltip: "Get 1,000,000 red. What?", // Showed when the achievement is completed
+        },
+    },
+})
