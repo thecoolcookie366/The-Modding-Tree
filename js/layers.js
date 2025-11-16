@@ -100,7 +100,7 @@ addLayer("dcc", {
 		points: new Decimal(0),
     }},
     color: "#43360aff",
-    requires: new Decimal(250e3), // Can be a function that takes requirement increases into account
+    requires: new Decimal(160e3), // Can be a function that takes requirement increases into account
     resource: "dark chocolate cookies", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -238,7 +238,7 @@ addLayer("r", {
     upgrades: {
         11: {
             title: "[#1r] WHY IS IT RED",
-            description: "Uh... okay? x12 cookies.",
+            description: "Uh... okay? x8 cookies.",
             cost: new Decimal(1),
         },
     },
