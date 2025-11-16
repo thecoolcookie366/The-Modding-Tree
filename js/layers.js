@@ -207,9 +207,9 @@ addLayer("vc", {
         12: {
             title: "[#2vc] Self Boosting",
             description: "Boost cookies based on DCC.",
-            cost: new Decimal(300),
+            cost: new Decimal(50),
                 effect() {
-        return player.points.add(1).pow(1)
+        return player.points.add(1).pow(0.001)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
