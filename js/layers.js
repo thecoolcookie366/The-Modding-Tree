@@ -12,7 +12,7 @@ addLayer("cc", {
     baseResource: "cookies", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1, // Prestige currency exponent
+    exponent: 2.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('cc', 14)) mult = mult.times(upgradeEffect('cc', 14))
@@ -69,7 +69,7 @@ addLayer("cc", {
 
         22: {
             title: "[#6cc] Cookie Go Up",
-            description: "Improved version of [#4cc]. (too much inflation)",
+            description: "If [#4cc] wasn't enough...",
             cost: new Decimal("1e19777777"),
                 effect() {
         return player.points.add(1).pow(0.25)
