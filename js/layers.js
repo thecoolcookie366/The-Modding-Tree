@@ -23,7 +23,7 @@ addLayer("cc", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    branches:['r', 'dcc'],
+    branches:['r', 'dcc', 'vc'],
     upgrades: {
         11: {
             title: "[#1cc] Cookie Duplication",
@@ -115,6 +115,7 @@ addLayer("dcc", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    branches: ['vc'],
     upgrades: {
         11: {
             title: "[#1dcc] Darker Than the Last",
