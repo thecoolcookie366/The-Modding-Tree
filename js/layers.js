@@ -434,19 +434,19 @@ addLayer("b", {
     upgrades: {
         11: {
             title: "[#1b] The Sky",
-            description: "Ah yes. Sky. x2 skies- wait this isn't The Sky Tree. I meant x[placeholder] cookies.",
+            description: "Ah yes. Sky. x2 skies- wait this isn't The Sky Tree. I meant x1.75 cookies.",
             cost: new Decimal(1),
         },
 
         12: {
             title: "[#2b] What else is Blue?",
-            description: "Blue? Oh yes, I think cookies are blue, wait they're not. x[placeholder] cookies and move on.",
+            description: "Blue? Oh yes, I think cookies are blue, wait they're not. x1.25 cookies and move on.",
             cost: new Decimal(1),
         },
 
         13: {
             title: "[#3b] Decimals",
-            description: "Decimals just make numbers go to F1.79e308 instead of e1.79e308. That said, you aren't getting a multiplier of either of those. You are however getting x[placeholder] cookies. <h3>And I have a big surprise that surely nobody could guess...</h3>",
+            description: "Decimals just make numbers go to F1.79e308 instead of e1.79e308. That said, you aren't getting a multiplier of either of those. You are however getting x1.1 cookies. <h3>And I have a big surprise that surely nobody could guess...</h3>",
             cost: new Decimal(2),
         },
     },
