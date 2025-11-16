@@ -115,7 +115,7 @@ addLayer("dcc", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    branches: ['vc'],
+    branches: ['vc', 'o'],
     upgrades: {
         11: {
             title: "[#1dcc] Darker Than the Last",
@@ -199,6 +199,7 @@ addLayer("vc", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    branches: ['y'],
     upgrades: {
         11: {
             title: "[#1vc] Not Good!",
