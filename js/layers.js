@@ -381,7 +381,7 @@ addLayer("g", {
         12: {
             title: "[#2g] Middle of the Road",
             description: "Green is actually halfway through the color layers. (maybe not) - x1.5 things, wait no i meant <h3>cookies.</h3>",
-            cost: new Decimal(2),
+            cost: new Decimal(1),
         },
 
         13: {
