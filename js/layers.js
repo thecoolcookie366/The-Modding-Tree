@@ -130,9 +130,9 @@ addLayer("dcc", {
         21: {
             title: "[#3dcc] Yet Another [#3cc] Upgrade",
             description: "Boost cookies based on DCC.",
-            cost: new Decimal(120),
+            cost: new Decimal(300),
                 effect() {
-        return player.dcc.points.add(1).pow(0.25)
+        return player.dcc.points.add(1).pow(0.2)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
