@@ -921,7 +921,7 @@ addLayer("abcd", {
         unlocked: true,
         points: new Decimal(0),
     }},
-    color: "pink",
+    color: "purple",
     resource: "achievement+++ power", 
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
