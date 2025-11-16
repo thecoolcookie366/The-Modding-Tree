@@ -58,10 +58,10 @@ addLayer("cc", {
 
         21: {
             title: "[#5cc] Chocolate++",
-            description: "An improved version of [#3cc].",
+            description: "If [#3cc] wasn't enough...",
             cost: new Decimal(1e9),
                 effect() {
-        return player[this.layer].points.add(1).pow(0.8)
+        return player[this.layer].points.add(1).pow(0.07)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
