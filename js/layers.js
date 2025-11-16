@@ -519,6 +519,14 @@ addLayer("ml", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    infoboxes:{
+            coolInfo: {
+                title: "Mega Loops",
+                titleStyle: {'color': '#00ffaaff'},
+                body: "Mega Loops is post-game content (you should know this already from Loops), you do <h1>not</h1> have to grind these",
+                bodyStyle: {'background-color': "#117e5aff"}
+            }
+        },
     upgrades: {
         11: {
             title: "[ Mega Loop ]",
