@@ -22,6 +22,16 @@ var colors = {
 		background: "#001f3f",
 		background_tooltip: "rgba(0, 15, 31, 0.75)",
 	},
+	void: {
+		1: "#000000ff",
+		2: "#000000ff",
+		3: "#000000ff",
+		color: "#000000ff",
+		points: "#5a5a5aff",
+		locked: "#393939ff",
+		background: "#ffffffff",
+		background_tooltip: "rgba(0, 15, 31, 0.75)",
+	},
 }
 function changeTheme() {
 
