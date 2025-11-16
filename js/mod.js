@@ -4,8 +4,8 @@ let modInfo = {
 	pointsName: "cookies",
 	modFiles: ["layers.js", "tree.js"],
 
-	discordName: "",
-	discordLink: "",
+	discordName: "The Cookie Tree Discord",
+	discordLink: "https://discord.gg/DZZ4kwG7",
 	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 24,  // In hours
 }
