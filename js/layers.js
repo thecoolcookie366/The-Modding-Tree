@@ -187,7 +187,7 @@ addLayer("vc", {
     upgrades: {
         11: {
             title: "[#1vc] Not Good!",
-            description: "x25 cookies. Did you know? Cookie go big very fast.",
+            description: "x2.5 cookies. Did you know? Cookie go big very fast.",
             cost: new Decimal(1),
         },
     },
