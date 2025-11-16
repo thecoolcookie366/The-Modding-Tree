@@ -877,10 +877,10 @@ addLayer("bb", {
         points: new Decimal(0),
     }},
     color: "yellow",
-    resource: "achievement power", 
+    resource: "achievement= power", 
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Achievements")
+        return ("Achievements=")
     },
     achievementPopups: true,
     achievements: {
