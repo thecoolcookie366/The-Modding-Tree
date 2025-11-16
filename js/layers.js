@@ -132,7 +132,7 @@ addLayer("dcc", {
             description: "Boost cookies based on DCC.",
             cost: new Decimal(120),
                 effect() {
-        return player.dcc.points.add(1).pow("1")
+        return player.dcc.points.add(1).pow(0.25)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
@@ -157,10 +157,16 @@ addLayer("dcc", {
 
     milestones: {
     0: {
-        requirementDescription: "40 Dark Chocolate Cookies (#2dcc)",
+        requirementDescription: "[#1mil] 40 Dark Chocolate Cookies (#2dcc)",
         effectDescription: "Try to reset multiple times at a certain amount of DCC.",
         done() { return player.dcc.points.gte(40) }
-        },   
+        },
+
+    1: {
+        requirementDescription: "[#2mil] 120 Dark Chocolate Cookies (#3dcc)",
+        effectDescription: "Might be powerful, who knows?",
+        done() { return player.dcc.points.gte(120) }
+        },    
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
