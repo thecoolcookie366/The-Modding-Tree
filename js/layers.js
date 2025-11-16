@@ -872,16 +872,16 @@ addLayer("a", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("sa", {
+addLayer("ha", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
     }},
-    color: "blue",
-    resource: "secret achievement power", 
+    color: "orange",
+    resource: "hard achievement power", 
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Secret Achievements")
+        return ("Hard Achievements")
     },
     achievementPopups: true,
     achievements: {
