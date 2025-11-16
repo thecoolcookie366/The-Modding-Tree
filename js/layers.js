@@ -848,3 +848,25 @@ addLayer("sin", {
 
     
 })
+
+// A side layer with achievements, with no prestige
+addLayer("a", {
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "yellow",
+    resource: "achievement power", 
+    row: "side",
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Achievements")
+    },
+    achievementPopups: true,
+    achievements: {
+        11: {
+            name: "Red!",
+            done() {return player.r.points.gte(0)},
+            tooltip: "Get your first rainbow color.", // Showed when the achievement is completed
+        },
+    },
+})
