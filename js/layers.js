@@ -872,16 +872,16 @@ addLayer("a", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("ha", {
+addLayer("ab", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
     }},
     color: "orange",
-    resource: "hard achievement power", 
+    resource: "achievement+ power", 
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Hard Achievements")
+        return ("Achievements+")
     },
     achievementPopups: true,
     achievements: {
@@ -894,16 +894,16 @@ addLayer("ha", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("ia", {
+addLayer("abc", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
     }},
     color: "red",
-    resource: "impossible achievement power", 
+    resource: "achievement++ power", 
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Impossible Achievements")
+        return ("Achievements++")
     },
     achievementPopups: true,
     achievements: {
