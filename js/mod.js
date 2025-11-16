@@ -95,7 +95,7 @@ function getPointGen() {
 	if (hasUpgrade('o', 12)) gain = gain.times(2.14)
 	if (hasUpgrade('dcc', 11)) gain = gain.times(3.5)
 	if (hasUpgrade('vc', 11)) gain = gain.times(25)
-	if (hasUpgrade('dcc', 12)) gain = gain.times(100)
+	if (hasUpgrade('dcc', 12)) gain = gain.times(3)
 	if (hasUpgrade('l', 11)) gain = gain.times(1e33)
 	if (hasUpgrade('l', 12)) gain = gain.times(1e33)
 	if (hasUpgrade('l', 13)) gain = gain.times(1e33)

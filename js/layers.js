@@ -123,7 +123,7 @@ addLayer("dcc", {
 
         12: {
             title: "[#2dcc] Big Multipliers",
-            description: "A x100 cookie boost wouldn't hurt, right?",
+            description: "A x3 cookie boost wouldn't hurt, right?",
             cost: new Decimal(40),
         },
     },
