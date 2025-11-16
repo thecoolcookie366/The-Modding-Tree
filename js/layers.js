@@ -330,6 +330,12 @@ addLayer("y", {
             description: "Nice fruit. Wait no wrong topic. Take x4 cookies.",
             cost: new Decimal(1),
         },
+
+        12: {
+            title: "[#2y] Seems familliar...",
+            description: "Why does it feel like there are digits of pi? x1.314 cookies.",
+            cost: new Decimal(2),
+        },
     },
 
     row: 3, // Row the layer is in on the tree (0 is the first row)
