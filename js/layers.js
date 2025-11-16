@@ -554,8 +554,8 @@ addLayer("p", {
     upgrades: {
         11: {
             title: "[#1p] What?",
-            description: "You are outside of the cookie tree. Things are weird outside it. x1.1 cookies.",
-            cost: new Decimal(1),
+            description: "You are outside of the cookie tree. Things are weird outside it. x1.99999 cookies.",
+            cost: new Decimal(2e3),
         },
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
