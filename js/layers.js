@@ -849,7 +849,7 @@ addLayer("sin", {
     
 })
 // A side layer with achievements, with no prestige
-addLayer("ba", {
+addLayer("aa", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
@@ -871,7 +871,7 @@ addLayer("ba", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("a", {
+addLayer("bb", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
@@ -893,7 +893,7 @@ addLayer("a", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("ab", {
+addLayer("cc", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
@@ -915,7 +915,7 @@ addLayer("ab", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("abc", {
+addLayer("dd", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
@@ -937,7 +937,7 @@ addLayer("abc", {
 })
 
 // A side layer with achievements, with no prestige
-addLayer("abcd", {
+addLayer("ee", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
