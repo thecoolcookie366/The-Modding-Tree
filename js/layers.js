@@ -848,154 +848,54 @@ addLayer("sin", {
 
     
 })
+
 // A side layer with achievements, with no prestige
-addLayer("aaa", {
+addLayer("oa", {
+    symbol: "OA",
+    position: 0,
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
     }},
-    color: "blue",
-    resource: "achievement-- power", 
+    color: "#ffffffff",
+    resource: "overall achievement power", 
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Achievements--")
+        return ("Overall Achievements")
     },
-    achievementPopups: false,
+    achievementPopups: true,
     achievements: {
         11: {
-            name: "Free Achievement",
-            done() {return player.points.gte(-999)},
-            tooltip: "There really is no point in making easier achievements, so...", // Showed when the achievement is completed
-        },
-        12: {
-            name: "Free Achievement",
-            done() {return player.points.gte(-999)},
-            tooltip: "There really is no point in making easier achievements, so...", // Showed when the achievement is completed
-        },
-        13: {
-            name: "Free Achievement",
-            done() {return player.points.gte(-999)},
-            tooltip: "There really is no point in making easier achievements, so...", // Showed when the achievement is completed
-        },
-        14: {
-            name: "Free Achievement",
-            done() {return player.points.gte(-999)},
-            tooltip: "There really is no point in making easier achievements, so...", // Showed when the achievement is completed
-        },
-        15: {
-            name: "Free Achievement",
-            done() {return player.points.gte(-999)},
-            tooltip: "There really is no point in making easier achievements, so...", // Showed when the achievement is completed
+            name: "The Cookie Tree: Endgame",
+            done() {return player.points.gte("1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1")},
+            goalTooltip: "Reach the endgame, showed at the top of the screen.", // Shows when achievement is not completed
+            doneTooltip: "You did it! You completed The Cookie Tree! Well, you could continue with loops...", // Showed when the achievement is completed
         },
     },
 })
 
 // A side layer with achievements, with no prestige
-addLayer("bbb", {
+addLayer("ca", {
+    symbol: "CA",
+    position: 1,
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
     }},
-    color: "green",
-    resource: "achievement- power", 
+    color: "#ff9500ff",
+    resource: "cookie achievement power", 
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Achievements-")
+        return ("Cookie Achievements")
     },
     achievementPopups: true,
     achievements: {
         11: {
-            name: "Welcome!",
-            done() {return player.points.gte(1)},
-            tooltip: "Welcome to The Cookie Tree... well where are the cookies?", // Showed when the achievement is completed
+            name: "haha funi",
+            done() {return player.points.gte("69")},
+            goalTooltip: "What numbers are funny?", // Shows when achievement is not completed
+            doneTooltip: "Reach 69 cookies.", // Showed when the achievement is completed
         },
     },
 })
 
-// A side layer with achievements, with no prestige
-addLayer("ccc", {
-    startData() { return {
-        unlocked: true,
-        points: new Decimal(0),
-    }},
-    color: "yellow",
-    resource: "achievement power", 
-    row: "side",
-    tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Achievements")
-    },
-    achievementPopups: true,
-    achievements: {
-        11: {
-            name: "Red!",
-            done() {return player.r.points.gte(1)},
-            tooltip: "Get your first red.", // Showed when the achievement is completed
-        },
-    },
-})
-
-// A side layer with achievements, with no prestige
-addLayer("ddd", {
-    startData() { return {
-        unlocked: true,
-        points: new Decimal(0),
-    }},
-    color: "orange",
-    resource: "achievement+ power", 
-    row: "side",
-    tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Achievements+")
-    },
-    achievementPopups: true,
-    achievements: {
-        11: {
-            name: "Patience is key.",
-            done() {return player.r.points.gte(250)},
-            tooltip: "Get 250 red.", // Showed when the achievement is completed
-        },
-    },
-})
-
-// A side layer with achievements, with no prestige
-addLayer("eee", {
-    startData() { return {
-        unlocked: true,
-        points: new Decimal(0),
-    }},
-    color: "red",
-    resource: "achievement++ power", 
-    row: "side",
-    tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Achievements++")
-    },
-    achievementPopups: true,
-    achievements: {
-        11: {
-            name: "Are we fr?",
-            done() {return player.r.points.gte(10000)},
-            tooltip: "Get 10,000 red. Whatever you did, that's crazy.", // Showed when the achievement is completed
-        },
-    },
-})
-
-// A side layer with achievements, with no prestige
-addLayer("fff", {
-    startData() { return {
-        unlocked: true,
-        points: new Decimal(0),
-    }},
-    color: "purple",
-    resource: "achievement+++ power", 
-    row: "side",
-    tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Achievements+++")
-    },
-    achievementPopups: true,
-    achievements: {
-        11: {
-            name: "what",
-            done() {return player.r.points.gte(1e6)},
-            tooltip: "Get 1,000,000 red. What?", // Showed when the achievement is completed
-        },
-    },
-})
