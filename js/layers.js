@@ -871,6 +871,13 @@ addLayer("oa", {
             goalTooltip: "Reach the endgame, showed at the top of the screen.", // Shows when achievement is not completed
             doneTooltip: "You did it! You completed The Cookie Tree! Well, you could continue with loops...", // Showed when the achievement is completed
         },
+
+        11: {
+            name: "Uh Oh!",
+            done() {return player.points.eq("NaN")},
+            goalTooltip: "Somehow have NaN cookies.", // Shows when achievement is not completed
+            doneTooltip: "Ping cookie in The Cookie Tree Discord server to (probably) fix your save.", // Showed when the achievement is completed
+        },
     },
 })
 
@@ -891,6 +898,13 @@ addLayer("ca", {
     achievementPopups: true,
     achievements: {
         11: {
+            name: "Great Start",
+            done() {return player.points.gte("10")},
+            goalTooltip: "Do you really need a hint for this?", // Shows when achievement is not completed
+            doneTooltip: "Reach 10 cookies.", // Showed when the achievement is completed
+        },
+
+        12: {
             name: "haha funi",
             done() {return player.points.gte("69")},
             goalTooltip: "What numbers are funny?", // Shows when achievement is not completed
