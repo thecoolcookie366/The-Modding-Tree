@@ -872,7 +872,7 @@ addLayer("oa", {
             doneTooltip: "You did it! You completed The Cookie Tree! Well, you could continue with loops...", // Showed when the achievement is completed
         },
 
-        11: {
+        12: {
             name: "Uh Oh!",
             done() {return player.points.eq("NaN")},
             goalTooltip: "Somehow have NaN cookies.", // Shows when achievement is not completed
