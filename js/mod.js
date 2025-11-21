@@ -88,7 +88,6 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
-	if (player.points.gte(1.79e308)) gain = new Decimal(0)
 	if (hasUpgrade('cc', 11)) gain = gain.times(2)
 	if (hasUpgrade('cc', 12)) gain = gain.times(3)
 	if (hasUpgrade('cc', 23)) gain = gain.times("1e1000000000")
@@ -127,6 +126,7 @@ function getPointGen() {
 	if (hasUpgrade('fr', 12)) gain = gain.times("1e1.79601e308")	
 	if (hasUpgrade('sin', 11)) gain = gain.times("1e1e1e1e1e3")
 	if (hasUpgrade('sin', 12)) gain = gain.times("1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1")
+	if (player.points.gte("1e1.796e308")) gain = new Decimal(0)	
 	return gain
 }
 
@@ -137,7 +137,8 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {if (player.points.gt(-1)) return "Endgame: <h3>??? cookies</h3> as of v0.13."},
-	function() {if (player.points.gte(1.79e308)) return "<h2>lol no, you can't go past Infinity. unless?</h2>"},
+	function() {if (player.points.gte("1.796e308")) return "<h2>[INFINITY] You have reached infinity. Cookies will be reduced by ^0.5 [hardcap for now], but you can reset for Infinity Cookies to push further. </h2>"},
+	function() {if (player.points.gte("1e1.796e308")) return "<h2>[ETERNITY] You have reached eternity. Cookies are now hardcapped, but you can reset for Eternity Cookies to break the limits. </h2>"},
 	function() {if (inChallenge("dcc", 11)) return "You are trying to get to <h3>1e9 cookies</h3> for <h2>absolutely nothing.</h2>"},
 	function() {if (inChallenge("dcc", 12)) return "Don't bother getting <h3>e5e23 cookies,</h3> you will get <h2>absolutely nothing.</h2>"},
 ]
