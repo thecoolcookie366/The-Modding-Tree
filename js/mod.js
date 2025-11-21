@@ -137,7 +137,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {if (player.points.gt(-1)) return "Endgame: <h3>??? cookies</h3> as of v0.13."},
-	function() {if (player.points.gt(1.79e308)) return "Lol no, you can't go past Infinity. Unless?"},
+	function() {if (player.points.gt(1.79e308)) return "<h2>lol no, you can't go past Infinity. unless?</h2>"},
 	function() {if (inChallenge("dcc", 11)) return "You are trying to get to <h3>1e9 cookies</h3> for <h2>absolutely nothing.</h2>"},
 	function() {if (inChallenge("dcc", 12)) return "Don't bother getting <h3>e5e23 cookies,</h3> you will get <h2>absolutely nothing.</h2>"},
 ]
