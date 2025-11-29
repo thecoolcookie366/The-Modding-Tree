@@ -127,6 +127,7 @@ function getPointGen() {
 	if (hasUpgrade('sin', 11)) gain = gain.times("1e1e1e1e1e3")
 	if (hasUpgrade('sin', 12)) gain = gain.times("1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1")
 	if (player.points.gte("1e1.796e308")) gain = new Decimal(0)
+	if (player.points.gte("1.796e308")) gain = gain.log(10).add(1)
 	return gain
 }
 
