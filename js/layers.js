@@ -664,7 +664,7 @@ addLayer("ap", {
 		points: new Decimal(0),
     }},
     color: "#828f35ff",
-    requires: new Decimal(1e50), // Can be a function that takes requirement increases into account
+    requires: new Decimal(5.5e15), // Can be a function that takes requirement increases into account
     resource: "ascension points?", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
