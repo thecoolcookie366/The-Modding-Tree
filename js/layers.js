@@ -931,7 +931,7 @@ addLayer("cha", {
     achievements: {
         11: {
             name: "Challenging",
-            done() {return player.points.gte("1e1500")},
+            done() {return hasChallenge("dcc", 11)},
             goalTooltip: "Did you try completing a DCC challenge?", // Shows when achievement is not completed
             doneTooltip: "Complete DCC Challenge 1.", // Showed when the achievement is completed
         },
