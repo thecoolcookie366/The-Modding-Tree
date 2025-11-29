@@ -866,17 +866,17 @@ addLayer("oa", {
     achievementPopups: true,
     achievements: {
         11: {
+            name: "Midgame Hell",
+            done() {return player.points.gte("1e10")},
+            goalTooltip: "Get ready for this part of the game...", // Shows when achievement is not completed
+            doneTooltip: "Welcome to midgame. Good luck on this part! It won't be easy.", // Showed when the achievement is completed
+        },
+
+        12: {
             name: "The Cookie Tree: Endgame",
             done() {return player.points.gte("1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1")},
             goalTooltip: "Reach the endgame, showed at the top of the screen.", // Shows when achievement is not completed
             doneTooltip: "You did it! You completed The Cookie Tree! Well, you could continue with loops...", // Showed when the achievement is completed
-        },
-
-        12: {
-            name: "Uh Oh!",
-            done() {return player.points.eq("NaN")},
-            goalTooltip: "Somehow have NaN cookies.", // Shows when achievement is not completed
-            doneTooltip: "Ping cookie in The Cookie Tree Discord server to (probably) fix your save.", // Showed when the achievement is completed
         },
     },
 })
@@ -909,6 +909,31 @@ addLayer("ca", {
             done() {return player.points.gte("69")},
             goalTooltip: "What numbers are funny?", // Shows when achievement is not completed
             doneTooltip: "Reach 69 cookies.", // Showed when the achievement is completed
+        },
+    },
+})
+
+// A side layer with achievements, with no prestige
+addLayer("cha", {
+    symbol: "CHA",
+    position: 2,
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "#805213b9",
+    resource: "challenge achievement power", 
+    row: "side",
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Challenge Achievements")
+    },
+    achievementPopups: true,
+    achievements: {
+        11: {
+            name: "Challenging",
+            done() {return player.points.gte("1e1500")},
+            goalTooltip: "Did you try completing a DCC challenge?", // Shows when achievement is not completed
+            doneTooltip: "Complete DCC Challenge 1.", // Showed when the achievement is completed
         },
     },
 })
