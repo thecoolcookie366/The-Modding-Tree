@@ -139,9 +139,10 @@ addLayer("dcc", {
     challenges: {
         11: {
             name: "[#1chal] Regrind",
-            challengeDescription: "[WARNING: Challenges are optional and are not required.] Welcome to your first challenge! Performs a Row 1 reset.",
+            challengeDescription: "Welcome to your first challenge! This challenge will give a good boost to get you further.",
             goalDescription: "Reach 1e9 cookies.",
             rewardDescription: "x1.000 cookies",
+
             canComplete: function() {return player.points.gte(1e9)},
         },
 
@@ -866,7 +867,7 @@ addLayer("oa", {
     achievementPopups: true,
     achievements: {
         11: {
-            name: "Midgame Hell",
+            name: "Midgame's Timewall",
             done() {return player.points.gte("1e10")},
             goalTooltip: "Get ready for this part of the game...", // Shows when achievement is not completed
             doneTooltip: "Welcome to midgame. Good luck on this part! It won't be easy.", // Showed when the achievement is completed
@@ -903,13 +904,6 @@ addLayer("ca", {
             goalTooltip: "Do you really need a hint for this?", // Shows when achievement is not completed
             doneTooltip: "Reach 10 cookies.", // Showed when the achievement is completed
         },
-
-        12: {
-            name: "haha funi",
-            done() {return player.points.gte("69")},
-            goalTooltip: "What numbers are funny?", // Shows when achievement is not completed
-            doneTooltip: "Reach 69 cookies.", // Showed when the achievement is completed
-        },
     },
 })
 
@@ -933,7 +927,7 @@ addLayer("cha", {
             name: "Challenging",
             done() {return hasChallenge("dcc", 11)},
             goalTooltip: "Did you try completing a DCC challenge?", // Shows when achievement is not completed
-            doneTooltip: "Complete DCC Challenge 1.", // Showed when the achievement is completed
+            doneTooltip: "Complete DCC Challenge 1. Reward: It's displayed on the challenge you completed.", // Showed when the achievement is completed
         },
     },
 })

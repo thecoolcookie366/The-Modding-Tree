@@ -125,6 +125,7 @@ function getPointGen() {
 	if (hasUpgrade('fr', 11)) gain = gain.times(1e150)	
 	if (hasUpgrade('fr', 12)) gain = gain.times("1e1.79601e308")	
 	if (hasUpgrade('sin', 11)) gain = gain.times("1e1e1e1e1e3")
+	if (hasChallenge("dcc", 11)) gain = gain.times(1)
 	if (hasUpgrade('sin', 12)) gain = gain.times("1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1")
 	if (player.points.gte("1e1.796e308")) gain = gain.log(2).add(1).log(2).add(1)
 	if (player.points.gte("1.796e308")) gain = gain.log(2).add(1)
@@ -140,8 +141,6 @@ var displayThings = [
 	function() {if (player.points.gt(-1)) return "<h3>Endgame: ??? cookies as of v0.13.</h3>"},
 	function() {if (player.points.gte("1.796e308")) return "<h3>[INFINITY] You have reached infinity. Cookies will be softcapped, but you can reset for Infinity Cookies to push further. </h3>"},
 	function() {if (player.points.gte("1e1.796e308")) return "<h3>[ETERNITY] You have reached eternity. Cookies will be HEAVILY softcapped, but you can reset for Eternity Cookies to break the limits. </h3>"},
-	function() {if (inChallenge("dcc", 11)) return "You are trying to get to <h3>1e9 cookies</h3> for <h2>absolutely nothing.</h2>"},
-	function() {if (inChallenge("dcc", 12)) return "Don't bother getting <h3>e5e23 cookies,</h3> you will get <h2>absolutely nothing.</h2>"},
 ]
 
 // Determines when the game "ends"
