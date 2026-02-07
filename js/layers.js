@@ -83,7 +83,7 @@ addLayer("cc", {
             cost: new Decimal("5.5555e55555555"),
         },
     },
-    row: 2, // Row the layer is in on the tree (0 is the first row)
+    row: 3, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -168,7 +168,7 @@ addLayer("dcc", {
         done() { return player.dcc.points.gte(300) }
         },    
     },
-    row: 2, // Row the layer is in on the tree (0 is the first row)
+    row: 3, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -227,7 +227,7 @@ addLayer("vc", {
                 },
         },
     },
-    row: 2, // Row the layer is in on the tree (0 is the first row)
+    row: 3, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -264,7 +264,7 @@ addLayer("r", {
             cost: new Decimal(1),
         },
     },
-    row: 3, // Row the layer is in on the tree (0 is the first row)
+    row: 4, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -308,7 +308,7 @@ addLayer("o", {
         },
     },
 
-    row: 3, // Row the layer is in on the tree (0 is the first row)
+    row: 4, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -352,7 +352,7 @@ addLayer("y", {
         },
     },
 
-    row: 3, // Row the layer is in on the tree (0 is the first row)
+    row: 4, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -402,7 +402,7 @@ addLayer("g", {
         },
     },
 
-    row: 3, // Row the layer is in on the tree (0 is the first row)
+    row: 4, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -452,7 +452,7 @@ addLayer("b", {
         },
     },
 
-    row: 3, // Row the layer is in on the tree (0 is the first row)
+    row: 4, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -515,7 +515,7 @@ addLayer("l", {
             cost: new Decimal(1),
         },
     },
-    row: 4, // Row the layer is in on the tree (0 is the first row)
+    row: 5, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -577,7 +577,7 @@ addLayer("ml", {
             cost: new Decimal(1),
         },
     },
-    row: 4, // Row the layer is in on the tree (0 is the first row)
+    row: 5, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -614,7 +614,7 @@ addLayer("p", {
             cost: new Decimal(1.5e3),
         },
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
+    row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -650,7 +650,7 @@ addLayer("pr", {
             cost: new Decimal(45),
         },
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
+    row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -686,7 +686,7 @@ addLayer("ap", {
             cost: new Decimal(1),
         },
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
+    row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -722,7 +722,7 @@ addLayer("tp", {
             cost: new Decimal(1),
         },
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
+    row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -759,7 +759,7 @@ addLayer("rp", {
             cost: new Decimal(1),
         },
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
+    row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -801,7 +801,7 @@ addLayer("fr", {
             cost: new Decimal(10000),
         },
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -844,7 +844,7 @@ addLayer("sin", {
         },
 
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
