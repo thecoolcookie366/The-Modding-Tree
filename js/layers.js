@@ -1,3 +1,84 @@
+addLayer("agut", {
+    name: "agenericupgtree", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "AGUT", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#ffffff",
+    requires: new Decimal(0.0001), // Can be a function that takes requirement increases into account
+    resource: "alternate points", // Name of prestige currency
+    baseResource: "cookies", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.25, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "A generic upgrade tree (Alternate Points)",
+                titleStyle: {'color': '#c6c6c6'},
+                body: "Reset on all resets, only use for a boost.",
+                bodyStyle: {'background-color': "#828282"}
+            }
+        },
+    branches:['fr'],
+    upgrades: {
+        11: {
+            title: "[#1] Start genera- wait what",
+            description: "+1 cookie per second. Aren't we doing this already?",
+            cost: new Decimal(1),
+        },
+
+        21: {
+            title: "[#2-1] This is just 2cc but insanely op",
+            description: "x3 cookies. The next feature is interesting...",
+            cost: new Decimal(5),
+        },
+
+        22: {
+            title: "[#2-2] This is just 2cc but insanely op 2",
+            description: "x3 cookies again. The next feature is interesting...",
+            cost: new Decimal(25),
+        },
+
+        23: {
+            title: "[#2-3] This is just 2cc but insanely op 3",
+            description: "x3 cookies again again. The next feature is interesting...",
+            cost: new Decimal(125),
+        },
+
+        24: {
+            title: "[#2-4] This is just 2cc but insanely op 4",
+            description: "x3 cookies again again again. The next feature is interesting...",
+            cost: new Decimal(625),
+        },
+
+        25: {
+            title: "[#2-5] This is just 2cc but insanely op 5",
+            description: "x3 cookies again<sup>2</sup>. The next feature is interesting...",
+            cost: new Decimal(3125),
+        },
+
+        31: {
+            title: "[#3] Interesting",
+            description: "x5 cookies and /3 cookies. Now wait for upgrade 4!",
+            cost: new Decimal(1600),
+        },
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true}
+
+    
+})
+
 addLayer("cc", {
     name: "chocolatecookies", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "CC", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -773,7 +854,7 @@ addLayer("fr", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#ffffffff",
+    color: "#bcbcbc",
     requires: new Decimal(7.77e277), // Can be a function that takes requirement increases into account
     resource: "fr", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on

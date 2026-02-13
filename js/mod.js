@@ -88,6 +88,13 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade('agut', 11)) gain = gain.add(1)
+	if (hasUpgrade('agut', 21)) gain = gain.times(3)
+	if (hasUpgrade('agut', 22)) gain = gain.times(3)
+	if (hasUpgrade('agut', 23)) gain = gain.times(3)
+	if (hasUpgrade('agut', 24)) gain = gain.times(3)
+	if (hasUpgrade('agut', 25)) gain = gain.times(3)
+	if (hasUpgrade('agut', 31)) gain = gain.times(1.666666666)
 	if (hasUpgrade('cc', 11)) gain = gain.times(2)
 	if (hasUpgrade('cc', 12)) gain = gain.times(3)
 	if (hasUpgrade('cc', 23)) gain = gain.times("1e1000000000")
