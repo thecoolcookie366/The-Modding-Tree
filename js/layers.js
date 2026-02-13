@@ -1,13 +1,13 @@
 addLayer("agut", {
     name: "agenericupgtree", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "AGUT", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "AP", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
     }},
     color: "#ffffff",
-    requires: new Decimal(0.0001), // Can be a function that takes requirement increases into account
+    requires: new Decimal(0.00001), // Can be a function that takes requirement increases into account
     resource: "alternate points", // Name of prestige currency
     baseResource: "cookies", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -15,11 +15,14 @@ addLayer("agut", {
     exponent: 0.25, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('agut', 41)) mult = mult.times(upgradeEffect('agut', 41))
         return mult
 
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        exp = new Decimal (1)
+        if (hasUpgrade('agut', 41)) exp = exp.times(upgradeEffect('agut', 41))
+        return exp
     },
     infoboxes:{
             coolInfo: {
@@ -72,9 +75,69 @@ addLayer("agut", {
             description: "x5 cookies and /3 cookies. Now wait for upgrade 4!",
             cost: new Decimal(1600),
         },
+
+        41: {
+            title: "[#4] Energized",
+            description: "Unlock energy!!! Energy boosts alternate points.",
+            cost: new Decimal(35000),
+            effect() {
+        return player.en.points.add(1).pow(1.42)
+    },
+    effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        },
+
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
+
+    
+})
+
+addLayer("en", {
+    name: "energy", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "EN", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#eaff00",
+    requires: new Decimal(1e9), // Can be a function that takes requirement increases into account
+    resource: "energy", // Name of prestige currency
+    baseResource: "cookies", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1.5, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "A generic upgrade tree (Energy)",
+                titleStyle: {'color': '#8f9c00'},
+                body: "Reset on all resets, only use for a boost. The thing that powers other things.",
+                bodyStyle: {'background-color': "#9ba900"}
+            }
+        },
+    branches:['agut'],
+    upgrades: {
+        11: {
+            title: "[E1] Yes this layer is bad",
+            description: "Boost cookies based on alternate points.",
+            cost: new Decimal(5),
+            effect() {
+        return player.agut.points.add(1).pow(2.22)
+    },
+    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('agut', 41))}
 
     
 })
@@ -122,7 +185,7 @@ addLayer("cc", {
             title: "[#3cc] Chocolate!",
             description: "Boost cookies based on chocolate cookies.",
             cost: new Decimal(15),
-                effect() {
+            effect() {
         return player[this.layer].points.add(1).pow(0.3)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
@@ -132,7 +195,7 @@ addLayer("cc", {
             title: "[#4cc] Back and Forth",
             description: "Boost chocolate cookies based on cookies.",
             cost: new Decimal(125),
-                effect() {
+            effect() {
         return player.points.add(1).pow(0.125)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
@@ -226,14 +289,6 @@ addLayer("dcc", {
 
             canComplete: function() {return player.points.gte(1e9)},
         },
-
-        12: {
-            name: "[#2chal] Explosive",
-            challengeDescription: "[WARNING: Challenges are optional and are not required.] The second one! Performs a Row 1 reset.",
-            goalDescription: "Reach e5e23 cookies.",
-            rewardDescription: "x1.001 cookies",
-            canComplete: function() {return player.points.gte("1e5e23")},
-        },
     },
 
     milestones: {
@@ -250,7 +305,7 @@ addLayer("dcc", {
         },    
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return (hasUpgrade('r', 11))}
 
     
 })
@@ -309,7 +364,7 @@ addLayer("vc", {
         },
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return (hasUpgrade('o', 11))}
 
     
 })
@@ -346,7 +401,7 @@ addLayer("r", {
         },
     },
     row: 4, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return (hasUpgrade('cc', 14))}
 
     
 })
@@ -390,7 +445,7 @@ addLayer("o", {
     },
 
     row: 4, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return (hasUpgrade('dcc', 11))}
 
     
 })
