@@ -489,7 +489,7 @@ addLayer("y", {
     },
 
     row: 4, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return (hasUpgrade('vc', 11))}
 
     
 })
