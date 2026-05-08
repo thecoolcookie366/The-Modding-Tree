@@ -647,3 +647,38 @@ addLayer("a", {
         },
     },
 })
+
+addLayer("ta", {
+    symbol: "TA",
+    position: 1,
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "#fedcba",
+    resource: "temp unobtainium", 
+    row: "side",
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Temp Achievements")
+    },
+    achievementPopups: true,
+    achievements: {
+        11: {
+            name: "Thanks for the pie!",
+            done() { return hasUpgrade("pie", 11); },
+            tooltip: "Get the small pie. (pie temp layer, pre-v1.01)",
+        },
+
+        12: {
+            name: "Yay, pies!",
+            done() { return hasUpgrade("pie", 21); },
+            tooltip: "Get the medium pie. (pie temp layer, pre-v1.01)",
+        },
+
+        13: {
+            name: "Math?!",
+            done() { return hasUpgrade("pie", 31); },
+            tooltip: "Get the big pie! (pie temp layer, pre-v1.01)",
+        },
+    },
+})
