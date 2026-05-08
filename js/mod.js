@@ -1,7 +1,7 @@
 let modInfo = {
 	name: "The Cookie Tree",
 	author: "thecoolcookie366",
-	pointsName: "cookies",
+	pointsName: "spacetime",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "The Cookie Tree Discord",
@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.13",
-	name: "Specialties",
+	num: "1.00",
+	name: "Drawed Revamp",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -25,49 +25,9 @@ let changelog = `<h1>Changelog:</h1><br>
 	<br>
 
 	<h1>v1.00</h1><br>
-		<h3>WARNING: THIS LIST WILL BE UPDATED OVER TIME AS 1.00 IS NOT DONE YET.</h3> <br>
-		- Balancing - fixed a bunch of things and prevented inflation (maybe) <br>
-		- Layers - added so many layers you'll never get bored! <br>
-		- Infoboxes - only necessarily for Loops but sure? <br>
-		- Achievements - do things for absolutely nothing! <br>
-		<br>
-	<h3>v0.13</h3><br>
-		- Buyables - found in VC, repeatedly buy to get boosts. <br>
-		<br>
-	<h3>v0.12</h3><br>
-		- Singularity - the end is here. <br>
-		<br>
-	<h3>v0.11</h3><br>
-		- Vanilla Cookies - nobody likes these! unless it's The Cookie Tree. <br>
-		<br>
-	<h2>v0.10</h2><br>
-		- Orange - is it an entire rainbow? <br>
-		<br>
-	<h3>v0.06</h3><br>
-		- fr - the layer of all time <br>
-		<br>
-	<h3>v0.05</h3><br>
-		- Points? - wait, these aren't the points i remember... <br>
-		<br>
-	<h3>v0.04</h3><br>
-		- Loops - reset everything and get big boosts! <br>
-		<br>
-	<h3>v0.03</h3><br>
-		- Challenges - found in DCC, get boosts and stuff. <br>
-		<br>
-	<h3>v0.02</h3><br>
-		- Dark Chocolate Cookies Layer - better than before. <br>
-		<br>
-	<h3>v0.01</h3><br>
-		- Red Layer - boosts that are very powerful. <br>
-		<br>
-	<h1>v0.00</h1><br>
-		- Chocolate Cookies Layer - what makes cookies duplicate. <br>
-		<br>
-	-v0.01<br>
-		- Release - this is where everything starts.`
+		- Revamped the game.`
 
-let winText = `Congrats! The universe is now filled with cookies.`
+let winText = `<i>But this spacetime isn't real, right?</i>`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
@@ -88,55 +48,13 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
-	if (hasUpgrade('agut', 11)) gain = gain.add(1)
-	if (hasUpgrade('agut', 21)) gain = gain.times(3)
-	if (hasUpgrade('agut', 22)) gain = gain.times(3)
-	if (hasUpgrade('agut', 23)) gain = gain.times(3)
-	if (hasUpgrade('agut', 24)) gain = gain.times(3)
-	if (hasUpgrade('agut', 25)) gain = gain.times(3)
-	if (hasUpgrade('agut', 31)) gain = gain.times(1.666666666)
-	if (hasUpgrade('cc', 11)) gain = gain.times(2)
-	if (hasUpgrade('cc', 12)) gain = gain.times(3)
-	if (hasUpgrade('cc', 23)) gain = gain.times("1e1000000000")
-	if (hasUpgrade('cc', 13)) gain = gain.times(upgradeEffect('cc', 13))
-	if (hasUpgrade('en', 11)) gain = gain.times(upgradeEffect('en', 11))
-	if (hasUpgrade('cc', 21)) gain = gain.times(upgradeEffect('cc', 21))
-	if (hasUpgrade('dcc', 21)) gain = gain.times(upgradeEffect('dcc', 21))
-	if (hasUpgrade('vc', 12)) gain = gain.times(upgradeEffect('vc', 12))
-	if (hasUpgrade('r', 11)) gain = gain.times(8)
-	if (hasUpgrade('o', 11)) gain = gain.times(6)
-	if (hasUpgrade('o', 12)) gain = gain.times(2.14)
-	if (hasUpgrade('y', 11)) gain = gain.times(4)
-	if (hasUpgrade('y', 12)) gain = gain.times(1.314)
-	if (hasUpgrade('g', 11)) gain = gain.times(3)
-	if (hasUpgrade('g', 12)) gain = gain.times(1.5)
-	if (hasUpgrade('g', 13)) gain = gain.times(1.25)
-	if (hasUpgrade('b', 11)) gain = gain.times(2)
-	if (hasUpgrade('b', 12)) gain = gain.times(1.25)
-	if (hasUpgrade('b', 13)) gain = gain.times(1.1)
-	if (hasUpgrade('dcc', 11)) gain = gain.times(3.5)
-	if (hasUpgrade('vc', 11)) gain = gain.times(2.5)
-	if (hasUpgrade('dcc', 12)) gain = gain.times(3)
-	if (hasUpgrade('l', 11)) gain = gain.times(1e33)
-	if (hasUpgrade('l', 21)) gain = gain.times(1e33)
-	if (hasUpgrade('l', 31)) gain = gain.times(1e33)
-	if (hasUpgrade('l', 41)) gain = gain.times(1e33)
-	if (hasUpgrade('ml', 11)) gain = gain.times(1e63)
-	if (hasUpgrade('ml', 21)) gain = gain.times(1e63)
-	if (hasUpgrade('ml', 31)) gain = gain.times(1e63)
-	if (hasUpgrade('ml', 41)) gain = gain.times(1e63)
-	if (hasUpgrade('p', 11)) gain = gain.times(1.99999)
-	if (hasUpgrade('pr', 11)) gain = gain.times(2.454545454545)
-	if (hasUpgrade('ap', 11)) gain = gain.times(1e9)	
-	if (hasUpgrade('tp', 11)) gain = gain.times(1e16)
-	if (hasUpgrade('rp', 11)) gain = gain.times(1e69)	
-	if (hasUpgrade('fr', 11)) gain = gain.times(1e150)	
-	if (hasUpgrade('fr', 12)) gain = gain.times("1e1.79601e308")	
-	if (hasUpgrade('sin', 11)) gain = gain.times("1e1e1e1e1e3")
-	if (hasChallenge("dcc", 11)) gain = gain.times(1)
-	if (hasUpgrade('sin', 12)) gain = gain.times("1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1")
-	if (player.points.gte("1e1.796e308")) gain = gain.log(2).add(1).log(2).add(1)
-	if (player.points.gte("1.796e308")) gain = gain.log(2).add(1)
+	if (hasUpgrade('p', 11)) gain = gain.add(1)
+	if (hasUpgrade('p', 21)) gain = gain.times(3)
+	if (hasUpgrade('p', 22)) gain = gain.times(3)
+	if (hasUpgrade('p', 23)) gain = gain.times(3)
+	if (hasUpgrade('p', 24)) gain = gain.times(3)
+	if (hasUpgrade('p', 25)) gain = gain.times(3)
+	if (hasUpgrade('p', 31)) gain = gain.times(1.666666666)
 	return gain
 }
 
@@ -146,9 +64,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-1)) return "<h3>Endgame: ??? cookies as of v0.13.</h3>"},
-	function() {if (player.points.gte("1.796e308")) return "<h3>[INFINITY] You have reached infinity. Cookies will be softcapped, but you can reset for Infinity Cookies to push further. </h3>"},
-	function() {if (player.points.gte("1e1.796e308")) return "<h3>[ETERNITY] You have reached eternity. Cookies will be HEAVILY softcapped, but you can reset for Eternity Cookies to break the limits. </h3>"},
+	function() {if (player.points.gt(-1)) return "<h3>Reach some amount of spacetime to win.</h3>"},
 ]
 
 // Determines when the game "ends"

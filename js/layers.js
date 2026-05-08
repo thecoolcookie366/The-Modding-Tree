@@ -1,79 +1,79 @@
-addLayer("agut", {
-    name: "agenericupgtree", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "AP", // This appears on the layer's node. Default is the id with the first letter capitalized
+addLayer("p", {
+    name: "points", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: false,
+        unlocked: true,
 		points: new Decimal(0),
     }},
     color: "#ffffff",
-    requires: new Decimal(0.00001), // Can be a function that takes requirement increases into account
-    resource: "alternate points", // Name of prestige currency
-    baseResource: "cookies", // Name of resource prestige is based on
+    requires: new Decimal(5), // Can be a function that takes requirement increases into account
+    resource: "points", // Name of prestige currency
+    baseResource: "spacetime", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.25, // Prestige currency exponent
+    exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (hasUpgrade('agut', 41)) mult = mult.times(upgradeEffect('agut', 41))
+        if (hasUpgrade('p', 41)) mult = mult.times(upgradeEffect('p', 41))
         return mult
 
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         exp = new Decimal (1)
-        if (hasUpgrade('agut', 41)) exp = exp.times(upgradeEffect('agut', 41))
+        if (hasUpgrade('p', 41)) exp = exp.times(upgradeEffect('p', 41))
         return exp
     },
     infoboxes:{
             coolInfo: {
-                title: "A generic upgrade tree (Alternate Points)",
-                titleStyle: {'color': '#c6c6c6'},
-                body: "Reset on all resets, only use for a boost.",
-                bodyStyle: {'background-color': "#828282"}
+                title: "Points (Universe 1, Part 1/2)",
+                titleStyle: {'color': '#8d8d8d'},
+                body: "<b>Welcome to the first layer!</b> <br> Spacetime is your universal currency, which can be used for many things. <br> <i>Pro tip: Use the enter key to spam Points resets. (sorry mobile users)</i>",
+                bodyStyle: {'background-color': "#313131"}
             }
         },
-    branches:['fr'],
+    branches:['en'],
     upgrades: {
         11: {
-            title: "[#1] Start genera- wait what",
-            description: "+1 cookie per second. Aren't we doing this already?",
+            title: "[#1] Start",
+            description: "+1 spacetime per second.",
             cost: new Decimal(1),
         },
 
         21: {
-            title: "[#2-1] This is just 2cc but insanely op",
-            description: "x3 cookies. The next feature is interesting...",
+            title: "[#2 1/5] Up! (about 100m)",
+            description: "x3 spacetime.",
             cost: new Decimal(5),
         },
 
         22: {
-            title: "[#2-2] This is just 2cc but insanely op 2",
-            description: "x3 cookies again. The next feature is interesting...",
+            title: "[#2 2/5] Up! (about 10km)",
+            description: "x3 spacetime again.",
             cost: new Decimal(25),
         },
 
         23: {
-            title: "[#2-3] This is just 2cc but insanely op 3",
-            description: "x3 cookies again again. The next feature is interesting...",
-            cost: new Decimal(125),
+            title: "[#2 3/5] Up! (about 1 light year)",
+            description: "x3 spacetime again again.",
+            cost: new Decimal(75),
         },
 
         24: {
-            title: "[#2-4] This is just 2cc but insanely op 4",
-            description: "x3 cookies again again again. The next feature is interesting...",
-            cost: new Decimal(625),
+            title: "[#2 4/5] Up! (5 hours or so)",
+            description: "x3 spacetime again again again.",
+            cost: new Decimal(225),
         },
 
         25: {
-            title: "[#2-5] This is just 2cc but insanely op 5",
-            description: "x3 cookies again<sup>2</sup>. The next feature is interesting...",
-            cost: new Decimal(3125),
+            title: "[#2 5/5] Up! (okay let's go onto something new)",
+            description: "x3 spacetime again<sup>2</sup>.",
+            cost: new Decimal(600),
         },
 
         31: {
-            title: "[#3] Interesting",
-            description: "x5 cookies and /3 cookies. Now wait for upgrade 4!",
-            cost: new Decimal(1600),
+            title: "[#3] Hmm...",
+            description: "x5 spacetime but /3 spacetime.",
+            cost: new Decimal(2000),
         },
 
         41: {
@@ -124,52 +124,44 @@ addLayer("en", {
                 bodyStyle: {'background-color': "#9ba900"}
             }
         },
-    branches:['agut'],
+    branches:['p'],
     upgrades: {
         11: {
             title: "[E1] Yes this layer is bad",
             description: "Boost cookies based on alternate points.",
             cost: new Decimal(5),
             effect() {
-        return player.agut.points.add(1).pow(2.22)
+        return player.p.points.add(1).pow(2.22)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return (hasUpgrade('agut', 41))}
+    layerShown(){return (hasUpgrade('p', 41))}
 
     
 })
 
 // A side layer with achievements, with no prestige
-addLayer("oa", {
-    symbol: "OA",
+addLayer("a", {
+    symbol: "A",
     position: 0,
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
     }},
-    color: "#ffffffff",
-    resource: "overall achievement power", 
+    color: "rgb(253, 0, 0)",
+    resource: "unobtainium", 
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Overall Achievements")
+        return ("Achievements")
     },
     achievementPopups: true,
     achievements: {
         11: {
-            name: "Midgame's Timewall",
+            name: "Where have I seen this before?",
             done() {return player.points.gte("1e10")},
-            goalTooltip: "Get ready for this part of the game...", // Shows when achievement is not completed
-            doneTooltip: "Welcome to midgame. Good luck on this part! It won't be easy.", // Showed when the achievement is completed
-        },
-
-        12: {
-            name: "The Cookie Tree: Endgame",
-            done() {return player.points.gte("1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1")},
-            goalTooltip: "Reach the endgame, showed at the top of the screen.", // Shows when achievement is not completed
-            doneTooltip: "You did it! You completed The Cookie Tree! Well, you could continue with loops...", // Showed when the achievement is completed
+            tooltip: "Unlock Electricity. (upgrade #4)",
         },
     },
 })
