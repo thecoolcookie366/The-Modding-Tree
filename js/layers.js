@@ -377,13 +377,13 @@ addLayer("pie", {
     },
     infoboxes:{
             coolInfo: {
-                title: "Pie (Temporary Universe, Part Temp)",
+                title: "Pie (Temporary Universe, pre-v1.01)",
                 titleStyle: {'color': '#9e4d3c'},
-                body: "<b>What is a temp layer?</b> <br> A temp layer is a layer that gets reset on the next update. An update with a temp layer is often called a pre-update, this layer is for pre-v1.01 and will be removed in v1.01!<br> <i>Goal: 1e990 -> 1e1,000 spacetime.</i>",
+                body: "<b>What is a temp layer?</b> <br> A temp layer is a layer that gets reset on the next update. An update with a temp layer is often called a pre-update, this layer is for pre-v1.01 and will still exist in v1.01, but unobtainable!<br> <i>Goal: 1e990 -> 1e1,000 spacetime.</i>",
                 bodyStyle: {'background-color': "#683126"}
             }
         },
-    branches:['inf'],
+    branches:[''],
     upgrades: {
         11: {
             title: "<i>[π1] Pie :/</i>",
@@ -403,8 +403,8 @@ addLayer("pie", {
             cost: new Decimal(3),
         },
     },
-    row: 3, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return (hasUpgrade('inf', 11)) || player.pie.unlocked }
+    row: 100, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true}
 
     
 })
