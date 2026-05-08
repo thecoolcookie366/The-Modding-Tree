@@ -80,6 +80,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {if (player.points.gt(-1)) return "<h3>Reach 1e990 spacetime to win!</h3>"},
+	function() {if (player.points.gt(-1)) return "<h3>To get 1e1,000 spacetime, use the temp layer!</h3>"},
 	function() {if (player.points.gt(-1)) return "<i>If you played in v0.13, you probably have old save data and should hard reset.</i>"},
 ]
 
