@@ -398,7 +398,7 @@ addLayer("pie", {
         },
 
         31: {
-            title: "<i>[π1] Pie :D</i>",
+            title: "<i>[π3] Pie :D</i>",
             description: "<h3>big pie, x20 spacetime</h3>",
             cost: new Decimal(3),
         },
