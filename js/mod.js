@@ -24,8 +24,12 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update that adds a new upgrade <br>
 	<br>
 
+	<h3>v1.00</h1><br>
+		- Revamped the game.<br>
+		<br>
 	<h1>v1.00</h1><br>
-		- Revamped the game.`
+		- Revamped the game.<br>
+		<br>`
 
 let winText = `<i>But this spacetime isn't real, right?</i>`
 
