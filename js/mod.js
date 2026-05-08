@@ -71,12 +71,13 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-1)) return "<h3>Reach some amount of spacetime to win.</h3>"},
+	function() {if (player.points.gt(-1)) return "<h3>Reach 1e990 spacetime to win!</h3>"},
+	function() {if (player.points.gt(-1)) return "<i>If you played in v0.13, you probably have old save data and should hard reset.</i>"},
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1e1"))
+	return player.points.gte(new Decimal("1e990"))
 }
 
 
