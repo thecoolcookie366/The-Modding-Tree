@@ -386,9 +386,21 @@ addLayer("pie", {
     branches:['inf'],
     upgrades: {
         11: {
-            title: "<i>[π1] Pie</i>",
+            title: "<i>[π1] Pie :/</i>",
             description: "<h3>small pie, x2 spacetime</h3>",
             cost: new Decimal(1),
+        },
+
+        21: {
+            title: "<i>[π2] Pie :)</i>",
+            description: "<h3>medium pie, x5 spacetime</h3>",
+            cost: new Decimal(2),
+        },
+
+        31: {
+            title: "<i>[π1] Pie :D</i>",
+            description: "<h3>big pie, x30 spacetime</h3>",
+            cost: new Decimal(3),
         },
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
