@@ -24,8 +24,9 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update that adds a new upgrade <br>
 	<br>
 
-	<h3>v1.00</h1><br>
-		- Revamped the game.<br>
+	<h3>pre-v1.01</h3><br>
+		- Added a new temp layer.<br>
+		- This new layer will let you reach 1e1,000 spacetime! <br>
 		<br>
 	<h1>v1.00</h1><br>
 		- Revamped the game.<br>
@@ -65,6 +66,7 @@ function getPointGen() {
 	if (hasUpgrade('p', 61)) gain = gain.times(1e100)
 	if (hasUpgrade('e', 31)) gain = gain.times(6.66e66)
 	if (hasUpgrade('u', 11)) gain = gain.times(1e12)
+		if (hasUpgrade('pie', 11)) gain = gain.times(2)
 	if (hasUpgrade('s', 21)) gain = gain.pow(5)
 	return gain
 }

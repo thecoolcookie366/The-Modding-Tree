@@ -93,7 +93,7 @@ addLayer("p", {
         41: {
             title: "[#4] Yellow",
             description: "Unlock energy. Energy boosts points.",
-            cost: new Decimal(11111),
+            cost: new Decimal(5555),
             unlocked() { return hasUpgrade(this.layer, 31); },
             effect() {
         return player.e.points.add(1).pow(0.03)
@@ -348,6 +348,51 @@ addLayer("inf", {
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return (hasUpgrade('u', 21)) || player.inf.unlocked }
+
+    
+})
+
+addLayer("pie", {
+    name: "truepie", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "π", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#d1634d",
+    requires: new Decimal("1e990"), // Can be a function that takes requirement increases into account
+    resource: "pies", // Name of prestige currency
+    baseResource: "spacetime", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.01, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Pie (Temporary Universe, Part Temp)",
+                titleStyle: {'color': '#9e4d3c'},
+                body: "<b>What is a temp layer?</b> <br> A temp layer is a layer that gets reset on the next update. An update with a temp layer is often called a pre-update, this layer is for pre-v1.01 and will be removed in v1.01!<br> <i>Goal: 1e990 -> 1e1,000 spacetime.</i>",
+                bodyStyle: {'background-color': "#683126"}
+            }
+        },
+    branches:['inf'],
+    upgrades: {
+        11: {
+            title: "<i>[π1] Pie</i>",
+            description: "<h3>small pie, x2 spacetime</h3>",
+            cost: new Decimal(1),
+        },
+    },
+    row: 3, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('inf', 11)) || player.pie.unlocked }
 
     
 })
