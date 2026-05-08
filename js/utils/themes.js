@@ -1,5 +1,5 @@
 // ************ Themes ************
-var themes = ["default", "aqua"]
+var themes = ["default", "binary"]
 
 var colors = {
 	default: {
@@ -12,15 +12,15 @@ var colors = {
 		background: "#0f0f0f",
 		background_tooltip: "rgba(0, 0, 0, 0.75)",
 	},
-	aqua: {
-		1: "#bfdfff",
-		2: "#8fa7bf",
-		3: "#5f6f7f",
-		color: "#bfdfff",
-		points: "#dfefff",
-		locked: "#c4a7b3",
-		background: "#001f3f",
-		background_tooltip: "rgba(0, 15, 31, 0.75)",
+	binary: {
+		1: "#005400",
+		2: "#005400",
+		3: "#005400",
+		color: "#878686",
+		points: "#09ff00",
+		locked: "#ffffff",
+		background: "#000000",
+		background_tooltip: "rgba(13, 37, 1, 0.75)",
 	},
 }
 function changeTheme() {
