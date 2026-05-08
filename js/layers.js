@@ -582,5 +582,11 @@ addLayer("a", {
             done() { return hasUpgrade("u", 11); },
             tooltip: "Unlock Exp. (upgrade u1)",
         },
+
+        22: {
+            name: "Infinity first, Eternity second, Reality third.",
+            done() { return hasUpgrade("u", 21); },
+            tooltip: "Unlock Infinity. (upgrade u2, for free!)",
+        },
     },
 })
