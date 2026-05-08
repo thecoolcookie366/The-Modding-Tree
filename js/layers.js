@@ -676,7 +676,7 @@ addLayer("ta", {
         },
 
         13: {
-            name: "Math?!",
+            name: "Pie for me, pie for you",
             done() { return hasUpgrade("pie", 31); },
             tooltip: "Get the big pie! (pie temp layer, pre-v1.01)",
         },
