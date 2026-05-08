@@ -4,8 +4,8 @@ let modInfo = {
 	pointsName: "spacetime",
 	modFiles: ["layers.js", "tree.js"],
 
-	discordName: "The Cookie Tree Discord",
-	discordLink: "https://discord.gg/DZZ4kwG7",
+	discordName: "Also play Celestial Incremental NG+!",
+	discordLink: "https://raw.githack.com/thecoolcookie366/celestial_incremental_ng/master/index.html",
 	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 24,  // In hours
 }
