@@ -215,7 +215,7 @@ addLayer("s", {
         return new Decimal(1)
     },
     update() {
-        if (player.s.points.gt("1e228900") && !hasUpgrade("u", 11)) player.s.points = new Decimal("1e228900")
+        if (player.s.points.gt("1e225000") && !hasUpgrade("u", 11)) player.s.points = new Decimal("1e225000")
     },
     infoboxes:{
             coolInfo: {
@@ -243,7 +243,7 @@ addLayer("s", {
         31: {
             title: "[S3] Finally something new!",
             description: "Unlock Ultra. <i>Once again, not required after doing your first ultra reset.</i>",
-            cost: new Decimal("1e228900"),
+            cost: new Decimal("1e225000"),
             unlocked() { return hasUpgrade(this.layer, 21); },
         },
     },
@@ -262,7 +262,7 @@ addLayer("u", {
 		points: new Decimal(0),
     }},
     color: "#e600ff",
-    requires: new Decimal("1e228900"), // Can be a function that takes requirement increases into account
+    requires: new Decimal("1e225000"), // Can be a function that takes requirement increases into account
     resource: "ultra", // Name of prestige currency
     baseResource: "super", // Name of resource prestige is based on
     baseAmount() {return player.s.points}, // Get the current amount of baseResource
@@ -281,7 +281,7 @@ addLayer("u", {
             coolInfo: {
                 title: "Ultra (Universe 3, Part 1/?)",
                 titleStyle: {'color': '#a00293'},
-                body: "<b>Are you ready? No you aren't.</b> <br> It's time to reset EVERYTHING! Reset everything super does, but also reset super, super upgrades, plus, plus upgs, multi, multi upgs and the first 3 relics for ultra, starting at 1e228,900 super.<br> <i>You're about to crash out.</i>",
+                body: "<b>Are you ready? No you aren't.</b> <br> It's time to reset EVERYTHING! Reset everything super does, but also reset super, super upgrades, plus, plus upgs, multi, multi upgs and the first 3 relics for ultra, starting at 1e225,000 super.<br> <i>You're about to crash out.</i>",
                 bodyStyle: {'background-color': "#61004c"}
             }
         },
@@ -289,7 +289,7 @@ addLayer("u", {
     upgrades: {
         11: {
             title: "[U1] One more time",
-            description: "Let's do this one more time. First of all, you get x1e12 spacetime. Second of all... <i>well, I think you know what you're gonna get now!</i> Finally, uncap your super amount. (it can now go above 1e228,900)",
+            description: "Let's do this one more time. First of all, you get x1e12 spacetime. Second of all... <i>well, I think you know what you're gonna get now!</i> Finally, uncap your super amount. (it can now go above 1e225,000)",
             cost: new Decimal(1),
         },
 
