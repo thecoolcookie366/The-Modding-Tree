@@ -148,6 +148,9 @@ addLayer("e", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    update() {
+        if (player.e.points.gt("1000")) player.e.points = new Decimal("1000")
+    },
     infoboxes:{
             coolInfo: {
                 title: "Energy (Universe 1, Part 2/2)",
@@ -210,6 +213,9 @@ addLayer("s", {
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
+    },
+    update() {
+        if (player.s.points.gt("1e228900") && !hasUpgrade("u", 11)) player.s.points = new Decimal("1e228900")
     },
     infoboxes:{
             coolInfo: {
@@ -283,7 +289,7 @@ addLayer("u", {
     upgrades: {
         11: {
             title: "[U1] One more time",
-            description: "Let's do this one more time. First of all, you get x1e12 spacetime. Second of all... <i>well, I think you know what you're gonna get now!</i>",
+            description: "Let's do this one more time. First of all, you get x1e12 spacetime. Second of all... <i>well, I think you know what you're gonna get now!</i> Finally, uncap your super amount. (it can now go above 1e228,900)",
             cost: new Decimal(1),
         },
 
