@@ -682,3 +682,61 @@ addLayer("ta", {
         },
     },
 })
+
+addLayer("what", {
+    name: "whatthe",
+    tooltip: "Universe 0.",
+    symbol: "???",
+    position: 2,
+    row: "side",
+    color: "#711212",
+    resource: "eternal voids", 
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    infoboxes: {
+        info: {
+            title: "Universe 0 - The Eternal Void",
+            body() { return "<i>Do you know what you are doing?</i><br> This place contains some of the most dangerous things you will see in the game. Do not touch." },
+        }
+    },
+
+    clickables: {
+        11: {
+           display() { return "Set your points to the placeholder, marking your save as cheated, but in return get the unobtainable." },
+           tooltip() { return "There's no going back after this."},
+           canClick() { return true },
+           color() { return "#000000" },
+            onClick() {
+                player.a.points = new Decimal(1)
+                player.what.points = player.what.points.add(0.0001)
+                player.points = new Decimal("(e^1000)3")
+            }
+        },
+    },
+
+    achievements: {
+        11: {
+            name: "Are you REALLY in the void?",
+            done() { return player.what.points.gte(new Decimal("1")) },
+            tooltip: "Get your first eternal void...",
+        },
+    },
+
+    upgrades: {
+        11: {
+            title: "The Void's Entrance",
+            description: "Double your G̴L̶I̸T̸C̷H",
+            cost: new Decimal(1),
+        },
+
+        12: {
+            title: "The Void's G̴L̶I̸T̸C̷H",
+            description: "G̴L̶I̸T̸C̷H your G̴L̶I̸T̸C̷H",
+            cost: new Decimal(Infinity),
+            unlocked() { return hasUpgrade(this.layer, 11); },
+        },
+    },
+    
+})
