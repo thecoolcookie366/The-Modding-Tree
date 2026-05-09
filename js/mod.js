@@ -27,6 +27,7 @@ let changelog = `<h1>Changelog:</h1><br>
 	<h3>pre-v1.01</h3><br>
 		- Added a new temp layer.<br>
 		- This new layer will let you reach 1e1,000 spacetime! <br>
+		- Added Universe 0? <br>
 		<br>
 	<h1>v1.00</h1><br>
 		- Revamped the game.<br>
