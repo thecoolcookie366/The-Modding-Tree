@@ -701,6 +701,9 @@ addLayer("what", {
         unlocked: true,
         points: new Decimal(0),
     }},
+    update() {
+        if (player.what.points.gt("1")) player.what.points = new Decimal("1")
+    },
     infoboxes: {
         info: {
             title: "Universe 0 - The Eternal Void",
@@ -725,7 +728,7 @@ addLayer("what", {
     achievements: {
         11: {
             name: "Are you REALLY in the void?",
-            done() { return player.what.points.gte(new Decimal("1")) },
+            done() { return player.what.points.gte(new Decimal("0.9999")) },
             tooltip: "Get your first eternal void...",
         },
     },
@@ -734,7 +737,7 @@ addLayer("what", {
         11: {
             title: "The Void's Entrance",
             description: "Double your G̴L̶I̸T̸C̷H",
-            cost: new Decimal(1),
+            cost: new Decimal(0.9999),
         },
 
         12: {
