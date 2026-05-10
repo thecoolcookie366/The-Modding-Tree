@@ -105,8 +105,8 @@ addLayer("p", {
 
         61: {
             title: "<i>Relic 2/7 - The Relic of Lockout</i>",
-            description: "<i>Game not hard enough? Okay then, lock yourself out of energy (make sure you get at least 10 before buying this) but get x1e100 spacetime.</i> <h2>The new relic is here, somewhere.</h2>",
-            cost: new Decimal(3e52),
+            description: "<i>Game not hard enough? Okay then, lock yourself out of energy but get x1e100 spacetime.</i> <h2>The new relic is here, somewhere.</h2>",
+            cost: new Decimal(1e15),
             unlocked() { return hasUpgrade("plus", 31) && hasUpgrade("p", 51);},
         },
 
@@ -396,7 +396,7 @@ addLayer("meta", {
                 bodyStyle: {'background-color': "#414141a1"}
             }
         },
-    branches:['inf'],
+    branches:['inf', 'p', 's', 'u'],
     upgrades: {
         11: {
             title: "[μ1] Meta Spacetime",
@@ -620,7 +620,7 @@ addLayer("multi", {
     upgrades: {
         11: {
             title: "[x1] Another One!",
-            description: "OP layer of the day! Let <h3>tau^phi</h3> multiply your super.",
+            description: "OP layer of the day! Let <h3>tau^phi</h3> multiply your super. The plot twist is that you make enern",
             cost: new Decimal(1),
             effect() {
         return player.multi.points.add(1).pow(19.565066)
@@ -676,7 +676,7 @@ addLayer("exp", {
                 bodyStyle: {'background-color': "#0a2c45"}
             }
         },
-    branches:['multi','e'],
+    branches:['multi','e','meta'],
     upgrades: {
         11: {
             title: "[^1] Isn't this out of the range?",
