@@ -24,6 +24,13 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update that adds a new upgrade <br>
 	<br>
 
+	<h2>v1.01</h2><br>
+		- Added Meta. Expect really big numbers from it!<br>
+		- Added a Hardcaps layer. <br>
+		- The new 1e1,000,000,000 super cap! Prevents points from going insane because of the new exp upgrade. <br>
+		- Added something <i>even more meta than meta...?</i><br>
+		- Universe 4! This new universe will let you touch grass (literally, the currency <i>is</i> grass). Automation included!<br>
+		<br>
 	<h3>pre-v1.01</h3><br>
 		- Added a new temp layer.<br>
 		- This new layer will let you reach 1e1,000 spacetime! <br>

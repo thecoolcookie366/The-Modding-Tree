@@ -368,7 +368,7 @@ addLayer("meta", {
     color: "#ffffffa1",
     requires: new Decimal("(e^1000)3"), // Can be a function that takes requirement increases into account
     resource: "meta", // Name of prestige currency
-    baseResource: "meta, obviously. Okay why are you looking here 😭", // Name of resource prestige is based on
+    baseResource: "meta", // Name of resource prestige is based on
     baseAmount() {return player.meta.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.001, // Prestige currency exponent
@@ -393,7 +393,13 @@ addLayer("meta", {
         11: {
             title: "[μ1] Meta Spacetime",
             description: "Upgrades are categorised into 2 categories: μ[x] (which are regular upgrades) and +μ[x] which add new features to Meta. For this one, get a x10 boost to spacetime!",
-            cost: new Decimal(1.79e308),
+            cost: new Decimal("(e^1000)3"),
+        },
+
+        21: {
+            title: "[+μ1] Meta Meta",
+            description: "Unlock the x1.01 Meta button!",
+            cost: new Decimal("(e^1000)3"),
         },
     },
     clickables: {
@@ -407,10 +413,30 @@ addLayer("meta", {
             }
         },
 
-        12: {
+        21: {
+           display() { return "+1.01 your Meta." },
+           tooltip() { return "Who made this abomination of a button?!"},
+           canClick() { return true },
+           color() { return "#ffffff93" },
+            onClick() {
+                player.meta.points = player.meta.points.add(1.01)
+            }
+        },
+
+        22: {
+           display() { return "x1.01 your Meta." },
+           tooltip() { return "This isn't really <i>that</i> meta, but hey, it works!"},
+           canClick() { return hasUpgrade("meta", 21); },
+           color() { return "#ffffff93" },
+            onClick() {
+                player.meta.points = player.meta.points.mul(1.01)
+            }
+        },
+
+        23: {
            display() { return "^1.01 your Meta." },
            tooltip() { return "Hey, all meta thingies must have inflation in them, right?"},
-           canClick() { return true },
+           canClick() { return false },
            color() { return "#ffffff93" },
             onClick() {
                 player.meta.points = player.meta.points.pow(1.01)
