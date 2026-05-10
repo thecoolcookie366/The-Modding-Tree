@@ -239,7 +239,7 @@ addLayer("s", {
 
         21: {
             title: "[S2] This one maybe?",
-            description: "Energy is x1e18 more expensive but you get ^5 spacetime. <i>One more free layer appears. Enjoy, or not.</i> Finally, <h2>prepare for inflation...</h2>",
+            description: "Energy is [placeholder] more expensive but you get x500,000 spacetime. <i>One more free layer appears. Enjoy, or not.</i> Finally, <h2>prepare for inflation...</h2>",
             cost: new Decimal(200),
             unlocked() { return hasUpgrade(this.layer, 11); },
         },

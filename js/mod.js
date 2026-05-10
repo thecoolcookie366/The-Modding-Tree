@@ -72,6 +72,7 @@ function getPointGen() {
 	if (hasUpgrade('e', 11)) gain = gain.times(120)
 	if (hasUpgrade('e', 21)) gain = gain.times(1000000)
 	if (hasUpgrade('s', 11)) gain = gain.times(50000)
+	if (hasUpgrade('s', 21)) gain = gain.times(500000)
 	if (hasUpgrade('p', 61)) gain = gain.times(1e100)
 	if (hasUpgrade('e', 31)) gain = gain.times(6.66e66)
 	if (hasUpgrade('u', 11)) gain = gain.times(1e12)
@@ -79,7 +80,6 @@ function getPointGen() {
 	if (hasUpgrade('pie', 21)) gain = gain.times(5)
 	if (hasUpgrade('pie', 31)) gain = gain.times(20)
 	if (hasUpgrade('meta', 11)) gain = gain.times(10)
-	if (hasUpgrade('s', 21)) gain = gain.pow(5)
 	return gain
 }
 
