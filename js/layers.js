@@ -90,7 +90,7 @@ addLayer("p", {
             cost: new Decimal(4000),
             unlocked() { return hasUpgrade(this.layer, 31); },
             effect() {
-        return player.e.points.add(1).pow(0.03)
+        return player.e.points.add(1.2).pow(0.03)
     },
     effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
         },
