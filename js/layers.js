@@ -104,8 +104,8 @@ addLayer("p", {
         },
 
         61: {
-            title: "<i>Relic 2/7 - The Relic of Lockout</i>",
-            description: "<i>Game not hard enough? Okay then, lock yourself out of energy but get x100 spacetime.</i> <h2>The new relic is here, somewhere.</h2>",
+            title: "<i>Relic 2/7 - The Relic of Simplicity</i>",
+            description: "<i>x100 spacetime. Nothing much to say about this one.</i> <h2>The new relic is here, somewhere.</h2>",
             cost: new Decimal(1e15),
             unlocked() { return hasUpgrade("plus", 31) && hasUpgrade("p", 51);},
         },
@@ -136,7 +136,6 @@ addLayer("e", {
         mult = new Decimal(1)
         if (hasUpgrade('s', 11)) mult = mult.times(10)
         if (hasUpgrade('s', 21)) mult = mult.times(10000)
-        if (hasUpgrade('p', 61)) mult = mult.times("(e^1000)3")
         return mult
 
     },
