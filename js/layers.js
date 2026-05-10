@@ -87,7 +87,7 @@ addLayer("p", {
         41: {
             title: "[#4] Yellow",
             description: "Unlock energy. Energy boosts points.",
-            cost: new Decimal(5000),
+            cost: new Decimal(4000),
             unlocked() { return hasUpgrade(this.layer, 31); },
             effect() {
         return player.e.points.add(1).pow(0.03)
