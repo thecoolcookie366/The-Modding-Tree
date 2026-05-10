@@ -19,9 +19,9 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<br>
 	<h3>Changelog Guide: vA.BC </h3><br>
-	A = insane update that adds so many features <br>
-	B = big update that adds a new layer <br>
-	C = small update that adds a new upgrade <br>
+	A = big update <br>
+	B = medium update <br>
+	C = small update <br>
 	<br>
 
 	<h2>v1.01</h2><br>
@@ -30,6 +30,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- The new 1e1,000,000,000 super cap! Prevents points from going insane because of the new exp upgrade. <br>
 		- Added something <i>even more meta than meta...?</i><br>
 		- Universe 4! This new universe will let you touch grass (literally, the currency <i>is</i> grass). Automation included!<br>
+		- <i>balancing</i><br>
 		<br>
 	<h3>pre-v1.01</h3><br>
 		- Added a new temp layer.<br>
