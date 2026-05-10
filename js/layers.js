@@ -159,7 +159,7 @@ addLayer("e", {
     upgrades: {
         11: {
             title: "[E1] Energy!",
-            description: "Little boost to get you going. <b>x100</b> spacetime.",
+            description: "Little boost to get you going. <b>x120</b> spacetime.",
             cost: new Decimal(3),
         },
 
