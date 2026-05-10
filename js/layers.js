@@ -23,6 +23,7 @@ addLayer("p", {
         exp = new Decimal (1)
         if (hasUpgrade('p', 41)) exp = exp.times(upgradeEffect('p', 41))
         if (hasUpgrade('exp', 11)) exp = exp.times(upgradeEffect('exp', 11))
+        if (hasUpgrade('exp', 21)) exp = exp.pow(upgradeEffect('exp', 21))
         return exp
     },
     infoboxes:{
@@ -65,35 +66,28 @@ addLayer("p", {
         24: {
             title: "[#2 4/5] Up! (5 hours or so)",
             description: "x3 spacetime again again again.",
-            cost: new Decimal(225),
+            cost: new Decimal(180),
             unlocked() { return hasUpgrade(this.layer, 23); }
         },
 
         25: {
             title: "[#2 5/5] Up! (okay let's go onto something new)",
             description: "x3 spacetime again<sup>2</sup>.",
-            cost: new Decimal(600),
+            cost: new Decimal(500),
             unlocked() { return hasUpgrade(this.layer, 24); }
         },
 
         31: {
             title: "[#3] Hmm...",
-            description: "x5 spacetime but /3 spacetime.",
-            cost: new Decimal(2000),
+            description: "x6 spacetime but /3 spacetime.",
+            cost: new Decimal(1500),
             unlocked() { return hasUpgrade(this.layer, 25); }
         },
         
-        31: {
-            title: "[#3] Hmm...",
-            description: "x5 spacetime but /3 spacetime.",
-            cost: new Decimal(2000),
-            unlocked() { return hasUpgrade(this.layer, 25); }
-        },
-
         41: {
             title: "[#4] Yellow",
             description: "Unlock energy. Energy boosts points.",
-            cost: new Decimal(5555),
+            cost: new Decimal(5000),
             unlocked() { return hasUpgrade(this.layer, 31); },
             effect() {
         return player.e.points.add(1).pow(0.03)
@@ -146,7 +140,9 @@ addLayer("e", {
 
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        exp = new Decimal (1)
+        if (hasUpgrade('exp', 21)) exp = exp.pow(upgradeEffect('exp', 21))
+        return exp
     },
     update() {
         if (player.e.points.gt("1000")) player.e.points = new Decimal("1000")
@@ -216,6 +212,9 @@ addLayer("s", {
     },
     update() {
         if (player.s.points.gt("1e225000") && !hasUpgrade("u", 11)) player.s.points = new Decimal("1e225000")
+    },
+    update() {
+        if (player.s.points.gt("1e1e9")) player.s.points = new Decimal("1e1e9")
     },
     infoboxes:{
             coolInfo: {
@@ -301,9 +300,9 @@ addLayer("u", {
         },
 
         31: {
-            title: "[U2] Exponents?",
-            description: "I'm not even sure what this even unlocks...",
-            cost: new Decimal("(e^1000)3"),
+            title: "[U2] Exponents",
+            description: "Unlock Meta. <b>WARNING: If you lose U2, you can no longer access Meta.</b>",
+            cost: new Decimal(5),
             unlocked() { return hasUpgrade("u", 21);},
         },
     },
@@ -354,6 +353,72 @@ addLayer("inf", {
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return (hasUpgrade('u', 21)) || player.inf.unlocked }
+
+    
+})
+
+addLayer("meta", {
+    name: "meta", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "μ", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(1.001),
+    }},
+    color: "#ffffffa1",
+    requires: new Decimal("(e^1000)3"), // Can be a function that takes requirement increases into account
+    resource: "meta", // Name of prestige currency
+    baseResource: "meta, obviously. Okay why are you looking here 😭", // Name of resource prestige is based on
+    baseAmount() {return player.meta.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.001, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Meta (Universe 3, Part 3/?)",
+                titleStyle: {'color': '#ffffffa1'},
+                body: "<b>So meta... I wish it was no longer meta.</b> <br> This layer is by default always unlocked and you start with 1.001 meta. However, you cannot use your currencies to get more meta by resetting, you must use the clickable.<br> <i>Why is this so meta?!</i>",
+                bodyStyle: {'background-color': "#414141a1"}
+            }
+        },
+    branches:['inf'],
+    upgrades: {
+        11: {
+            title: "[μ1] Meta Spacetime",
+            description: "Upgrades are categorised into 2 categories: μ[x] (which are regular upgrades) and +μ[x] which add new features to Meta. For this one, get a x10 boost to spacetime!",
+            cost: new Decimal(1.79e308),
+        },
+    },
+    clickables: {
+        11: {
+           display() { return "Fix your Meta." },
+           tooltip() { return "Set your Meta to 1.001 after doing a row 4+ reset to make Meta work."},
+           canClick() { return true },
+           color() { return "#ffffff93" },
+            onClick() {
+                player.meta.points = new Decimal(1.001)
+            }
+        },
+
+        12: {
+           display() { return "^1.01 your Meta." },
+           tooltip() { return "Hey, all meta thingies must have inflation in them, right?"},
+           canClick() { return true },
+           color() { return "#ffffff93" },
+            onClick() {
+                player.meta.points = player.meta.points.pow(1.01)
+            }
+        },
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('u', 31)) && player.meta.unlocked }
 
     
 })
@@ -577,7 +642,7 @@ addLayer("exp", {
                 bodyStyle: {'background-color': "#0a2c45"}
             }
         },
-    branches:['multi'],
+    branches:['multi','e'],
     upgrades: {
         11: {
             title: "[^1] Isn't this out of the range?",
@@ -587,6 +652,17 @@ addLayer("exp", {
         return player.exp.points.add(1).pow(1.2)
     },
     effectDisplay() { return "x"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        },
+
+        21: {
+            title: "[^2] Isn't this STUPID?!",
+            description: "Wow, you sure hate exponents. Increase the power boost of points by your super! <i>This does get quite inflated...</i>",
+            cost: new Decimal(2),
+            unlocked() { return hasUpgrade(this.layer, 11); },
+            effect() {
+        return player.s.points.add(1).pow(0.00000001)
+    },
+    effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
         },
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
@@ -649,7 +725,13 @@ addLayer("a", {
         22: {
             name: "Infinity first, Eternity second, Reality third.",
             done() { return hasUpgrade("u", 21); },
-            tooltip: "Unlock Infinity. (upgrade u2, for free!)",
+            tooltip: "Unlock Infinity. (relic 4/7, for free!)",
+        },
+
+        23: {
+            name: "Enough meta references!",
+            done() { return hasUpgrade("u", 31); },
+            tooltip: "Unlock Meta. (upgrade u2)",
         },
     },
 })
@@ -689,11 +771,44 @@ addLayer("ta", {
     },
 })
 
+addLayer("hard", {
+    symbol: "HC",
+    position: 2,
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "#86872b",
+    resource: "hardcapped unobtainium", 
+    row: "side",
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Hardcaps")
+    },
+    achievementPopups: true,
+    achievements: {
+        11: {
+            name: "Energized Hardcap",
+            done() { return player.e.points.gt("999")},
+            tooltip: "Reach the energy hardcap of 1,000.",
+        },
+        21: {
+            name: "Super Hardcap v1.00",
+            done() { return player.s.points.gt("1e225000")},
+            tooltip: "Reach the pre-ultra super hardcap of 1e225,000.",
+        },
+        22: {
+            name: "Super Hardcap v1.01",
+            done() { return player.s.points.gt("1e999999999")},
+            tooltip: "Reach the post-ultra super hardcap of <i>1e1,000,000,000, which cannot be increased any further!</i>",
+        },
+    },
+})
+
 addLayer("what", {
     name: "whatthe",
     tooltip: "Universe 0.",
     symbol: "???",
-    position: 2,
+    position: 3,
     row: "side",
     color: "#711212",
     resource: "eternal voids", 
