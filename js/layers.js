@@ -16,6 +16,7 @@ addLayer("p", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('multi', 21)) mult = mult.times(upgradeEffect('multi', 21))
+        if (hasUpgrade('s', 11)) mult = mult.times(upgradeEffect('s', 11))
         return mult
 
     },
@@ -228,8 +229,12 @@ addLayer("s", {
     upgrades: {
         11: {
             title: "[S1] Woah.",
-            description: "Energy is x10 more expensive but you get x5,000,000 spacetime. <i>psst... here's a free layer for you :)</i>",
+            description: "Energy is x10 more expensive but you get x50,000 spacetime. Also, each super up to 5 super gives +5 multiplier to your points. <i>psst... here's a free layer for you :)</i>",
             cost: new Decimal(1),
+            effect() {
+                return player.s.points.mul(5).clamp(1, 25)
+            },
+            effectDisplay() { return "x"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
         },
 
         21: {
