@@ -105,7 +105,7 @@ addLayer("p", {
 
         61: {
             title: "<i>Relic 2/7 - The Relic of Lockout</i>",
-            description: "<i>Game not hard enough? Okay then, lock yourself out of energy but get x1e100 spacetime.</i> <h2>The new relic is here, somewhere.</h2>",
+            description: "<i>Game not hard enough? Okay then, lock yourself out of energy but get x100 spacetime.</i> <h2>The new relic is here, somewhere.</h2>",
             cost: new Decimal(1e15),
             unlocked() { return hasUpgrade("plus", 31) && hasUpgrade("p", 51);},
         },
