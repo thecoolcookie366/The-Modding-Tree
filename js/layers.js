@@ -488,7 +488,7 @@ addLayer("pie", {
             coolInfo: {
                 title: "Pie (Temporary Universe, pre-v1.01)",
                 titleStyle: {'color': '#9e4d3c'},
-                body: "<b>What is a temp layer?</b> <br> A temp layer is a layer that gets reset on the next update. An update with a temp layer is often called a pre-update, this layer is for pre-v1.01 and will still exist in v1.01, but unobtainable!<br> <i>Goal: 1e990 -> 1e1,000 spacetime.</i>",
+                body: "<b>What is a temp layer?</b> <br> A temp layer is a layer that gets reset on the next update. An update with a temp layer is often called a pre-update, this layer is for pre-v1.01 and will still exist in v1.01, but unobtainable!<br> <i>Enjoy x200 spacetime!</i>",
                 bodyStyle: {'background-color': "#683126"}
             }
         },
