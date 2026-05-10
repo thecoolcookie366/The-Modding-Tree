@@ -68,7 +68,7 @@ function getPointGen() {
 	if (hasUpgrade('p', 24)) gain = gain.times(3)
 	if (hasUpgrade('p', 25)) gain = gain.times(3)
 	if (hasUpgrade('p', 31)) gain = gain.times(2)
-	if (hasUpgrade('e', 11)) gain = gain.times(1000)
+	if (hasUpgrade('e', 11)) gain = gain.times(100)
 	if (hasUpgrade('e', 21)) gain = gain.times(1000000)
 	if (hasUpgrade('s', 11)) gain = gain.times(5e6)
 	if (hasUpgrade('p', 61)) gain = gain.times(1e100)
