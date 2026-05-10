@@ -90,7 +90,7 @@ addLayer("p", {
             cost: new Decimal(4000),
             unlocked() { return hasUpgrade(this.layer, 31); },
             effect() {
-        return player.e.points.add(1.2).pow(0.03)
+        return player.e.points.add(5).pow(0.03)
     },
     effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
         },
@@ -275,6 +275,9 @@ addLayer("u", {
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
+    },
+    update() {
+        if (player.u.points.gt("1e100")) player.u.points = new Decimal("1e100")
     },
     infoboxes:{
             coolInfo: {
@@ -826,6 +829,12 @@ addLayer("hard", {
             name: "Super Hardcap v1.01",
             done() { return player.s.points.gt("1e999999999")},
             tooltip: "Reach the post-ultra super hardcap of <i>1e1,000,000,000, which cannot be increased any further!</i>",
+        },
+
+        31: {
+            name: "Ultra Hardcap v2.00",
+            done() { return player.u.points.gt("9.99e99")},
+            tooltip: "Reach the pre-grass ultra hardcap of 1e100.",
         },
     },
 })
