@@ -624,7 +624,7 @@ addLayer("multi", {
     upgrades: {
         11: {
             title: "[x1] Another One!",
-            description: "OP layer of the day! Let <h3>tau^phi</h3> multiply your super. The plot twist is that you make enern",
+            description: "OP layer of the day! Let <h3>tau^phi</h3> multiply your super.",
             cost: new Decimal(1),
             effect() {
         return player.multi.points.add(1).pow(19.565066)
