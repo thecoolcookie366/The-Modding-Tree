@@ -172,11 +172,11 @@ addLayer("e", {
 
         31: {
             title: "<i>Relic 3/7 - The Relic of Numbers</i>",
-            description: "<i>You still like numbers, right? Okay then. For each energy, add +10,000 to the super gain multiplier, capping out at x10M. </i> <h2>No more relics until Ultra.</h2>",
+            description: "<i>You still like numbers, right? Okay then. For each energy, add +20,000 to the super gain multiplier, capping out at x20M. </i> <h2>No more relics until Ultra.</h2>",
             cost: new Decimal(5),
             unlocked() { return hasUpgrade("p", 61);},
             effect() {
-                return player.e.points.mul(10000).clamp(1, 10000000)
+                return player.e.points.mul(20000).clamp(1, 20000000)
             },
             effectDisplay() { return "x"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
         },
