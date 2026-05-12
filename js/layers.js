@@ -219,7 +219,7 @@ addLayer("s", {
         if (player.s.points.gt("1e225000") && !hasUpgrade("u", 11)) player.s.points = new Decimal("1e225000")
     },
     update() {
-        if (player.s.points.gt("1e1e9")) player.s.points = new Decimal("1e1e9")
+        if (player.s.points.gt("1e1e9") && hasUpgrade("u", 11)) player.s.points = new Decimal("1e1e9")
     },
     infoboxes:{
             coolInfo: {
