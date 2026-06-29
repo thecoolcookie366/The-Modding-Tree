@@ -213,7 +213,9 @@ addLayer("s", {
 
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        exp = new Decimal (1)
+        if (hasUpgrade('meta', 12)) exp = exp.add(1)
+        return exp
     },
     update() {
         if (player.s.points.gt("1e225000") && !hasUpgrade("u", 11)) player.s.points = new Decimal("1e225000")
@@ -405,13 +407,20 @@ addLayer("meta", {
         11: {
             title: "[μ1] Meta Spacetime",
             description: "Upgrades are categorised into 2 categories: μ[x] (which are regular upgrades) and +μ[x] which add new features to Meta. For this one, get a x10 boost to spacetime!",
-            cost: new Decimal("(e^1000)3"),
+            cost: new Decimal("1000"),
+        },
+
+        12: {
+            title: "[μ2] Meta Super",
+            description: "<i>This is super cool!</i> ^2 your super.",
+            cost: new Decimal("1e10"),
+            unlocked() { return hasUpgrade("meta", 11);},
         },
 
         21: {
             title: "[+μ1] Meta Meta",
             description: "Unlock the x1.01 Meta button!",
-            cost: new Decimal("(e^1000)3"),
+            cost: new Decimal("2000"),
         },
     },
     clickables: {
@@ -643,8 +652,8 @@ addLayer("tierone", {
     branches:[''],
     upgrades: {
         11: {
-            title: "<i>[T1] Who asked?</i>",
-            description: "<h3>literally nothing lol</h3>",
+            title: "<i>[T1] who asked</i>",
+            description: "<h3>unlocks more point upgrades</h3>",
             cost: new Decimal(1),
         },
     },
@@ -689,7 +698,52 @@ addLayer("tiertwo", {
     upgrades: {
         11: {
             title: "<i>[T2] what the hell</i>",
-            description: "<h3>unlock rng layer</h3>",
+            description: "<h3>unlock rng layer, unlock more point upgrades</h3>",
+            cost: new Decimal(1),
+        },
+    },
+    row: 6, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true}
+
+    
+})
+
+addLayer("tierthree", {
+    name: "thirdtier", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "T₃", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#fffb008c",
+    requires: new Decimal("5"), // Can be a function that takes requirement increases into account
+    resource: "tier 3 power", // Name of prestige currency
+    baseResource: "tier 2 power", // Name of resource prestige is based on
+    baseAmount() {return player.tiertwo.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Tier 3 (Universe α)",
+                titleStyle: {'color': '#a9a300'},
+                body: "did you know it took over 1 month to balance the x2 upgrade?",
+                bodyStyle: {'background-color': "#878200"}
+            }
+        },
+    branches:['tiertwo'],
+    upgrades: {
+        11: {
+            title: "<i>[T3] this is so repetitive</i>",
+            description: "<h3>unlock universe -1, unlock rng expansion, unlock more point upgrades!!! who could've thought</h3>",
             cost: new Decimal(1),
         },
     },
