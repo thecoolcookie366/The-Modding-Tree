@@ -172,7 +172,7 @@ addLayer("e", {
 
         31: {
             title: "<i>Relic 3/7 - The Relic of Numbers</i>",
-            description: "<i>You still like numbers, right? Okay then. For each energy, add +5M to the super gain multiplier, capping out at x5B. </i> <h2>No more relics until Ultra.</h2>",
+            description: "<i>You still like numbers, right? Okay then. For each energy, add +5M to the super gain multiplier, capping out at x5B. (+ unexplained spacetime boost)</i> <h2>No more relics until Ultra.</h2>",
             cost: new Decimal(5),
             unlocked() { return hasUpgrade("p", 61);},
             effect() {
@@ -513,6 +513,51 @@ addLayer("pie", {
         },
     },
     row: 100, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true}
+
+    
+})
+
+addLayer("tierone", {
+    name: "firstier", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "T₁", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#ff2a008c",
+    requires: new Decimal("1e100000"), // Can be a function that takes requirement increases into account
+    resource: "tier 1 power", // Name of prestige currency
+    baseResource: "grass", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.01, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Tier 1 (Universe α)",
+                titleStyle: {'color': '#a91c00'},
+                body: "I ran out of name ideas so enjoy this repetitive part of the game :D",
+                bodyStyle: {'background-color': "#871600"}
+            }
+        },
+    branches:[''],
+    upgrades: {
+        11: {
+            title: "<i>[T1] Who asked?</i>",
+            description: "<h3>literally nothing lol</h3>",
+            cost: new Decimal(1),
+        },
+    },
+    row: 6, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
