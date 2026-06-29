@@ -80,6 +80,17 @@ function getPointGen() {
 	if (hasUpgrade('pie', 21)) gain = gain.times(5)
 	if (hasUpgrade('pie', 31)) gain = gain.times(20)
 	if (hasUpgrade('meta', 11)) gain = gain.times(10)
+	if (hasUpgrade('debug', 11)) gain = gain.times("1e1000")
+	if (hasUpgrade('debug', 21)) gain = gain.times("1e1000")
+	if (hasUpgrade('debug', 31)) gain = gain.times("1e1000")
+	if (hasUpgrade('debug', 41)) gain = gain.times("1e1000")
+	if (hasUpgrade('debug', 51)) gain = gain.times("1e1000")
+	if (hasUpgrade('debug', 12)) gain = gain.divide("1e1000")
+	if (hasUpgrade('debug', 22)) gain = gain.divide("1e1000")
+	if (hasUpgrade('debug', 32)) gain = gain.divide("1e1000")
+	if (hasUpgrade('debug', 42)) gain = gain.divide("1e1000")
+	if (hasUpgrade('debug', 52)) gain = gain.divide("1e1000")
+	
 	return gain
 }
 

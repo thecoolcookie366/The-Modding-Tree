@@ -1,7 +1,7 @@
 addLayer("p", {
     name: "points", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
@@ -120,7 +120,7 @@ addLayer("p", {
 addLayer("e", {
     name: "energy", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "E", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -518,6 +518,97 @@ addLayer("pie", {
     
 })
 
+addLayer("debug", {
+    name: "youcheated", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "¤", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#ea6c53",
+    requires: new Decimal("1e1e1e1e1e1e1"), // Can be a function that takes requirement increases into account
+    resource: "debugged bugs", // Name of prestige currency
+    baseResource: "spacetime", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.01, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Debug",
+                titleStyle: {'color': '#ce7766'},
+                body: "This layer is made for my tester timed.o so he can stop grinding for so long",
+                bodyStyle: {'background-color': "#d94d31"}
+            }
+        },
+    branches:[''],
+    upgrades: {
+        11: {
+            title: "debug 1",
+            description: "x1e1k spacetime",
+            cost: new Decimal(0),
+        },
+        21: {
+            title: "debug 2",
+            description: "x1e1k spacetime",
+            cost: new Decimal(0),
+        },
+        31: {
+            title: "debug 3",
+            description: "x1e1k spacetime",
+            cost: new Decimal(0),
+        },
+        41: {
+            title: "debug 4",
+            description: "x1e1k spacetime",
+            cost: new Decimal(0),
+        },
+        51: {
+            title: "debug 5",
+            description: "x1e1k spacetime",
+            cost: new Decimal(0),
+        },
+        12: {
+            title: "bug 1",
+            description: "/1e1k spacetime",
+            cost: new Decimal(0),
+        },
+        22: {
+            title: "bug 2",
+            description: "/1e1k spacetime",
+            cost: new Decimal(0),
+        },
+        32: {
+            title: "bug 3",
+            description: "/1e1k spacetime",
+            cost: new Decimal(0),
+        },
+        42: {
+            title: "bug 4",
+            description: "/1e1k spacetime",
+            cost: new Decimal(0),
+        },
+        52: {
+            title: "bug 5",
+            description: "/1e1k spacetime",
+            cost: new Decimal(0),
+        },
+        
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true}
+
+    
+})
+
 addLayer("tierone", {
     name: "firstier", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "T₁", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -554,6 +645,51 @@ addLayer("tierone", {
         11: {
             title: "<i>[T1] Who asked?</i>",
             description: "<h3>literally nothing lol</h3>",
+            cost: new Decimal(1),
+        },
+    },
+    row: 6, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true}
+
+    
+})
+
+addLayer("tiertwo", {
+    name: "secondtier", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "T₂", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#ff88008c",
+    requires: new Decimal("5"), // Can be a function that takes requirement increases into account
+    resource: "tier 2 power", // Name of prestige currency
+    baseResource: "tier 1 power", // Name of resource prestige is based on
+    baseAmount() {return player.tierone.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Tier 2 (Universe α)",
+                titleStyle: {'color': '#a95a00'},
+                body: "Idealess. No ideas, no balancing!",
+                bodyStyle: {'background-color': "#874800"}
+            }
+        },
+    branches:['tierone'],
+    upgrades: {
+        11: {
+            title: "<i>[T2] what the hell</i>",
+            description: "<h3>unlock rng layer</h3>",
             cost: new Decimal(1),
         },
     },
