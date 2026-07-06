@@ -218,10 +218,8 @@ addLayer("s", {
         return exp
     },
     update() {
-        if (player.s.points.gt("1e225000") && !hasUpgrade("u", 11)) player.s.points = new Decimal("1e225000")
-    },
-    update() {
-        if (player.s.points.gt("1e1e9") && hasUpgrade("u", 11)) player.s.points = new Decimal("1e1e9")
+        if (player.s.points.gt("1e225000") && !hasUpgrade("u", 11)) player.s.points = new Decimal("2e225000")
+            else if (player.s.points.gt("1e1e9") && hasUpgrade("u", 11)) player.s.points = new Decimal("1e1e9")
     },
     infoboxes:{
             coolInfo: {
@@ -335,7 +333,7 @@ addLayer("inf", {
 		points: new Decimal(0),
     }},
     color: "#a05f19",
-    requires: new Decimal("1.79e308"), // Can be a function that takes requirement increases into account
+    requires: new Decimal("1e100"), // Can be a function that takes requirement increases into account
     resource: "infinities", // Name of prestige currency
     baseResource: "spacetime", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -1139,6 +1137,27 @@ addLayer("what", {
             description: "G̴L̶I̸T̸C̷H your G̴L̶I̸T̸C̷H",
             cost: new Decimal(Infinity),
             unlocked() { return hasUpgrade(this.layer, 11); },
+        },
+    },
+    
+})
+
+addLayer("qna", {
+    name: "questionsanswers",
+    tooltip: "Questions and Answers",
+    symbol: "QnA",
+    position: 4,
+    row: "side",
+    color: "#559e68",
+    resource: "questions, yet 0 answers", 
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(347215),
+    }},
+    infoboxes: {
+        info: {
+            title: "Questions and Answers",
+            body() { return "Here you will find all the answers to your questions. <br><br> Q1: Why is this called The Cookie Tree? <br> A1: For two reasons: Because my name is cookie (obviously) and because the original version of the game was about cookies. <br><br> Q2: These <i>super</i> and <i>ultra</i> layers seem generic, where did you get them from? <br> A2: Because i didn't have original name ideas???" },
         },
     },
     
