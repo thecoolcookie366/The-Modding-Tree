@@ -110,6 +110,20 @@ addLayer("p", {
             unlocked() { return hasUpgrade("plus", 31) && hasUpgrade("p", 51);},
         },
 
+        71: {
+            title: "[#6] Welcome back!",
+            description: "[placeholder]",
+            cost: new Decimal("11e1e1e1e1e1e1e1"),
+            unlocked() { return hasMilestone("lv", 0);},
+        },
+
+        72: {
+            title: "[#7] Continue with the big numbers",
+            description: "[placeholder]",
+            cost: new Decimal("11e1e1e1e1e1e1e1"),
+            unlocked() { return hasMilestone("lv", 0);},
+        },
+
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
@@ -215,6 +229,7 @@ addLayer("s", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         exp = new Decimal (1)
         if (hasUpgrade('meta', 12)) exp = exp.add(1)
+        if (hasMilestone('lv', 0)) exp = exp.add(3)
         return exp
     },
     update() {
@@ -283,10 +298,9 @@ addLayer("u", {
 
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
-    },
-    update() {
-        if (player.u.points.gt("1e100")) player.u.points = new Decimal("1e100")
+        exp = new Decimal (1)
+        if (hasUpgrade('meta', 13)) exp = exp.add(1)
+        return exp
     },
     infoboxes:{
             coolInfo: {
@@ -306,7 +320,7 @@ addLayer("u", {
 
         21: {
             title: "<i>Relic 4/7 - The Relic of Infinity</i>",
-            description: "<i>I'm sorry I reset your progress like that. To compensate, unlock a new layer for free that requires</i> <h2>1.79e308</h2> <i>spacetime. Good luck!</i>",
+            description: "<i>I'm sorry I reset your progress like that. To compensate, unlock a new layer for free that requires</i> <h2>1e100</h2> <i>spacetime. Good luck!</i>",
             cost: new Decimal(0),
             unlocked() { return hasUpgrade("u", 11);},
         },
@@ -316,6 +330,13 @@ addLayer("u", {
             description: "Unlock Meta. <b>WARNING: If you lose U2, you can no longer access Meta.</b>",
             cost: new Decimal(5),
             unlocked() { return hasUpgrade("u", 21);},
+        },
+
+        41: {
+            title: "[U3] e<h2>XP</h2>onents",
+            description: "Unlock XP.",
+            cost: new Decimal(10000),
+            unlocked() { return hasUpgrade("u", 31);},
         },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
@@ -341,11 +362,14 @@ addLayer("inf", {
     exponent: 0.001, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('meta', 14)) mult = mult.times(6)
         return mult
 
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        exp = new Decimal (1)
+        if (hasUpgrade('meta', 14)) exp = exp.add(5)
+        return exp
     },
     infoboxes:{
             coolInfo: {
@@ -361,6 +385,17 @@ addLayer("inf", {
             title: "[∞1] Infinite",
             description: "You get 2 things. <br> The first thing you get is <h1>big text</h1>, but the second thing you get is more ultra! x2 of it!",
             cost: new Decimal(1),
+        },
+
+        21: {
+            title: "[∞2] Let's go Infinite!",
+            description: "About time i made a spacetime boost that scales based on your spacetime!",
+            cost: new Decimal("100000"),
+            unlocked() { return hasUpgrade("inf", 11);},
+            effect() {
+            return player.points.add(1).pow(0.9)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
@@ -392,6 +427,9 @@ addLayer("meta", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    update() {
+        if (player.meta.points.gt("1e1.796e308")) player.meta.points = new Decimal("1e1.796e308")
+    },
     infoboxes:{
             coolInfo: {
                 title: "Meta (Universe 3, Part 3/?)",
@@ -415,10 +453,38 @@ addLayer("meta", {
             unlocked() { return hasUpgrade("meta", 11);},
         },
 
+        13: {
+            title: "[μ3] Meta Ultra",
+            description: "This is just as ridiculous as the previous meta. ^2 your ultra.",
+            cost: new Decimal("1e25"),
+            unlocked() { return hasUpgrade("meta", 12);},
+        },
+
+        14: {
+            title: "[μ4] Meta Infinity",
+            description: "And now let's break infinity. x6 infinity, then ^6 infinity.",
+            cost: new Decimal("1e1e6"),
+            unlocked() { return hasUpgrade("meta", 13);},
+        },
+
         21: {
             title: "[+μ1] Meta Meta",
             description: "Unlock the x1.01 Meta button!",
             cost: new Decimal("2000"),
+        },
+
+        31: {
+            title: "[+μ2] Meta Meta Meta Meta Meta Meta Meta Meta Meta Meta Meta Meta...",
+            description: "Unlock the ^1.01 Meta button!",
+            cost: new Decimal("1e50"),
+            unlocked() { return hasUpgrade("meta", 21);},
+        },
+
+        41: {
+            title: "[+μ3] When the",
+            description: "Unlock the ^10.1 Meta button! Wait what-",
+            cost: new Decimal("1e1e10"),
+            unlocked() { return hasUpgrade("meta", 31);},
         },
     },
     clickables: {
@@ -455,15 +521,132 @@ addLayer("meta", {
         23: {
            display() { return "^1.01 your Meta." },
            tooltip() { return "Hey, all meta thingies must have inflation in them, right?"},
-           canClick() { return false },
+           canClick() { return hasUpgrade("meta", 31); },
            color() { return "#ffffff93" },
             onClick() {
                 player.meta.points = player.meta.points.pow(1.01)
             }
         },
+
+        24: {
+           display() { return "^10.1 your Meta." },
+           tooltip() { return "WOAH"},
+           canClick() { return hasUpgrade("meta", 41); },
+           color() { return "#ffffff93" },
+            onClick() {
+                player.meta.points = player.meta.points.pow(10.1)
+            }
+        },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return (hasUpgrade('u', 31)) && player.meta.unlocked }
+
+    
+})
+
+addLayer("xp", {
+    name: "experience", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "XP", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 3, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#2c7941",
+    requires: new Decimal("10000"), // Can be a function that takes requirement increases into account
+    resource: "XP", // Name of prestige currency
+    baseResource: "ultra", // Name of resource prestige is based on
+    baseAmount() {return player.u.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 4, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        if (hasUpgrade('xp', 11)) mult = mult.times(500)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        exp = new Decimal (1)
+        if (hasUpgrade('lv', 11)) exp = exp.add(9)
+        if (hasUpgrade('lv', 11)) exp = exp.add(9)
+        return exp
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Experience (Universe 3, Part 4/?)",
+                titleStyle: {'color': '#4ca464'},
+                body: "<b>Already?!</b> <br>Ultra can now turn into XP, which can be used for more XP! <br> <i>Did you know? This layer doesn't have ids on upgrades, so no [XP1] or anything.</i>",
+                bodyStyle: {'background-color': "#184524"}
+            }
+        },
+    branches:['u'],
+    upgrades: {
+        11: {
+            title: "Get an XP Boost role on the discord server",
+            description: "No, you don't actually get +500% xp on the real server, but you do get x500 xp here!",
+            cost: new Decimal("1000"),
+        },
+        12: {
+            title: "Add a leveling bot to your own server",
+            description: "Unlock Levels.",
+            cost: new Decimal("100000000"),
+        },
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('u', 41)) || player.xp.unlocked}
+
+    
+})
+
+addLayer("lv", {
+    name: "level", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "LV", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 4, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(1),
+    }},
+    color: "#174523",
+    requires: new Decimal("1e8"), // Can be a function that takes requirement increases into account
+    resource: "Levels", // Name of prestige currency
+    baseResource: "XP", // Name of resource prestige is based on
+    baseAmount() {return player.xp.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 8.4, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Levels (Universe 3, Part 4.5/?)",
+                titleStyle: {'color': '#2f7341'},
+                body: "<b>Let's just go on with the... THAT'S A LOT OF XP</b> <br>XP can now turn into Levels which can give MILESTONES! <br> <i>No upgrades in this layer! Except for the relic...</i>",
+                bodyStyle: {'background-color': "#0d2915"}
+            }
+        },
+    branches:['xp'],
+    milestones: {
+        0: {
+        requirementDescription: "Level 2",
+        effectDescription: "Get the following: <br> - Add 3 to the exponent of super <br> - Unlock more point upgrades (#6-10) <br> - Unlock Relic 5",
+        done() { return player.lv.points.gte(2) }
+        },
+    },
+    upgrades: {
+        11: {
+            title: "Relic 5/7 - The Relic of Big Numbers",
+            description: "^10 XP. Then, add 9 to the exponent of XP. <h2>Next relic in 5 (layers)</h2>",
+            cost: new Decimal("0"),
+            unlocked() { return hasMilestone("lv", 0);},
+        },
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('xp', 12)) || player.lv.unlocked}
 
     
 })
@@ -533,13 +716,13 @@ addLayer("debug", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#ea6c53",
-    requires: new Decimal("1e1e1e1e1e1e1"), // Can be a function that takes requirement increases into account
-    resource: "debugged bugs", // Name of prestige currency
+    color: "#ffffff3e",
+    requires: new Decimal("1e300"), // Can be a function that takes requirement increases into account
+    resource: "debuffs", // Name of prestige currency
     baseResource: "spacetime", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.01, // Prestige currency exponent
+    exponent: 0.1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -550,67 +733,21 @@ addLayer("debug", {
     },
     infoboxes:{
             coolInfo: {
-                title: "Debug",
-                titleStyle: {'color': '#ce7766'},
-                body: "This layer is made for my tester timed.o so he can stop grinding for so long",
-                bodyStyle: {'background-color': "#d94d31"}
+                title: "New Game",
+                titleStyle: {'color': '#b1b1b13e'},
+                body: "Want a challenge? Unlock new special layers but place massive debuffs on your currencies!",
+                bodyStyle: {'background-color': "#7877773e"}
             }
         },
     branches:[''],
     upgrades: {
         11: {
-            title: "debug 1",
-            description: "x1e1k spacetime",
-            cost: new Decimal(0),
-        },
-        21: {
-            title: "debug 2",
-            description: "x1e1k spacetime",
-            cost: new Decimal(0),
-        },
-        31: {
-            title: "debug 3",
-            description: "x1e1k spacetime",
-            cost: new Decimal(0),
-        },
-        41: {
-            title: "debug 4",
-            description: "x1e1k spacetime",
-            cost: new Decimal(0),
-        },
-        51: {
-            title: "debug 5",
-            description: "x1e1k spacetime",
-            cost: new Decimal(0),
-        },
-        12: {
-            title: "bug 1",
+            title: "NG-",
             description: "/1e1k spacetime",
             cost: new Decimal(0),
         },
-        22: {
-            title: "bug 2",
-            description: "/1e1k spacetime",
-            cost: new Decimal(0),
-        },
-        32: {
-            title: "bug 3",
-            description: "/1e1k spacetime",
-            cost: new Decimal(0),
-        },
-        42: {
-            title: "bug 4",
-            description: "/1e1k spacetime",
-            cost: new Decimal(0),
-        },
-        52: {
-            title: "bug 5",
-            description: "/1e1k spacetime",
-            cost: new Decimal(0),
-        },
-        
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 102, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
     
@@ -1004,6 +1141,18 @@ addLayer("a", {
             done() { return hasUpgrade("u", 31); },
             tooltip: "Unlock Meta. (upgrade u2)",
         },
+
+        24: {
+            name: "<i>says xp</i> You leveled up to 1! GG!",
+            done() { return hasUpgrade("u", 41); },
+            tooltip: "Unlock XP. (upgrade u3)",
+        },
+
+        25: {
+            name: "<i>says xp billions of times</i> You leveled up to 2! GG!",
+            done() { return hasUpgrade("xp", 12); },
+            tooltip: "Unlock Levels. (2nd xp upgrade)",
+        },
     },
 })
 
@@ -1071,12 +1220,6 @@ addLayer("hard", {
             name: "Super Hardcap v1.01",
             done() { return player.s.points.gt("1e999999999")},
             tooltip: "Reach the post-ultra super hardcap of <i>1e1,000,000,000, which cannot be increased any further!</i>",
-        },
-
-        31: {
-            name: "Ultra Hardcap v2.00",
-            done() { return player.u.points.gt("9.99e99")},
-            tooltip: "Reach the pre-grass ultra hardcap of 1e100.",
         },
     },
 })
