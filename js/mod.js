@@ -80,6 +80,7 @@ function getPointGen() {
 	if (hasUpgrade('pie', 21)) gain = gain.times(5)
 	if (hasUpgrade('pie', 31)) gain = gain.times(20)
 	if (hasUpgrade('meta', 11)) gain = gain.times(10)
+	if (hasUpgrade('ng1', 11)) gain = gain.times("1e800")
 	if (hasUpgrade('debug', 11)) gain = gain.divide("1e1000")
 	if (hasUpgrade('inf', 21)) gain = gain.times(upgradeEffect('inf', 21))
 	

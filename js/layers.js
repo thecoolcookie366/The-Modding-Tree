@@ -150,6 +150,7 @@ addLayer("e", {
         mult = new Decimal(1)
         if (hasUpgrade('s', 11)) mult = mult.times(10)
         if (hasUpgrade('s', 21)) mult = mult.times(10000)
+        if (hasUpgrade('debug', 12)) mult = mult.times("1e1000")
         return mult
 
     },
@@ -660,7 +661,7 @@ addLayer("pie", {
 		points: new Decimal(0),
     }},
     color: "#d1634d",
-    requires: new Decimal("1e990"), // Can be a function that takes requirement increases into account
+    requires: new Decimal("1e1e1990"), // Can be a function that takes requirement increases into account
     resource: "pies", // Name of prestige currency
     baseResource: "spacetime", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -710,14 +711,14 @@ addLayer("pie", {
 
 addLayer("debug", {
     name: "youcheated", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "¤", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "0", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
     }},
     color: "#ffffff3e",
-    requires: new Decimal("1e300"), // Can be a function that takes requirement increases into account
+    requires: new Decimal("1e1e1e3"), // Can be a function that takes requirement increases into account
     resource: "debuffs", // Name of prestige currency
     baseResource: "spacetime", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -730,6 +731,9 @@ addLayer("debug", {
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
+    },
+    update() {
+        if (player.debug.points.gte("1")) player.debug.points = new Decimal("1")
     },
     infoboxes:{
             coolInfo: {
@@ -744,11 +748,107 @@ addLayer("debug", {
         11: {
             title: "NG-",
             description: "/1e1k spacetime",
-            cost: new Decimal(0),
+            cost: new Decimal(1),
+        },
+        12: {
+            title: "NG--",
+            description: "x1e1k energy cost",
+            cost: new Decimal(1),
+            unlocked() { return hasUpgrade("debug", 11);},
         },
     },
     row: 102, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
+
+    
+})
+
+addLayer("ng1", {
+    name: "ng-", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "-1", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#ff0000",
+    requires: new Decimal("1e-200"), // Can be a function that takes requirement increases into account
+    resource: "minus", // Name of prestige currency
+    baseResource: "spacetime", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "NG-",
+                titleStyle: {'color': '#b00000'},
+                body: "Welcome to NG-. You will unlock many things in here!",
+                bodyStyle: {'background-color': "#4f0000"}
+            }
+        },
+    branches:[''],
+    upgrades: {
+        11: {
+            title: "Start.",
+            description: "x1e800 spacetime.",
+            cost: new Decimal(0),
+        },
+    },
+    row: 102, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('debug', 11))}
+
+    
+})
+
+addLayer("ng2", {
+    name: "ng--", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "-2", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#ff7300",
+    requires: new Decimal("1e1e200"), // Can be a function that takes requirement increases into account
+    resource: "roots", // Name of prestige currency
+    baseResource: "spacetime", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "NG--",
+                titleStyle: {'color': '#b04300'},
+                body: "Welcome to NG--. Good luck with everything! You also keep NG- effects, but also NG- boosts.",
+                bodyStyle: {'background-color': "#4f2600"}
+            }
+        },
+    branches:[''],
+    upgrades: {
+        // 11: {
+        //    title: "Start.",
+        //    description: "x1e800 spacetime.",
+        //    cost: new Decimal(0),
+        //},
+    },
+    row: 102, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('debug', 11))}
 
     
 })
