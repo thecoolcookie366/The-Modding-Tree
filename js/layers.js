@@ -150,7 +150,6 @@ addLayer("e", {
         mult = new Decimal(1)
         if (hasUpgrade('s', 11)) mult = mult.times(10)
         if (hasUpgrade('s', 21)) mult = mult.times(10000)
-        if (hasUpgrade('debug', 12)) mult = mult.times("1e1000")
         return mult
 
     },
