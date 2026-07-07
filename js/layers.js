@@ -84,7 +84,7 @@ addLayer("p", {
             cost: new Decimal(1500),
             unlocked() { return hasUpgrade(this.layer, 25); }
         },
-        
+
         41: {
             title: "[#4] Yellow",
             description: "Unlock energy. Energy boosts points.",
@@ -112,23 +112,30 @@ addLayer("p", {
 
         71: {
             title: "[#6] Welcome back!",
-            description: "[placeholder]",
-            cost: new Decimal("11e1e1e1e1e1e1e1"),
+            description: "Point upgrades are classic. For this one you get x1.11e111 spacetime. (I am not calling it 'all ones')",
+            cost: new Decimal("1e655800"),
             unlocked() { return hasMilestone("lv", 0);},
         },
 
         72: {
             title: "[#7] Continue with the big numbers",
-            description: "[placeholder]",
-            cost: new Decimal("11e1e1e1e1e1e1e1"),
+            description: "'all twos' x2.22e222 spacetime.",
+            cost: new Decimal("1e657370"),
             unlocked() { return hasMilestone("lv", 0);},
+        },
+
+        73: {
+            title: "[#8] Fine this one is called all OF THE fours",
+            description: "Because you get x4.44e444 xp!",
+            cost: new Decimal("1e660500"),
+            unlocked() { return hasMilestone("lv", 1);},
         },
 
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true}
 
-    
+
 })
 
 addLayer("e", {
