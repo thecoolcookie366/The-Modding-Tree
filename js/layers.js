@@ -637,6 +637,12 @@ addLayer("lv", {
         effectDescription: "Get the following: <br> - Add 3 to the exponent of super <br> - Unlock more point upgrades (#6-10) <br> - Unlock Relic 5",
         done() { return player.lv.points.gte(2) }
         },
+
+        1: {
+        requirementDescription: "Level 3",
+        effectDescription: "Get the following: <br> - Add 0 to the exponent of super <br> - Unlock more energy upgrades (E3-E5) <br> - Unlock upgrade #11",
+        done() { return player.lv.points.gte(3) }
+        },
     },
     upgrades: {
         11: {
@@ -677,9 +683,9 @@ addLayer("pie", {
     },
     infoboxes:{
             coolInfo: {
-                title: "Pie (Temporary Universe, pre-v1.01)",
+                title: "Pie (Temporary Universe, v1.005)",
                 titleStyle: {'color': '#9e4d3c'},
-                body: "<b>What is a temp layer?</b> <br> A temp layer is a layer that gets reset on the next update. An update with a temp layer is often called a pre-update, this layer is for pre-v1.01 and will still exist in v1.01, but unobtainable!<br> <i>Enjoy x200 spacetime!</i>",
+                body: "<b>What is a temp layer?</b> <br> A temp layer is a layer that gets reset on the next update. An update with a temp layer is sometimes called a pre-update, this layer is for v1.005 and will still exist in v1.01, but unobtainable!<br> <i>Enjoy x200 spacetime!</i>",
                 bodyStyle: {'background-color': "#683126"}
             }
         },
@@ -749,6 +755,7 @@ addLayer("debug", {
             title: "NG-",
             description: "/1e1k spacetime",
             cost: new Decimal(1),
+            onPurchase() {player.points = new Decimal ("0")},
         },
         12: {
             title: "NG--",
@@ -848,7 +855,7 @@ addLayer("ng2", {
         //},
     },
     row: 102, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return (hasUpgrade('debug', 11))}
+    layerShown(){return (hasUpgrade('debug', 12))}
 
     
 })
@@ -932,7 +939,7 @@ addLayer("tiertwo", {
     branches:['tierone'],
     upgrades: {
         11: {
-            title: "<i>[T2] what the hell</i>",
+            title: "<i>[T2] what why</i>",
             description: "<h3>unlock rng layer, unlock more point upgrades</h3>",
             cost: new Decimal(1),
         },
@@ -1274,19 +1281,19 @@ addLayer("ta", {
         11: {
             name: "Thanks for the pie!",
             done() { return hasUpgrade("pie", 11); },
-            tooltip: "Get the small pie. (pie temp layer, pre-v1.01)",
+            tooltip: "Get the small pie. (pie temp layer, v1.01)",
         },
 
         12: {
             name: "Yay, pies!",
             done() { return hasUpgrade("pie", 21); },
-            tooltip: "Get the medium pie. (pie temp layer, pre-v1.01)",
+            tooltip: "Get the medium pie. (pie temp layer, v1.01)",
         },
 
         13: {
             name: "Pie for me, pie for you",
             done() { return hasUpgrade("pie", 31); },
-            tooltip: "Get the big pie! (pie temp layer, pre-v1.01)",
+            tooltip: "Get the big pie! (pie temp layer, v1.01)",
         },
     },
 })
