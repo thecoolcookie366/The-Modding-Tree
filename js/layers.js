@@ -781,12 +781,12 @@ addLayer("pie", {
 		points: new Decimal(0),
     }},
     color: "#d1634d",
-    requires: new Decimal("1e1e1990"), // Can be a function that takes requirement increases into account
+    requires: new Decimal("1e4380"), // Can be a function that takes requirement increases into account
     resource: "pies", // Name of prestige currency
     baseResource: "spacetime", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.01, // Prestige currency exponent
+    exponent: 0.001, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
