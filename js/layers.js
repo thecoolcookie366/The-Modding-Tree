@@ -1230,6 +1230,7 @@ addLayer("a", {
             done() { return hasUpgrade("xp", 12); },
             tooltip: "Unlock Levels. (2nd xp upgrade)",
         },
+<<<<<<< HEAD
 
         26: {
             name: "It's just level 1 all over again",
@@ -1243,6 +1244,7 @@ addLayer("a", {
             tooltip: "Buy the first Grass upgrade. (upgrade g1)",
         },
 =======
+>>>>>>> parent of 91eeb03 (updated)
     },
 })
 
