@@ -201,6 +201,12 @@ addLayer("e", {
             },
             effectDisplay() { return "x"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
         },
+        41: {
+            title: "[E3] Energy reset",
+            description: "x3 super exponent.",
+            cost: new Decimal("1000"),
+            unlocked() { return hasMilestone("lv", 1);},
+        },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return (hasUpgrade('p', 41)) || player.e.unlocked}
@@ -237,6 +243,7 @@ addLayer("s", {
         exp = new Decimal (1)
         if (hasUpgrade('meta', 12)) exp = exp.add(1)
         if (hasMilestone('lv', 0)) exp = exp.add(3)
+        if (hasUpgrade('e', 41)) exp = exp.times(3)
         return exp
     },
     update() {
@@ -581,6 +588,7 @@ addLayer("xp", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('xp', 11)) mult = mult.times(500)
+        if (hasUpgrade('p', 73)) mult = mult.times("4.44e444")
         return mult
 
     },
@@ -658,13 +666,13 @@ addLayer("lv", {
     milestones: {
         0: {
         requirementDescription: "Level 2",
-        effectDescription: "Get the following: <br> - Add 3 to the exponent of super <br> - Unlock more point upgrades (#6-10) <br> - Unlock Relic 5",
+        effectDescription: "Get the following: <br> - Add 3 to the exponent of super <br> - Unlock more point upgrades (#6 and #7) <br> - Unlock Relic 5",
         done() { return player.lv.points.gte(2) }
         },
 
         1: {
         requirementDescription: "Level 3",
-        effectDescription: "Get the following: <br> - Add 0 to the exponent of super <br> - Unlock more energy upgrades (E3-E5) <br> - Unlock upgrade #11",
+        effectDescription: "Get the following: <br> - Add 0 to the exponent of super <br> - Unlock an energy upgrade (E3) <br> - Unlock upgrade #8",
         done() { return player.lv.points.gte(3) }
         },
 
@@ -1175,6 +1183,12 @@ addLayer("a", {
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Achievements")
     },
+    infoboxes: {
+        info: {
+            title: "Achievements",
+            body() { return "I bought one upgrade and got an achievement! Yay!" },
+        }
+    },
     achievementPopups: true,
     achievements: {
         11: {
@@ -1262,6 +1276,12 @@ addLayer("ta", {
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Temp Achievements")
     },
+    infoboxes: {
+        info: {
+            title: "Temp Achievements",
+            body() { return "Because when you reach these temp layers you want to keep playing." },
+        }
+    },
     achievementPopups: true,
     achievements: {
         11: {
@@ -1296,6 +1316,12 @@ addLayer("hard", {
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Hardcaps")
+    },
+    infoboxes: {
+        info: {
+            title: "Hardcaps",
+            body() { return "Hardcaps! The official way to prevent inflation! <br> <i>does not prevent level 2 -> 3 jump</i>" },
+        }
     },
     achievementPopups: true,
     achievements: {
