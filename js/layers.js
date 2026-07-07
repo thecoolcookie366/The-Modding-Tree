@@ -643,6 +643,12 @@ addLayer("lv", {
         effectDescription: "Get the following: <br> - Add 0 to the exponent of super <br> - Unlock more energy upgrades (E3-E5) <br> - Unlock upgrade #11",
         done() { return player.lv.points.gte(3) }
         },
+
+        2: {
+        requirementDescription: "Level 4",
+        effectDescription: "Get the following: <br> - Unlock Mega Levels",
+        done() { return player.lv.points.gte(4) }
+        },
     },
     upgrades: {
         11: {
@@ -654,6 +660,51 @@ addLayer("lv", {
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return (hasUpgrade('xp', 12)) || player.lv.unlocked}
+
+    
+})
+
+addLayer("mlv", {
+    name: "megalevel", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "MLV", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 5, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(1),
+    }},
+    color: "#0c2913",
+    requires: new Decimal("1e15382"), // Can be a function that takes requirement increases into account
+    resource: "Mega Levels", // Name of prestige currency
+    baseResource: "XP", // Name of resource prestige is based on
+    baseAmount() {return player.xp.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 88.44, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Mega Levels (Universe 3, Part 5/?)",
+                titleStyle: {'color': '#0a1b0e'},
+                body: "<b>The finale.</b> <br>Levels can now turn into- okay nevermind. <br> <i>Milestones!</i>",
+                bodyStyle: {'background-color': "#081a0d"}
+            }
+        },
+    branches:['lv'],
+    milestones: {
+        0: {
+        requirementDescription: "Mega Level 2",
+        effectDescription: "And now you get THIS: <br> - ??? <br> - Unlock more infinity upgrades",
+        done() { return player.mlv.points.gte(2) }
+        },
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasMilestone('lv', 2)) || player.mlv.unlocked}
 
     
 })
@@ -1318,13 +1369,13 @@ addLayer("hard", {
             done() { return player.e.points.gt("999")},
             tooltip: "Reach the energy hardcap of 1,000.",
         },
-        21: {
-            name: "Super Hardcap v1.00",
+        12: {
+            name: "Super Hardcap 1",
             done() { return player.s.points.gt("1e225000")},
             tooltip: "Reach the pre-ultra super hardcap of 1e225,000.",
         },
-        22: {
-            name: "Super Hardcap v1.01",
+        13: {
+            name: "Super Hardcap 2",
             done() { return player.s.points.gt("1e999999999")},
             tooltip: "Reach the post-ultra super hardcap of <i>1e1,000,000,000, which cannot be increased any further!</i>",
         },

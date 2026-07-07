@@ -4,16 +4,16 @@ let modInfo = {
 	pointsName: "spacetime",
 	modFiles: ["layers.js", "tree.js"],
 
-	discordName: "Also play Celestial Incremental NG+!",
-	discordLink: "https://raw.githack.com/thecoolcookie366/celestial_incremental_ng/master/index.html",
+	discordName: "Cookie's Creations Server",
+	discordLink: "https://discord.gg/aUbDYX5Z3a",
 	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 24,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.00",
-	name: "Drawing's Revamp",
+	num: "1.005",
+	name: "Small Yet Big Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
