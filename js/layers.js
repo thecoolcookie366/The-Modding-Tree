@@ -46,49 +46,49 @@ addLayer("p", {
         21: {
             title: "[#2 1/5] Up! (about 100m)",
             description: "x3 spacetime.",
-            cost: new Decimal(5),
+            cost: new Decimal(3),
             unlocked() { return hasUpgrade(this.layer, 11); }
         },
 
         22: {
             title: "[#2 2/5] Up! (about 10km)",
             description: "x3 spacetime again.",
-            cost: new Decimal(25),
+            cost: new Decimal(15),
             unlocked() { return hasUpgrade(this.layer, 21); }
         },
 
         23: {
             title: "[#2 3/5] Up! (about 1 light year)",
             description: "x3 spacetime again again.",
-            cost: new Decimal(75),
+            cost: new Decimal(40),
             unlocked() { return hasUpgrade(this.layer, 22); }
         },
 
         24: {
             title: "[#2 4/5] Up! (5 hours or so)",
             description: "x3 spacetime again again again.",
-            cost: new Decimal(180),
+            cost: new Decimal(84),
             unlocked() { return hasUpgrade(this.layer, 23); }
         },
 
         25: {
             title: "[#2 5/5] Up! (okay let's go onto something new)",
             description: "x3 spacetime again<sup>2</sup>.",
-            cost: new Decimal(500),
+            cost: new Decimal(150),
             unlocked() { return hasUpgrade(this.layer, 24); }
         },
 
         31: {
             title: "[#3] Hmm...",
             description: "x6 spacetime but /3 spacetime.",
-            cost: new Decimal(1500),
+            cost: new Decimal(315),
             unlocked() { return hasUpgrade(this.layer, 25); }
         },
 
         41: {
             title: "[#4] Yellow",
             description: "Unlock energy. Energy boosts points.",
-            cost: new Decimal(4000),
+            cost: new Decimal(420),
             unlocked() { return hasUpgrade(this.layer, 31); },
             effect() {
         return player.e.points.add(5).pow(0.03)
@@ -99,14 +99,14 @@ addLayer("p", {
         51: {
             title: "[#5] Super Inflation",
             description: "Unlock Super. <i>Not required after doing your first super reset.</i>",
-            cost: new Decimal(100e6),
+            cost: new Decimal(10e6),
             unlocked() { return hasUpgrade("e", 21); }
         },
 
         61: {
             title: "<i>Relic 2/7 - The Relic of Simplicity</i>",
             description: "<i>x100 spacetime. Nothing much to say about this one.</i> <h2>The new relic is here, somewhere.</h2>",
-            cost: new Decimal(1e15),
+            cost: new Decimal(1e14),
             unlocked() { return hasUpgrade("plus", 31) && hasUpgrade("p", 51);},
         },
 
@@ -147,16 +147,17 @@ addLayer("e", {
 		points: new Decimal(0),
     }},
     color: "#eaff00",
-    requires: new Decimal(1000), // Can be a function that takes requirement increases into account
+    requires: new Decimal(200), // Can be a function that takes requirement increases into account
     resource: "energy", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1.5, // Prestige currency exponent
+    exponent: 1.05, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (hasUpgrade('s', 11)) mult = mult.times(10)
+        if (hasUpgrade('s', 11)) mult = mult.times(25)
         if (hasUpgrade('s', 21)) mult = mult.times(10000)
+        if (hasUpgrade('u', 11)) mult = mult.times(1e6)
         return mult
 
     },
@@ -166,7 +167,7 @@ addLayer("e", {
         return exp
     },
     update() {
-        if (player.e.points.gt("1000")) player.e.points = new Decimal("1000")
+        if (player.e.points.gt("100")) player.e.points = new Decimal("100")
     },
     infoboxes:{
             coolInfo: {
@@ -187,14 +188,14 @@ addLayer("e", {
         21: {
             title: "[E2] This isn't auto energy...",
             description: "But you like numbers, right? <h2>x1,000,000</h2> spacetime. Also unlock upgrade 5.",
-            cost: new Decimal(4),
+            cost: new Decimal(6),
             unlocked() { return hasUpgrade(this.layer, 11); },
         },
 
         31: {
             title: "<i>Relic 3/7 - The Relic of Numbers</i>",
-            description: "<i>You still like numbers, right? Okay then. For each energy, add +5M to the super gain multiplier, capping out at x5B. (+ unexplained spacetime boost)</i> <h2>No more relics until Ultra.</h2>",
-            cost: new Decimal(5),
+            description: "<i>You still like numbers, right? Okay then. For each energy, add +5M to the super gain multiplier, capping out at x500M. (+ unexplained spacetime boost)</i> <h2>No more relics until Ultra.</h2>",
+            cost: new Decimal(22),
             unlocked() { return hasUpgrade("p", 61);},
             effect() {
                 return player.e.points.mul(5e6).clamp(1, 5e9)
@@ -204,7 +205,7 @@ addLayer("e", {
         41: {
             title: "[E3] Energy reset",
             description: "x3 super exponent.",
-            cost: new Decimal("1000"),
+            cost: new Decimal("100"),
             unlocked() { return hasMilestone("lv", 1);},
         },
     },
@@ -222,7 +223,7 @@ addLayer("s", {
 		points: new Decimal(0),
     }},
     color: "#ff0000",
-    requires: new Decimal(25e6), // Can be a function that takes requirement increases into account
+    requires: new Decimal(10e6), // Can be a function that takes requirement increases into account
     resource: "super", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
@@ -262,7 +263,7 @@ addLayer("s", {
     upgrades: {
         11: {
             title: "[S1] Woah.",
-            description: "Energy is x10 more expensive but you get x50,000 spacetime. Also, each super up to 5 super gives +5 multiplier to your points. <i>psst... here's a free layer for you :)</i>",
+            description: "Energy is x25 more expensive but you get x50,000 spacetime. Also, each super up to 5 super gives +5 multiplier to your points. <i>psst... here's a free layer for you :)</i>",
             cost: new Decimal(1),
             effect() {
                 return player.s.points.mul(5).clamp(1, 25)
@@ -329,7 +330,7 @@ addLayer("u", {
     upgrades: {
         11: {
             title: "[U1] One more time",
-            description: "Let's do this one more time. First of all, you get x1e12 spacetime. Second of all... <i>well, I think you know what you're gonna get now!</i> Finally, uncap your super amount. (it can now go above 1e225,000)",
+            description: "Let's do this one more time. First of all, you get x1e12 spacetime. Second of all... <i>well, I think you know what you're gonna get now!</i> Finally, uncap your super amount. (it can now go above 1e225,000). Oh right i forgot, x1M your energy cost.",
             cost: new Decimal(1),
         },
 
@@ -343,7 +344,7 @@ addLayer("u", {
         31: {
             title: "[U2] Exponents",
             description: "Unlock Meta. <b>WARNING: If you lose U2, you can no longer access Meta.</b>",
-            cost: new Decimal(5),
+            cost: new Decimal(3),
             unlocked() { return hasUpgrade("u", 21);},
         },
 
@@ -405,8 +406,8 @@ addLayer("inf", {
         21: {
             title: "[∞2] Let's go Infinite!",
             description: "About time i made a spacetime boost that scales based on your spacetime!",
-            cost: new Decimal("100000"),
-            unlocked() { return hasUpgrade("inf", 11);},
+            cost: new Decimal("50000"),
+            unlocked() { return hasMilestone("lv", 1);},
             effect() {
             return player.points.add(1).pow(0.9)
             },
@@ -417,7 +418,7 @@ addLayer("inf", {
             title: "[∞3] The final push!",
             description: "You now get two things: Coolness points (does nothing) and ^3.33 ultra.",
             cost: new Decimal("1e30"),
-            unlocked() { return hasUpgrade("inf", 21);},
+            unlocked() { return hasMilestone("mlv", 0);},
             effect() {
             return player.points.add(1).pow(player.points.pow(player.points.pow(player.points)))
             },
@@ -454,7 +455,7 @@ addLayer("meta", {
         return new Decimal(1)
     },
     update() {
-        if (player.meta.points.gt("1e1.796e308")) player.meta.points = new Decimal("1e1.796e308")
+        if (player.meta.points.gt("1e1e1e1.796e308")) player.meta.points = new Decimal("1e1e1e1.796e308")
     },
     infoboxes:{
             coolInfo: {
@@ -469,54 +470,54 @@ addLayer("meta", {
         11: {
             title: "[μ1] Meta Spacetime",
             description: "Upgrades are categorised into 2 categories: μ[x] (which are regular upgrades) and +μ[x] which add new features to Meta. For this one, get a x10 boost to spacetime!",
-            cost: new Decimal("1000"),
+            cost: new Decimal("100"),
         },
 
         12: {
             title: "[μ2] Meta Super",
             description: "<i>This is super cool!</i> ^2 your super.",
-            cost: new Decimal("1e10"),
+            cost: new Decimal("25000"),
             unlocked() { return hasUpgrade("meta", 11);},
         },
 
         13: {
             title: "[μ3] Meta Ultra",
             description: "This is just as ridiculous as the previous meta. ^2 your ultra.",
-            cost: new Decimal("1e25"),
+            cost: new Decimal("250000"),
             unlocked() { return hasUpgrade("meta", 12);},
         },
 
         14: {
             title: "[μ4] Meta Infinity",
             description: "And now let's break infinity. x6 infinity, then ^6 infinity.",
-            cost: new Decimal("1e1e6"),
+            cost: new Decimal("1.79e308"),
             unlocked() { return hasUpgrade("meta", 13);},
         },
 
         21: {
             title: "[+μ1] Meta Meta",
             description: "Unlock the x1.01 Meta button!",
-            cost: new Decimal("2000"),
+            cost: new Decimal("150"),
         },
 
         31: {
             title: "[+μ2] Meta Meta Meta Meta Meta Meta Meta Meta Meta Meta Meta Meta...",
             description: "Unlock the ^1.01 Meta button!",
-            cost: new Decimal("1e50"),
+            cost: new Decimal("2.5e6"),
             unlocked() { return hasUpgrade("meta", 21);},
         },
 
         41: {
             title: "[+μ3] When the",
-            description: "Unlock the ^10.1 Meta button! Wait what-",
-            cost: new Decimal("1e1e10"),
+            description: "Unlock the ^Meta Meta button! Wait what-",
+            cost: new Decimal("1.11e11111"),
             unlocked() { return hasUpgrade("meta", 31);},
         },
     },
     clickables: {
         11: {
            display() { return "Fix your Meta." },
-           tooltip() { return "Set your Meta to 1.001 after doing a row 4+ reset to make Meta work."},
+           tooltip() { return "Set your Meta to 1.001 after doing a row 4+ reset to make Meta work. (should be fixed by now)"},
            canClick() { return true },
            color() { return "#ffffff93" },
             onClick() {
@@ -526,7 +527,7 @@ addLayer("meta", {
 
         21: {
            display() { return "+1.01 your Meta." },
-           tooltip() { return "Who made this abomination of a button?!"},
+           tooltip() { return "Who made this button?!"},
            canClick() { return true },
            color() { return "#ffffff93" },
             onClick() {
@@ -546,7 +547,7 @@ addLayer("meta", {
 
         23: {
            display() { return "^1.01 your Meta." },
-           tooltip() { return "Hey, all meta thingies must have inflation in them, right?"},
+           tooltip() { return "All meta thingies must have inflation in them, right?"},
            canClick() { return hasUpgrade("meta", 31); },
            color() { return "#ffffff93" },
             onClick() {
@@ -555,12 +556,12 @@ addLayer("meta", {
         },
 
         24: {
-           display() { return "^10.1 your Meta." },
+           display() { return "^Meta your Meta." },
            tooltip() { return "WOAH"},
            canClick() { return hasUpgrade("meta", 41); },
            color() { return "#ffffff93" },
             onClick() {
-                player.meta.points = player.meta.points.pow(10.1)
+                player.meta.points = player.meta.points.pow(player.meta.points)
             }
         },
     },
@@ -595,7 +596,7 @@ addLayer("xp", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         exp = new Decimal (1)
         if (hasUpgrade('lv', 11)) exp = exp.add(9)
-        if (hasUpgrade('lv', 11)) exp = exp.add(9)
+        if (hasUpgrade('lv', 11)) exp = exp.add(5)
         if (hasUpgrade('xp', 21)) exp = exp.times(6)
         return exp
     },
@@ -617,12 +618,12 @@ addLayer("xp", {
         12: {
             title: "Add a leveling bot to your own server",
             description: "Unlock Levels.",
-            cost: new Decimal("100000000"),
+            cost: new Decimal("2e6"),
         },
         21: {
             title: "Remove the leveling bot because it broke after only 1e21 XP",
             description: "x6 the XP exponent.",
-            cost: new Decimal("1e12500"),
+            cost: new Decimal("1e9800"),
         },
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
@@ -640,7 +641,7 @@ addLayer("lv", {
 		points: new Decimal(1),
     }},
     color: "#174523",
-    requires: new Decimal("1e8"), // Can be a function that takes requirement increases into account
+    requires: new Decimal("1e6"), // Can be a function that takes requirement increases into account
     resource: "Levels", // Name of prestige currency
     baseResource: "XP", // Name of resource prestige is based on
     baseAmount() {return player.xp.points}, // Get the current amount of baseResource
@@ -672,7 +673,7 @@ addLayer("lv", {
 
         1: {
         requirementDescription: "Level 3",
-        effectDescription: "Get the following: <br> - Add 0 to the exponent of super <br> - Unlock an energy upgrade (E3) <br> - Unlock upgrade #8",
+        effectDescription: "Get the following: <br> - Unlock a new infinity upgrade. <br> - Unlock an energy upgrade (E3) <br> - Unlock upgrade #8",
         done() { return player.lv.points.gte(3) }
         },
 
@@ -685,7 +686,7 @@ addLayer("lv", {
     upgrades: {
         11: {
             title: "Relic 5/7 - The Relic of Big Numbers",
-            description: "^10 XP. Then, add 9 to the exponent of XP. <h2>Next relic in 5 (layers)</h2>",
+            description: "^10 XP. Then, add 5 to the exponent of XP. <h2>Next relic in 5 (layers)</h2>",
             cost: new Decimal("0"),
             unlocked() { return hasMilestone("lv", 0);},
         },
@@ -750,7 +751,7 @@ addLayer("gr", {
 		points: new Decimal(0),
     }},
     color: "#04ff00",
-    requires: new Decimal("1e144"), // Can be a function that takes requirement increases into account
+    requires: new Decimal("1e140"), // Can be a function that takes requirement increases into account
     resource: "grass", // Name of prestige currency
     baseResource: "ultra", // Name of resource prestige is based on
     baseAmount() {return player.u.points}, // Get the current amount of baseResource
@@ -839,7 +840,7 @@ addLayer("pie", {
         },
     },
     row: 100, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return player.points.gte(new Decimal("1e4380"))}
 
     
 })
@@ -884,7 +885,7 @@ addLayer("tierone", {
         },
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return false}
 
     
 })
@@ -929,7 +930,7 @@ addLayer("tiertwo", {
         },
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return false}
 
     
 })
@@ -974,7 +975,7 @@ addLayer("tierthree", {
         },
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return false}
 
     
 })
@@ -988,7 +989,7 @@ addLayer("plus", {
 		points: new Decimal(0),
     }},
     color: "#434343",
-    requires: new Decimal(3), // Can be a function that takes requirement increases into account
+    requires: new Decimal(2), // Can be a function that takes requirement increases into account
     resource: "plus", // Name of prestige currency
     baseResource: "super", // Name of resource prestige is based on
     baseAmount() {return player.s.points}, // Get the current amount of baseResource
@@ -1025,7 +1026,7 @@ addLayer("plus", {
         21: {
             title: "[+2] Really?",
             description: "This is even more glorious. Enjoy MORE super from + because why not!",
-            cost: new Decimal(3),
+            cost: new Decimal(2),
             unlocked() { return hasUpgrade(this.layer, 11); },
             effect() {
         return player.plus.points.add(1).pow(1.618033)
@@ -1327,8 +1328,8 @@ addLayer("hard", {
     achievements: {
         11: {
             name: "Energized Hardcap",
-            done() { return player.e.points.gt("999")},
-            tooltip: "Reach the energy hardcap of 1,000.",
+            done() { return player.e.points.gt("99")},
+            tooltip: "Reach the energy hardcap of 100.",
         },
         12: {
             name: "Super Hardcap 1",
@@ -1349,7 +1350,7 @@ addLayer("what", {
     symbol: "???",
     position: 3,
     row: "side",
-    color: "#711212",
+    color: "#c86767",
     resource: "eternal voids", 
     startData() { return {
         unlocked: true,

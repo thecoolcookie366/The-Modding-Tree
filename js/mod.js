@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.005",
-	name: "Small Yet Big Update",
+	num: "1.006",
+	name: "Balancing: Full Version",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -24,6 +24,9 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update <br>
 	<br>
 
+	<h3>v1.006</h3><br>
+		- Rebalanced everything and made the game faster.<br>
+		<br>
 	<h2>v1.005</h2><br>
 		- Added Meta. Expect really big numbers from it!<br>
 		- Added a Hardcaps layer. <br>
