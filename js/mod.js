@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.006",
-	name: "Balancing: Full Version",
+	num: "1.007",
+	name: "The Automation and Hotkeys Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -24,6 +24,12 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update <br>
 	<br>
 
+	<h3>v1.007</h3><br>
+		- Added one new layer to every row before Grass. (water, tetr, eternities)<br>
+		- Added automation!!<br>
+		- Added the space-spacetime layer with two new challenges.<br>
+		- Most importantly... ADDED HOTKEYS<br>
+		<br>
 	<h3>v1.006</h3><br>
 		- Rebalanced everything and made the game faster.<br>
 		<br>
@@ -36,7 +42,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- <i>balancing</i><br>
 		<br>
 	<h3>v1.003</h3><br>
-		- Added a new temp layer.<br>
+		- Added a new bonus layer.<br>
 		- Added Universe 0? <br>
 		<br>
 	<h1>v1.00</h1><br>
@@ -84,7 +90,10 @@ function getPointGen() {
 	if (hasUpgrade('pie', 21)) gain = gain.times(5)
 	if (hasUpgrade('pie', 31)) gain = gain.times(20)
 	if (hasUpgrade('meta', 11)) gain = gain.times(10)
+	if (hasUpgrade('w', 11)) gain = gain.times("1e1000")
 	if (hasUpgrade('inf', 21)) gain = gain.times(upgradeEffect('inf', 21))
+	if (hasUpgrade('w', 21)) gain = gain.times(upgradeEffect('w', 21))
+	if (hasUpgrade('np', 12)) gain = gain.divide("1e1099")
 	return gain
 }
 
@@ -94,13 +103,15 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-1)) return "<h3>Reach 1e4,380 spacetime to win!</h3>"},
-	function() {if (player.points.gt(-1)) return "<h3>True endgame: 1e4,400 spacetime</h3>"},
+	function() {if (player.points.gt(-1)) return "<h3>v1.007 endgame: 1e71,800 spacetime!</h3>"},
+	// function() {if (player.points.gt(-1)) return "<h2>beta version! do not publish to galaxy</h2>"},
+	function() {if (inChallenge('sst', 11)) return "<i>You are currently in the Endurance Test challenge.</i>"},
+	function() {if (inChallenge('sst', 12)) return "<i>You are currently in the Reversing The Game challenge.</i>"}
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e4380"))
+	return player.points.gte(new Decimal("1e71800"))
 }
 
 

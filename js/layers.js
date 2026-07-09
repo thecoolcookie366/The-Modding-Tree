@@ -27,6 +27,14 @@ addLayer("p", {
         if (hasUpgrade('exp', 21)) exp = exp.pow(upgradeEffect('exp', 21))
         return exp
     },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('gr',0)) Gen = 1
+        if(inChallenge('sst',11)) Gen = 0
+        return Gen
+    },
+    autoUpgrade() {return hasMilestone('gr', 0)},
+    hotkeys:[{key:"p",description:"P: Reset for points (universe 1)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Points (Universe 1, Part 1/2)",
@@ -133,7 +141,60 @@ addLayer("p", {
 
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true}
+    layerShown(){return !inChallenge('sst', 11)},
+
+
+})
+
+addLayer("np", {
+    name: "negativepoints", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "NP", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#1c1c1c",
+    requires: new Decimal("1e1090"), // Can be a function that takes requirement increases into account
+    resource: "negative points", // Name of prestige currency
+    baseResource: "spacetime", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.5, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        exp = new Decimal (1)
+        return exp
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Negative Points (Universe 0, Part 2/1)",
+                titleStyle: {'color': '#8d8d8d'},
+                body: "<b>Welcome to the true first layer!</b> <br> DESCRIPTION NOT FOUND <br> <i>Use the click button to do resets!</i>",
+                bodyStyle: {'background-color': "#313131"}
+            }
+        },
+    branches:['p'],
+    upgrades: {
+        11: {
+            title: "[#-1] Pre-Start",
+            description: "-1 spacetime per second. (This actually does nothing, just unlocks the next upgrade)",
+            cost: new Decimal(10000),
+        },
+        12: {
+            title: "[#-2] Down!",
+            description: "/1e1,099 spacetime.</i>",
+            cost: new Decimal(100000),
+            unlocked() { return hasUpgrade("np", 11); }
+        },
+
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return inChallenge('sst', 12)},
 
 
 })
@@ -169,6 +230,13 @@ addLayer("e", {
     update() {
         if (player.e.points.gt("100")) player.e.points = new Decimal("100")
     },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('gr',0)) Gen = 1
+        return Gen
+    },
+    autoUpgrade() {return hasMilestone('gr', 0)},
+    hotkeys:[{key:"e",description:"E: Reset for energy (universe 1)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Energy (Universe 1, Part 2/2)",
@@ -214,6 +282,80 @@ addLayer("e", {
 
 })
 
+addLayer("w", {
+    name: "water", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "W", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 3, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#00ffff",
+    requires: new Decimal("2"), // Can be a function that takes requirement increases into account
+    resource: "water", // Name of prestige currency
+    baseResource: "energy", // Name of resource prestige is based on
+    baseAmount() {return player.e.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        exp = new Decimal (1)
+        return exp
+    },
+    update() {
+        if (player.e.points.gt("100")) player.e.points = new Decimal("100")
+    },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('gr',0)) Gen = 1000
+        if(inChallenge('sst',11)) Gen = 0
+        return Gen
+    },
+    autoUpgrade() {return hasMilestone('gr', 0)},
+    hotkeys:[{key:"w",description:"W: Reset for water (universe 1)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
+    infoboxes:{
+            coolInfo: {
+                title: "Water (Universe 4, Part 2 / a while)",
+                titleStyle: {'color': '#00bcbc'},
+                body: "<b>Welcome to Water! i should stop using that should i</b> <br> Helpful info: The water cap is 6, however this is not a hardcap. <br> <i>Remember: more water means more energy (someone check if this is true)</i>",
+                bodyStyle: {'background-color': "#006161"}
+            }
+        },
+    branches:['e','gr'],
+    upgrades: {
+        11: {
+            title: "[W1] it's blue mate",
+            description: "Inflation? Is it <b>x1e1,000</b> spacetime?",
+            cost: new Decimal(2),
+        },
+
+        21: {
+            title: "[W2] This isn't auto water...",
+            description: "A less dynamic self-boosting boost that self-boosts the boost of spacetime (^0.08 instead of ^0.9)",
+            cost: new Decimal(6),
+            unlocked() { return hasUpgrade(this.layer, 11); },
+            effect() {
+            return player.points.add(1).pow(0.08)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+
+        31: {
+            title: "[W3] Water reset (but you have auto water anyway)",
+            description: "x3 ultra exponent",
+            cost: new Decimal(1e4),
+            unlocked() { return hasUpgrade(this.layer, 21); },
+        },
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('gr', 11)) || player.w.unlocked}
+
+})
+
 addLayer("s", {
     name: "super", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "S", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -251,11 +393,12 @@ addLayer("s", {
         if (player.s.points.gt("1e225000") && !hasUpgrade("u", 11)) player.s.points = new Decimal("2e225000")
             else if (player.s.points.gt("1e1e9") && hasUpgrade("u", 11)) player.s.points = new Decimal("1e1e9")
     },
+    hotkeys:[{key:"s",description:"S: Reset for super (universe 2)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Super (Universe 2, Part 1/3)",
                 titleStyle: {'color': '#890000'},
-                body: "<b>This is your first reset layer.</b> <br> Reset spacetime, points (along with their upgrades), energy (and their upgrades too) to get Super starting from 25M points.<br> <i>Yes, these upgrades are serious.</i>",
+                body: "<b>This is your first reset layer.</b> <br> Reset spacetime, points (along with their upgrades), energy (and their upgrades too) to get Super starting from 10M points.<br> <i>Yes, these upgrades are serious.</i>",
                 bodyStyle: {'background-color': "#610000"}
             }
         },
@@ -316,8 +459,10 @@ addLayer("u", {
         exp = new Decimal (1)
         if (hasUpgrade('meta', 13)) exp = exp.add(1)
         if (hasUpgrade('inf', 31)) exp = exp.add(3)
+        if (hasUpgrade('w', 31)) exp = exp.times(3)
         return exp
     },
+    hotkeys:[{key:"u",description:"U: Reset for ultra (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Ultra (Universe 3, Part 1/?)",
@@ -387,6 +532,7 @@ addLayer("inf", {
         if (hasUpgrade('meta', 14)) exp = exp.add(5)
         return exp
     },
+    hotkeys:[{key:"i",description:"I: Reset for infinities (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Infinity (Universe ∞, Part ∞/∞)",
@@ -427,6 +573,57 @@ addLayer("inf", {
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return (hasUpgrade('u', 21)) || player.inf.unlocked }
+
+    
+})
+
+addLayer("etr", {
+    name: "eternity", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "∆", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 6, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#9c0fbc",
+    requires: new Decimal("1.79e308"), // Can be a function that takes requirement increases into account
+    resource: "eternities", // Name of prestige currency
+    baseResource: "infinities", // Name of resource prestige is based on
+    baseAmount() {return player.inf.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.001, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        exp = new Decimal (1)
+        return exp
+    },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasUpgrade('etr',11)) Gen = 10e30
+        return Gen
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Eternity (Universe ∆, Part ∆/∆)",
+                titleStyle: {'color': '#641076'},
+                body: "<b>It's not Universe ∆, it's U4!! </b> <br> Okay this one is accurate as you need 1.79e308 infinities<br> <i>This IS a reference.</i>",
+                bodyStyle: {'background-color': "#3f084b"}
+            }
+        },
+    branches:['u','gr'],
+    upgrades: {
+        11: {
+            title: "[∆1] Eternal",
+            description: "Get 1e33% of eternities per second. You'll see why.",
+            cost: new Decimal(1),
+        },
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('gr', 13)) || player.etr.unlocked }
 
     
 })
@@ -600,6 +797,7 @@ addLayer("xp", {
         if (hasUpgrade('xp', 21)) exp = exp.times(6)
         return exp
     },
+     hotkeys:[{key:"x",description:"X: Reset for XP (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Experience (Universe 3, Part 4/?)",
@@ -655,6 +853,7 @@ addLayer("lv", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    hotkeys:[{key:"l",description:"L: Reset for levels (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Levels (Universe 3, Part 4.5/?)",
@@ -720,6 +919,7 @@ addLayer("mlv", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    hotkeys:[{key:"m",description:"M: Reset for mega levels (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Mega Levels (Universe 3, Part 5/?)",
@@ -759,6 +959,7 @@ addLayer("gr", {
     exponent: 0.0999, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('tetr', 11)) mult = mult.times(2)
         return mult
 
     },
@@ -766,24 +967,131 @@ addLayer("gr", {
         exp = new Decimal (1)
         return exp
     },
+    hotkeys:[{key:"g",description:"G: Reset for grass (universe 4)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Grass (Universe 4, Part 1 / a while)",
                 titleStyle: {'color': '#00a82d'},
-                body: "<b>As you reset everything, you feel grass around you...</b> <br>Welcome to Universe 4! Next update is soon. <br> <i>great i touched grass.</i>",
+                body: "<b>As you reset everything, you feel grass around you...</b> <br>Welcome to Universe 4! Since grass is green and green can be related to recycling, this layer will recycle certain features (add new layers to previous rows, and new features to previous layers) <br> <i>great i touched grass.</i>",
                 bodyStyle: {'background-color': "#007a21"}
             }
         },
     branches:['u','mlv'],
     upgrades: {
         11: {
-            title: "[g1] update soon",
-            description: "update soon (in a few days, probably)",
-            cost: new Decimal("1e1e3"),
+            title: "[g1.1] Back to Row 1",
+            description: "Unlock Water.",
+            cost: new Decimal("1"),
+        },
+        12: {
+            title: "[g1.2] Back to Row 2",
+            description: "Unlock Tetration.",
+            cost: new Decimal("2"),
+        },
+        13: {
+            title: "[g1.3] Back to Row 3",
+            description: "Unlock Eternities.",
+            cost: new Decimal("3"),
+        },
+        21: {
+            title: "[g1.0?] Back to Row 0?",
+            description: "Unlock Spacetime?",
+            cost: new Decimal("4"),
+        },
+    },
+    milestones: {
+        0: {
+        requirementDescription: "5 grass",
+        effectDescription: "The long-awaited feature: You now gain 100% of all Row 1 stats gained on reset, and 100,000% of water gained on reset. This does not bypass the Energy hardcap, but does let you get more than 6 water. Also, unlock automation for those 3 layers.",
+        done() { return player.gr.points.gte(5) }
         },
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return (hasMilestone('mlv', 0)) || player.gr.unlocked}
+
+    
+})
+
+addLayer("sst", {
+    name: "spacetime", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "SST", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#8e8e8e",
+    requires: new Decimal("1"), // Can be a function that takes requirement increases into account
+    resource: "space-spacetime", // Name of prestige currency
+    baseResource: "spacetime", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 3e-4, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        exp = new Decimal (1)
+        if (hasUpgrade('sst', 11)) exp = exp.add(1)
+        if (hasUpgrade('sst', 11)) exp = exp.pow(player.sst.points)
+        return exp
+    },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasUpgrade('sst',11)) Gen = 1
+        return Gen
+    },
+    update() {
+        if (player.sst.points.gt("(e^307.9)3")) player.sst.points = new Decimal("(e^307.9)3")
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Spacetime (Universe 0, Part 1/1)",
+                titleStyle: {'color': '#4f4f4f'},
+                body: "Welcome to the start of the game. Wait, that's wrong!",
+                bodyStyle: {'background-color': "#272727"}
+            }
+        },
+    challenges: {
+    11: {
+        name: "Endurance Test",
+        challengeDescription: "<h3>You do not have the Points layer. Water generation is turned off.</h3>",
+        goalDescription: "<i>3.33e9 spacetime</i>",
+        rewardDescription: "<i>Unlock some space-spacetime milestones.</i>",
+        canComplete: function() {return player.points.gte(3.33e9)},
+        
+    },
+    12: {
+        name: "Reversing The Game",
+        challengeDescription: "<h3>You have the Negative Points layer and start with 1e1,000 spacetime.</h3>",
+        goalDescription: "<i> <1e-50 spacetime</i>",
+        rewardDescription: "<i>Unlock some space-spacetime upgrades.</i>",
+        onEnter: function() {player.points = new Decimal ("1e1000")},
+        canComplete: function() {return player.points.lt(100)},
+        
+    },
+    },
+    milestones: {
+        0: {
+        requirementDescription: "100 SST",
+        effectDescription: "Unlock Cookies (soon)",
+        done() { return player.sst.points.gte(100) },
+        unlocked() { return player.sst.challenges[11] === 1 }
+        },
+    },
+    upgrades: {
+        11: {
+            title: "Blah",
+            description: "Blah blah blah <i>boost your space-spacetime by ^space-spacetime</i> blah blah Blah also unlock auto SST",
+            cost: new Decimal("200"),
+            unlocked() { return player.sst.challenges[12] === 1 }
+        },
+    },
+    branches:['gr'],
+    row: 3, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('gr', 21)) || player.sst.unlocked}
 
     
 })
@@ -802,7 +1110,7 @@ addLayer("pie", {
     baseResource: "spacetime", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.001, // Prestige currency exponent
+    exponent: 1.676e-309, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -813,9 +1121,9 @@ addLayer("pie", {
     },
     infoboxes:{
             coolInfo: {
-                title: "Pie (Temporary Universe, v1.005)",
+                title: "Pie (Bonus Universe, v1.005)",
                 titleStyle: {'color': '#9e4d3c'},
-                body: "<b>What is a temp layer?</b> <br> A temp layer is a layer that gets reset on the next update. An update with a temp layer is sometimes called a pre-update, this layer is for v1.005 and will still exist in v1.01, but unobtainable!<br> <i>Enjoy x200 spacetime!</i>",
+                body: "<b>What is a bonus layer?</b> <br> A bonus layer is a layer that can help you get further. Bonus layers are not required for progression!<br> <i>Enjoy x200 spacetime! Also, the requirement for this layer (1e4,380) is the endgame of v1.005</i>",
                 bodyStyle: {'background-color': "#683126"}
             }
         },
@@ -840,7 +1148,7 @@ addLayer("pie", {
         },
     },
     row: 100, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return player.points.gte(new Decimal("1e4380"))}
+    layerShown(){return player.points.gte(new Decimal("1e4380")) || player.pie.unlocked}
 
     
 })
@@ -1003,6 +1311,7 @@ addLayer("plus", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    hotkeys:[{key:"1",description:"1: Reset for plus (universe 2)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Plus (Universe 2, Part 2/3)",
@@ -1053,7 +1362,7 @@ addLayer("plus", {
 
 addLayer("multi", {
     name: "multiplication", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "x", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "*", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
@@ -1074,6 +1383,7 @@ addLayer("multi", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    hotkeys:[{key:"2",description:"2: Reset for multi (universe 2)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Multi (Universe 2, Part 3/3)",
@@ -1134,6 +1444,7 @@ addLayer("exp", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    hotkeys:[{key:"3",description:"3: Reset for exp (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Exp (Universe 3, Part 2/?)",
@@ -1170,6 +1481,57 @@ addLayer("exp", {
 
     
 })
+
+addLayer("tetr", {
+    name: "tetration", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "ↆ", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 4, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#cc3aa3",
+    requires: new Decimal(2), // Can be a function that takes requirement increases into account
+    resource: "tetr", // Name of prestige currency
+    baseResource: "exp", // Name of resource prestige is based on
+    baseAmount() {return player.exp.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    hotkeys:[{key:"4",description:"4: Reset for tetr (universe 4)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
+    infoboxes:{
+            coolInfo: {
+                title: "Tetr (Universe 4, Part 3 / a while)",
+                titleStyle: {'color': '#942675'},
+                body: "<b>It wasn't the last one.</b> <br> Reset once, get the upgrade, row 3 reset and then you lose it.<br> <i>You need more super.</i>",
+                bodyStyle: {'background-color': "#671650"}
+            }
+        },
+    branches:['exp','gr'],
+    upgrades: {
+        11: {
+            title: "[ↆ1] This is just a checklist!",
+            description: "Unlock Pentation. Nah jk, x2 grass.",
+            cost: new Decimal(1),
+            effect() {
+            return player.gr.points.add(player.gr.points.pow(0.25))
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"% to unlocking something new (96.86 grass)" }, // Add formatting to the effect
+        },
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasUpgrade('gr', 12)) || player.tetr.unlocked}
+
+    
+})
+
 // A side layer with achievements, with no prestige
 addLayer("a", {
     symbol: "A",
@@ -1257,30 +1619,45 @@ addLayer("a", {
             tooltip: "Unlock Mega Levels. (Level 4)",
         },
         31: {
-            name: "Okay what is going on??",
-            done() { return false },
-            tooltip: "Buy the first Grass upgrade. (upgrade g1)",
+            name: "Hydration!",
+            done() { return hasUpgrade("gr", 11);},
+            tooltip: "Buy the first Grass upgrade. (upgrade g1.1)",
+        },
+        32: {
+            name: "Math just keeps going it seems.",
+            done() { return hasUpgrade("gr", 12);},
+            tooltip: "Buy the second Grass upgrade. (upgrade g1.2)",
+        },
+        33: {
+            name: "This is such an Antimatter Dimensions reference!",
+            done() { return hasUpgrade("gr", 13);},
+            tooltip: "Buy the third Grass upgrade. (upgrade g1.3)",
+        },
+        34: {
+            name: "We've fallen back right to the beginning.",
+            done() { return hasUpgrade("gr", 21);},
+            tooltip: "Re-unlock spacetime. (upgrade g1.0)",
         },
     },
 })
 
-addLayer("ta", {
-    symbol: "TA",
+addLayer("ba", {
+    symbol: "BA",
     position: 1,
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
     }},
     color: "#fedcba",
-    resource: "temp unobtainium", 
+    resource: "bonus unobtainium", 
     row: "side",
     tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Temp Achievements")
+        return ("Bonus Achievements")
     },
     infoboxes: {
         info: {
-            title: "Temp Achievements",
-            body() { return "Because when you reach these temp layers you want to keep playing." },
+            title: "Bonus Achievements",
+            body() { return "Because when you reach these bonus layers you want to keep playing." },
         }
     },
     achievementPopups: true,
@@ -1288,19 +1665,19 @@ addLayer("ta", {
         11: {
             name: "Thanks for the pie!",
             done() { return hasUpgrade("pie", 11); },
-            tooltip: "Get the small pie. (pie temp layer, v1.01)",
+            tooltip: "Get the small pie. (pie bonus layer)",
         },
 
         12: {
             name: "Yay, pies!",
             done() { return hasUpgrade("pie", 21); },
-            tooltip: "Get the medium pie. (pie temp layer, v1.01)",
+            tooltip: "Get the medium pie. (pie bonus layer)",
         },
 
         13: {
             name: "Pie for me, pie for you",
             done() { return hasUpgrade("pie", 31); },
-            tooltip: "Get the big pie! (pie temp layer, v1.01)",
+            tooltip: "Get the big pie! (pie bonus layer, )",
         },
     },
 })
@@ -1402,7 +1779,6 @@ addLayer("what", {
             unlocked() { return hasUpgrade(this.layer, 11); },
         },
     },
-    
 })
 
 addLayer("qna", {
