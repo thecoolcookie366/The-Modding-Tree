@@ -1745,14 +1745,13 @@ addLayer("what", {
 
     clickables: {
         11: {
-           display() { return "Set your points to the placeholder, marking your save as cheated, but in return get the unobtainable." },
+           display() { return "Get the unobtainable." },
            tooltip() { return "There's no going back after this."},
            canClick() { return true },
            color() { return "#000000" },
             onClick() {
                 player.a.points = new Decimal(1)
                 player.what.points = player.what.points.add(0.0001)
-                player.points = new Decimal("(e^1000)3")
             }
         },
     },
