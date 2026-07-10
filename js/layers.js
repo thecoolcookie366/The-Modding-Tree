@@ -29,11 +29,11 @@ addLayer("p", {
     },
     passiveGeneration() {
         let Gen = 0
-        if(hasMilestone('gr',0)) Gen = 1
+        if(hasMilestone('lv',0)) Gen = 1
         if(inChallenge('sst',11)) Gen = 0
         return Gen
     },
-    autoUpgrade() {return hasMilestone('gr', 0)},
+    autoUpgrade() {return hasMilestone('lv', 0)},
     hotkeys:[{key:"p",description:"P: Reset for points (universe 1)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -233,10 +233,10 @@ addLayer("e", {
     },
     passiveGeneration() {
         let Gen = 0
-        if(hasMilestone('gr',0)) Gen = 1
+        if(hasMilestone('lv',0)) Gen = 100
         return Gen
     },
-    autoUpgrade() {return hasMilestone('gr', 0)},
+    autoUpgrade() {return hasMilestone('lv', 0)},
     hotkeys:[{key:"e",description:"E: Reset for energy (universe 1)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -313,11 +313,11 @@ addLayer("w", {
     },
     passiveGeneration() {
         let Gen = 0
-        if(hasMilestone('gr',0)) Gen = 1000
+        if(hasMilestone('lv',0)) Gen = 2222
         if(inChallenge('sst',11)) Gen = 0
         return Gen
     },
-    autoUpgrade() {return hasMilestone('gr', 0)},
+    autoUpgrade() {return hasMilestone('lv', 0)},
     hotkeys:[{key:"w",description:"W: Reset for water (universe 1)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -396,6 +396,12 @@ addLayer("s", {
         if (player.s.points.gt("1e225000") && !hasUpgrade("u", 11)) player.s.points = new Decimal("2e225000")
             else if (player.s.points.gt("1e1e9") && hasUpgrade("u", 11)) player.s.points = new Decimal("1e1e9")
     },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('mlv',0)) Gen = 1
+        return Gen
+    },
+    autoUpgrade() {return hasMilestone('mlv', 0)},
     hotkeys:[{key:"s",description:"S: Reset for super (universe 2)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -466,6 +472,12 @@ addLayer("u", {
         if (hasUpgrade('w', 31)) exp = exp.times(3)
         return exp
     },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('gr',0)) Gen = 1
+        return Gen
+    },
+    autoUpgrade() {return hasMilestone('gr', 0)},
     hotkeys:[{key:"u",description:"U: Reset for ultra (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -536,6 +548,12 @@ addLayer("inf", {
         if (hasUpgrade('meta', 14)) exp = exp.add(5)
         return exp
     },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('gr',0)) Gen = 1
+        return Gen
+    },
+    autoUpgrade() {return hasMilestone('gr', 0)},
     hotkeys:[{key:"i",description:"I: Reset for infinities (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -612,6 +630,7 @@ addLayer("etr", {
         if(hasUpgrade('etr',11)) Gen = 10e30
         return Gen
     },
+    autoUpgrade() {return hasMilestone('gr', 0)},
     infoboxes:{
             coolInfo: {
                 title: "Eternity (Universe ∆, Part ∆/∆)",
@@ -660,6 +679,7 @@ addLayer("meta", {
     update() {
         if (player.meta.points.gt("1e1e1e1.796e308")) player.meta.points = new Decimal("1e1e1e1.796e308")
     },
+    autoUpgrade() {return hasMilestone('gr', 0)},
     infoboxes:{
             coolInfo: {
                 title: "Meta (Universe 3, Part 3/?)",
@@ -803,6 +823,12 @@ addLayer("xp", {
         if (hasUpgrade('xp', 21)) exp = exp.times(6)
         return exp
     },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('gr',0)) Gen = 1
+        return Gen
+    },
+    autoUpgrade() {return hasMilestone('gr', 0)},
     hotkeys:[{key:"x",description:"X: Reset for XP (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -859,6 +885,9 @@ addLayer("lv", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    autoPrestige() {return hasMilestone('gr', 0)},
+    resetsNothing() {return hasMilestone('gr', 0)},
+    autoUpgrade() {return hasMilestone('gr', 0)},
     hotkeys:[{key:"l",description:"L: Reset for levels (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -872,7 +901,7 @@ addLayer("lv", {
     milestones: {
         0: {
         requirementDescription: "Level 2",
-        effectDescription: "Get the following: <br> - Add 3 to the exponent of super <br> - Unlock more point upgrades (#6 and #7) <br> - Unlock Relic 5",
+        effectDescription: "Get the following: <br> - Add 3 to the exponent of super <br> - Unlock more point upgrades (#6 and #7) <br> - Unlock Relic 5 <br> - Unlock Row 1 Automation",
         done() { return player.lv.points.gte(2) }
         },
 
@@ -925,6 +954,9 @@ addLayer("mlv", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    autoPrestige() {return hasMilestone('gr', 0)},
+    resetsNothing() {return hasMilestone('gr', 0)},
+    autoUpgrade() {return hasMilestone('gr', 0)},
     hotkeys:[{key:"m",description:"M: Reset for mega levels (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -938,7 +970,7 @@ addLayer("mlv", {
     milestones: {
         0: {
         requirementDescription: "Mega Level 2",
-        effectDescription: "And now you get THIS: <br> - ??? <br> - Unlock more infinity upgrades",
+        effectDescription: "And now you get THIS: <br> - Row 2 Automation <br> - Unlock more infinity upgrades",
         done() { return player.mlv.points.gte(2) }
         },
     },
@@ -1008,7 +1040,7 @@ addLayer("gr", {
     milestones: {
         0: {
         requirementDescription: "5 grass",
-        effectDescription: "The long-awaited feature: You now gain 100% of all Row 1 stats gained on reset, and 100,000% of water gained on reset. This does not bypass the Energy hardcap, but does let you get more than 6 water. Also, unlock automation for those 3 layers.",
+        effectDescription: "The long-awaited feature: Row 3 Automation (the most grindy row)",
         done() { return player.gr.points.gte(5) }
         },
     },
@@ -1636,6 +1668,9 @@ addLayer("plus", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    autoPrestige() {return hasMilestone('mlv', 0)},
+    resetsNothing() {return hasMilestone('mlv', 0)},
+    autoUpgrade() {return hasMilestone('mlv', 0)},
     hotkeys:[{key:"1",description:"1: Reset for plus (universe 2)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -1711,6 +1746,9 @@ addLayer("multi", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    autoPrestige() {return hasMilestone('mlv', 0)},
+    resetsNothing() {return hasMilestone('mlv', 0)},
+    autoUpgrade() {return hasMilestone('mlv', 0)},
     hotkeys:[{key:"2",description:"2: Reset for multi (universe 2)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -1774,6 +1812,9 @@ addLayer("exp", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    autoPrestige() {return hasMilestone('mlv', 0)},
+    resetsNothing() {return hasMilestone('mlv', 0)},
+    autoUpgrade() {return hasMilestone('mlv', 0)},
     hotkeys:[{key:"3",description:"3: Reset for exp (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -1837,6 +1878,9 @@ addLayer("tetr", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    autoPrestige() {return hasMilestone('mlv', 0)},
+    resetsNothing() {return hasMilestone('mlv', 0)},
+    autoUpgrade() {return hasMilestone('mlv', 0)},
     hotkeys:[{key:"4",description:"4: Reset for tetr (universe 4)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
@@ -2166,4 +2210,40 @@ addLayer("qna", {
         },
     },
     
+})
+// A side layer with achievements, with no prestige
+addLayer("sa", {
+    symbol: "SA",
+    position: 5,
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "#617879",
+    resource: "secret unobtainium", 
+    row: "side",
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Secret Achievements")
+    },
+    infoboxes: {
+        info: {
+            title: "Secret Achievements",
+            body() { return "It's a mystery!" },
+        }
+    },
+    achievementPopups: true,
+    achievements: {
+        11: {
+            name: "The first one is always free ",
+            done() { return true },
+            goalTooltip: "Do you really need a hint for this?",
+            doneTooltip: "You get it at the start of the game.",
+        },
+        12: {
+            name: "Very Laggy",
+            done() { return player.e.points.gte(1000) },
+            goalTooltip: "Hint: Try using lag to your advantage.", // b54b081604a11200 - this is a useless string
+            doneTooltip: "Get 1,000 Energy.",
+        },
+    },
 })

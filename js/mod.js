@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.008",
-	name: "The Cookie Update",
+	num: "1.009",
+	name: "The Speed Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -24,6 +24,9 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update <br>
 	<br>
 
+	<h3>v1.009</h3><br>
+		- Made automation easier to obtain.<br>
+		<br>
 	<h3>v1.008</h3><br>
 		- Added four new cookie layers.<br>
 		- <b><i>hotkeys</i></b><br>
@@ -109,7 +112,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-1)) return "<h3>v1.008 endgame: 1e143,600 spacetime!</h3>"},
+	function() {if (player.points.gt(-1)) return "<h3>v1.009 endgame: 1e143,600 spacetime!</h3>"},
 	//function() {if (player.points.gt(-1)) return "<h2>beta version! do not publish to galaxy</h2>"},
 	function() {if (inChallenge('sst', 11)) return "<i>You are currently in the Endurance Test challenge.</i>"},
 	function() {if (inChallenge('sst', 12)) return "<i>You are currently in the Reversing The Game challenge.</i>"}
