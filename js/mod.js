@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.007",
-	name: "The Automation and Hotkeys Update",
+	num: "1.008",
+	name: "The Cookie Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -24,6 +24,11 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update <br>
 	<br>
 
+	<h3>v1.008</h3><br>
+		- Added four new cookie layers.<br>
+		- <b><i>hotkeys</i></b><br>
+		- Hovering on an upgrade with a formula shows the formula.<br>
+		<br>
 	<h3>v1.007</h3><br>
 		- Added one new layer to every row before Grass. (water, tetr, eternities)<br>
 		- Added automation!!<br>
@@ -93,6 +98,7 @@ function getPointGen() {
 	if (hasUpgrade('w', 11)) gain = gain.times("1e1000")
 	if (hasUpgrade('inf', 21)) gain = gain.times(upgradeEffect('inf', 21))
 	if (hasUpgrade('w', 21)) gain = gain.times(upgradeEffect('w', 21))
+	if (hasUpgrade('vc', 11)) gain = gain.times(upgradeEffect('vc', 11))
 	if (hasUpgrade('np', 12)) gain = gain.divide("1e1099")
 	return gain
 }
@@ -103,15 +109,15 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-1)) return "<h3>v1.007 endgame: 1e71,800 spacetime!</h3>"},
-	// function() {if (player.points.gt(-1)) return "<h2>beta version! do not publish to galaxy</h2>"},
+	function() {if (player.points.gt(-1)) return "<h3>v1.008 endgame: 1e143,600 spacetime!</h3>"},
+	//function() {if (player.points.gt(-1)) return "<h2>beta version! do not publish to galaxy</h2>"},
 	function() {if (inChallenge('sst', 11)) return "<i>You are currently in the Endurance Test challenge.</i>"},
 	function() {if (inChallenge('sst', 12)) return "<i>You are currently in the Reversing The Game challenge.</i>"}
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e71800"))
+	return player.points.gte(new Decimal("1e143600"))
 }
 
 

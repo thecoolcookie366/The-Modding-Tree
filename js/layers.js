@@ -96,6 +96,7 @@ addLayer("p", {
         41: {
             title: "[#4] Yellow",
             description: "Unlock energy. Energy boosts points.",
+            tooltip: "(E+5)^0.03",
             cost: new Decimal(420),
             unlocked() { return hasUpgrade(this.layer, 31); },
             effect() {
@@ -264,6 +265,7 @@ addLayer("e", {
             title: "<i>Relic 3/7 - The Relic of Numbers</i>",
             description: "<i>You still like numbers, right? Okay then. For each energy, add +5M to the super gain multiplier, capping out at x500M. (+ unexplained spacetime boost)</i> <h2>No more relics until Ultra.</h2>",
             cost: new Decimal(22),
+            tooltip: "+5M multi per energy",
             unlocked() { return hasUpgrade("p", 61);},
             effect() {
                 return player.e.points.mul(5e6).clamp(1, 5e9)
@@ -337,6 +339,7 @@ addLayer("w", {
             title: "[W2] This isn't auto water...",
             description: "A less dynamic self-boosting boost that self-boosts the boost of spacetime (^0.08 instead of ^0.9)",
             cost: new Decimal(6),
+            tooltip: "(spacetime+1)^0.08",
             unlocked() { return hasUpgrade(this.layer, 11); },
             effect() {
             return player.points.add(1).pow(0.08)
@@ -408,6 +411,7 @@ addLayer("s", {
             title: "[S1] Woah.",
             description: "Energy is x25 more expensive but you get x50,000 spacetime. Also, each super up to 5 super gives +5 multiplier to your points. <i>psst... here's a free layer for you :)</i>",
             cost: new Decimal(1),
+            tooltip: "+5 multi per super",
             effect() {
                 return player.s.points.mul(5).clamp(1, 25)
             },
@@ -553,6 +557,7 @@ addLayer("inf", {
             title: "[∞2] Let's go Infinite!",
             description: "About time i made a spacetime boost that scales based on your spacetime!",
             cost: new Decimal("50000"),
+            tooltip: "(spacetime+1)^0.9",
             unlocked() { return hasMilestone("lv", 1);},
             effect() {
             return player.points.add(1).pow(0.9)
@@ -564,6 +569,7 @@ addLayer("inf", {
             title: "[∞3] The final push!",
             description: "You now get two things: Coolness points (does nothing) and ^3.33 ultra.",
             cost: new Decimal("1e30"),
+            tooltip: "Coolness Points: (spacetime+1)^<br>(spcaetime^<br>(spacetime^<br>(spacetime)))",
             unlocked() { return hasMilestone("mlv", 0);},
             effect() {
             return player.points.add(1).pow(player.points.pow(player.points.pow(player.points)))
@@ -797,7 +803,7 @@ addLayer("xp", {
         if (hasUpgrade('xp', 21)) exp = exp.times(6)
         return exp
     },
-     hotkeys:[{key:"x",description:"X: Reset for XP (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
+    hotkeys:[{key:"x",description:"X: Reset for XP (universe 3)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
     infoboxes:{
             coolInfo: {
                 title: "Experience (Universe 3, Part 4/?)",
@@ -1076,7 +1082,7 @@ addLayer("sst", {
     milestones: {
         0: {
         requirementDescription: "100 SST",
-        effectDescription: "Unlock Cookies (soon)",
+        effectDescription: "Unlock Cookies.",
         done() { return player.sst.points.gte(100) },
         unlocked() { return player.sst.challenges[11] === 1 }
         },
@@ -1092,6 +1098,325 @@ addLayer("sst", {
     branches:['gr'],
     row: 3, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return (hasUpgrade('gr', 21)) || player.sst.unlocked}
+
+    
+})
+
+addLayer("vc", {
+    name: "vanillacookies", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "VC", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 5, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#af8e74",
+    requires: new Decimal("1e1e3"), // Can be a function that takes requirement increases into account
+    resource: "vanilla cookies", // Name of prestige currency
+    baseResource: "dark chocolate cookies", // Name of resource prestige is based on
+    baseAmount() {return player.dcc.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1e-5, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        exp = new Decimal (1)
+        return exp
+    },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('c',6)) Gen = 1
+        return Gen
+    },
+    update() {
+        if (player.vc.points.gt("1e13")) player.vc.points = new Decimal("1e13")
+    },
+    hotkeys:[{key:"V",description:"V: Reset for vanilla cookies (universe β)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
+    infoboxes:{
+            coolInfo: {
+                title: "Vanilla Cookies (Universe β, Part 4/4)",
+                titleStyle: {'color': '#847367'},
+                body: "Welcome to the layer before the 5th universe. Are you ready?",
+                bodyStyle: {'background-color': "#4d4037"}
+            }
+        },
+    upgrades:{
+        11: {
+            title: "It's time for a new upgrade. A better one.",
+            description: "Inflation.",
+            cost: new Decimal("1e10"),
+            tooltip: "the formula is just ridiculous so i won't tell you :) [it's another point self-boost, but now ^0.01)",
+            effect() {
+            return player.points.add(1).pow(0.01)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        12: {
+            title: "Universe 5",
+            description: "Unlock Magnets (SOON)",
+            cost: new Decimal("1e13"),
+        },
+    },
+    branches:['dcc'],
+    row: 3, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasMilestone('c', 5)) || player.vc.unlocked}
+
+    
+})
+
+addLayer("dcc", {
+    name: "darkchocolatecookies", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "DCC", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 4, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#5b2e0c",
+    requires: new Decimal("1e1e9"), // Can be a function that takes requirement increases into account
+    resource: "dark chocolate cookies", // Name of prestige currency
+    baseResource: "chocolate cookies", // Name of resource prestige is based on
+    baseAmount() {return player.cc.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1e-9, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        if (hasUpgrade('dcc', 15)) mult = mult.times(upgradeEffect('dcc', 15))
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        exp = new Decimal (1)
+        if(hasUpgrade('dcc',13)) exp = exp.add(1)
+        return exp
+    },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('c',4)) Gen = 1
+        return Gen
+    },
+    hotkeys:[{key:"d",description:"D: Reset for dark chocolate cookies (universe β)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
+    infoboxes:{
+            coolInfo: {
+                title: "Dark Chocolate Cookies (Universe β, Part 3/4)",
+                titleStyle: {'color': '#442005'},
+                body: "Almost at the point of no return...",
+                bodyStyle: {'background-color': "rgb(56, 29, 8)"}
+            }
+        },
+    upgrades:{
+        11: {
+            title: "Cookies?",
+            description: "x2 something.",
+            cost: new Decimal("1e3"),
+        },
+        12: {
+            title: "Clever tricks you got.",
+            description: "x2 something again.",
+            cost: new Decimal("25e3"),
+        },
+        13: {
+            title: "Okay fine here's a real upgrade",
+            description: "^2 DCC.",
+            cost: new Decimal("1e6"),
+            unlocked() {return hasUpgrade('dcc',12)},
+        },
+        14: {
+            title: "There can only be 4.",
+            description: "Dark chocolate cookies boost chocolate cookies.",
+            cost: new Decimal("1e16"),
+            unlocked() {return hasUpgrade('dcc',13)},
+            tooltip: "(DCC+1)^10M",
+            effect() {
+            return player.dcc.points.add(1).pow(10e6)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        15: {
+            title: "There can only be 5?",
+            description: "Cookies boost dark chocolate cookies.",
+            cost: new Decimal("1e300"),
+            unlocked() {return hasUpgrade('dcc',13)},
+            tooltip: "(C+1)^0.00000000001",
+            effect() {
+            return player.c.points.add(1).pow(0.00000000001)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+    },
+    branches:['cc'],
+    row: 3, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasMilestone('c', 2)) || player.dcc.unlocked}
+
+    
+})
+
+addLayer("cc", {
+    name: "chocolatecookies", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "CC", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 3, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#984b10",
+    requires: new Decimal("1e10"), // Can be a function that takes requirement increases into account
+    resource: "chocolate cookies", // Name of prestige currency
+    baseResource: "cookies", // Name of resource prestige is based on
+    baseAmount() {return player.c.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        if (hasUpgrade('cc', 13)) mult = mult.times("1e1000")
+        if (hasUpgrade('dcc', 14)) mult = mult.times(upgradeEffect('dcc', 14))
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        exp = new Decimal (1)
+        return exp
+    },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('c',3)) Gen = 1
+        return Gen
+    },
+    hotkeys:[{key:"k",description:"K: Reset for chocolate cookies (universe β)",onPress(){if (canReset(this.layer))doReset(this.layer);}}],
+    infoboxes:{
+            coolInfo: {
+                title: "Chocolate Cookies (Universe β, Part 2/4)",
+                titleStyle: {'color': '#6d3307'},
+                body: "It's time for a recap of v0.13!",
+                bodyStyle: {'background-color': "rgb(75, 41, 13)"}
+            }
+        },
+    upgrades:{
+        11: {
+            title: "Cookie Duplication",
+            description: "x2 cookies.",
+            cost: new Decimal("200"),
+        },
+        12: {
+            title: "Strong Cookie Duplication",
+            description: "x3 cookies.",
+            cost: new Decimal("2000"),
+        },
+        13: {
+            title: "Inflation! Part 1",
+            description: "x1e1,000 chocolate cookies.",
+            cost: new Decimal("20000"),
+        },
+        14: {
+            title: "Inflation! Part 2",
+            description: "x1e1,000 cookies.",
+            cost: new Decimal("2e1004"),
+        },
+        15: {
+            title: "Deflation! Part -3",
+            description: "Chocolate cookies boost cookies.",
+            cost: new Decimal("4e2003"),
+            tooltip: "(CC+1)^4",
+            effect() {
+            return player.cc.points.add(1).pow(4)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+    },
+    branches:['c'],
+    row: 3, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasMilestone('c', 1)) || player.cc.unlocked}
+
+    
+})
+
+addLayer("c", {
+    name: "cookies", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "C", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#e36e14",
+    requires: new Decimal("1e20"), // Can be a function that takes requirement increases into account
+    resource: "cookies", // Name of prestige currency
+    baseResource: "grass", // Name of resource prestige is based on
+    baseAmount() {return player.gr.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        if (hasUpgrade('cc', 11)) mult = mult.times(2)
+        if (hasUpgrade('cc', 12)) mult = mult.times(3)
+        if (hasUpgrade('cc', 14)) mult = mult.times("1e1000")
+        if (hasUpgrade('cc', 15)) mult = mult.times(upgradeEffect('cc', 15))
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        exp = new Decimal (1)
+        return exp
+    },
+    passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('c',0)) Gen = 1
+        return Gen
+    },
+    update() {
+        if (player.c.points.gt("1e1e15")) player.c.points = new Decimal("1e1e15")
+    },
+    infoboxes:{
+            coolInfo: {
+                title: "Cookies (Universe β, Part 1/4)",
+                titleStyle: {'color': '#ab5e1f'},
+                body: "Before v1.000, there were COOKIES.",
+                bodyStyle: {'background-color': "#7e4517"}
+            }
+        },
+    milestones: {
+        0: {
+        requirementDescription: "1 cookie",
+        effectDescription: "Start gaining cookies automatically.",
+        done() { return player.c.points.gte(1) },
+        },
+        1: {
+        requirementDescription: "1e10 cookies",
+        effectDescription: "Unlock Chocolate Cookies.",
+        done() { return player.c.points.gte(1e10) },
+        },
+        2: {
+        requirementDescription: "e1,000,000,000 cookies",
+        effectDescription: "Unlock Dark Chocolate Cookies.",
+        done() { return player.c.points.gte("1e1e9") },
+        },
+        3: {
+        requirementDescription: "e5e9 cookies",
+        effectDescription: "Automate Chocolate Cookie gain.",
+        done() { return player.c.points.gte("1e5e9") },
+        },
+        4: {
+        requirementDescription: "e1e10 cookies",
+        effectDescription: "Automate Dark Chocolate Cookie gain.",
+        done() { return player.c.points.gte("1e1e10") },
+        },
+        5: {
+        requirementDescription: "e1e12 cookies",
+        effectDescription: "Unlock Vanilla Cookies.",
+        done() { return player.c.points.gte("1e1e12") },
+        },
+        6: {
+        requirementDescription: "e1e15 cookies",
+        effectDescription: "Automate Vanilla Cookie gain.",
+        done() { return player.c.points.gte("1e1e15") },
+        },
+    },
+    branches:['sst'],
+    row: 3, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return (hasMilestone('sst', 0)) || player.c.unlocked}
 
     
 })
@@ -1325,6 +1650,7 @@ addLayer("plus", {
         11: {
             title: "[+1] Glorious",
             description: "Want more super? Yes, + now gives more super!",
+            tooltip: "(plus+1)^3.141592",
             cost: new Decimal(1),
             effect() {
         return player.plus.points.add(1).pow(3.141592)
@@ -1336,6 +1662,7 @@ addLayer("plus", {
             title: "[+2] Really?",
             description: "This is even more glorious. Enjoy MORE super from + because why not!",
             cost: new Decimal(2),
+            tooltip: "(plus+1)^1.618033",
             unlocked() { return hasUpgrade(this.layer, 11); },
             effect() {
         return player.plus.points.add(1).pow(1.618033)
@@ -1347,6 +1674,7 @@ addLayer("plus", {
             title: "<i>Relic 1/7 - The Relic of Duplication</i>",
             description: "<i>Welcome to one of the 7 relics you will find across your journey. This one will give a massive boost equal to the one of [x1], except this one calculates the boost using + instead of multi.</i> <h2>Unlock a new Relic.</h2>",
             cost: new Decimal(4),
+            tooltip: "(plus+1)^19.565066",
             unlocked() { return hasUpgrade('multi', 11); },
             effect() {
         return player.plus.points.add(1).pow(19.565066)
@@ -1397,6 +1725,7 @@ addLayer("multi", {
         11: {
             title: "[x1] Another One!",
             description: "OP layer of the day! Let <h3>tau^phi</h3> multiply your super.",
+            tooltip: "(multi+1)^19.565066",
             cost: new Decimal(1),
             effect() {
         return player.multi.points.add(1).pow(19.565066)
@@ -1408,6 +1737,7 @@ addLayer("multi", {
             title: "[x2] Last one bro I swear...",
             description: "Let's get real, you probably saw this one coming. Create a <h2>tau^tau</h2> boost coming from plus, still to super. Let's do this. By the same boost, also increase points.",
             cost: new Decimal(2),
+            tooltip: "(plus+1)^103,540.92",
             unlocked() { return hasUpgrade(this.layer, 11); },
             effect() {
         return player.plus.points.add(1).pow(103540.92)
@@ -1459,6 +1789,7 @@ addLayer("exp", {
             title: "[^1] Isn't this out of the range?",
             description: "Who cares? Massively increase the power boost of points!",
             cost: new Decimal(1),
+            tooltip: "(exp+1)^1.2",
             effect() {
         return player.exp.points.add(1).pow(1.2)
     },
@@ -1469,6 +1800,7 @@ addLayer("exp", {
             title: "[^2] Isn't this STUPID?!",
             description: "Wow, you sure hate exponents. Increase the power boost of points by your super! <i>This does get quite inflated...</i>",
             cost: new Decimal(2),
+            tooltip: "(super+1)^0.00000001",
             unlocked() { return hasUpgrade(this.layer, 11); },
             effect() {
         return player.s.points.add(1).pow(0.00000001)
@@ -1521,9 +1853,9 @@ addLayer("tetr", {
             description: "Unlock Pentation. Nah jk, x2 grass.",
             cost: new Decimal(1),
             effect() {
-            return player.gr.points.add(player.gr.points.pow(0.25))
+            return player.gr.points.pow(0.003)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"% to unlocking something new (96.86 grass)" }, // Add formatting to the effect
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+" compacted grass" }, // Add formatting to the effect
         },
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
@@ -1638,6 +1970,31 @@ addLayer("a", {
             done() { return hasUpgrade("gr", 21);},
             tooltip: "Re-unlock spacetime. (upgrade g1.0)",
         },
+        35: {
+            name: "Back to the real beginning.",
+            done() { return hasMilestone("sst", 0);},
+            tooltip: "Unlock Cookies. (SST milestone)",
+        },
+        36: {
+            name: "Who remembers v0.13?",
+            done() { return hasMilestone("c", 1);},
+            tooltip: "Unlock Chocolate Cookies. (cookie milestone)",
+        },
+        37: {
+            name: "This will only get faster.",
+            done() { return hasMilestone("c", 2);},
+            tooltip: "Unlock Dark Chocolate Cookies. (cookie milestone)",
+        },
+        38: {
+            name: "Magnets...",
+            done() { return hasMilestone("c", 5);},
+            tooltip: "Unlock Vanilla Cookies. (cookie milestone)",
+        },
+        41: {
+            name: "A fresh start",
+            done() { return false},
+            tooltip: "Get your first Master Magnet.",
+        },
     },
 })
 
@@ -1717,6 +2074,16 @@ addLayer("hard", {
             name: "Super Hardcap 2",
             done() { return player.s.points.gt("1e999999999")},
             tooltip: "Reach the post-ultra super hardcap of <i>1e1,000,000,000, which cannot be increased any further!</i>",
+        },
+        14: {
+            name: "Cookie Hardcap",
+            done() { return player.c.points.gte("1e1e15")},
+            tooltip: "Reach the e1e15 cookie hardcap.",
+        },
+        15: {
+            name: "Vanilla Cookie Hardcap",
+            done() { return player.vc.points.gte("1e13")},
+            tooltip: "Reach the 1e13 vanilla cookie hardcap.",
         },
     },
 })
