@@ -1096,9 +1096,9 @@ addLayer("sst", {
     11: {
         name: "Endurance Test",
         challengeDescription: "<h3>You do not have the Points layer. Water generation is turned off.</h3>",
-        goalDescription: "<i>3.33e9 spacetime</i>",
+        goalDescription: "<i>120 spacetime</i>",
         rewardDescription: "<i>Unlock some space-spacetime milestones.</i>",
-        canComplete: function() {return player.points.gte(3.33e9)},
+        canComplete: function() {return player.points.gte(120)},
         
     },
     12: {
