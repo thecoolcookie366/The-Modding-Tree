@@ -1453,52 +1453,6 @@ addLayer("c", {
     
 })
 
-addLayer("mm", {
-    name: "mastermagnet", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "MM", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-    startData() { return {
-        unlocked: false,
-		points: new Decimal(0),
-    }},
-    color: "#ffffff",
-    requires: new Decimal("1e13"), // Can be a function that takes requirement increases into account
-    resource: "master magnets", // Name of prestige currency
-    baseResource: "vanilla cookies", // Name of resource prestige is based on
-    baseAmount() {return player.vc.points}, // Get the current amount of baseResource
-    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 3.141592, // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
-        return mult
-
-    },
-    gainExp() { // Calculate the exponent on main currency from bonuses
-        exp = new Decimal (1)
-        return exp
-    },
-    infoboxes:{
-            coolInfo: {
-                title: "Master Magnets (Universe 5)",
-                titleStyle: {'color': '#000000'},
-                body: "Reset EVERYTHING for an increased master magnet. You will get massive boosts.",
-                bodyStyle: {'background-color': "#000000"}
-            }
-        },
-        milestones: {
-        0: {
-        requirementDescription: "1 Master Magnet",
-        effectDescription: "Row 4 automation is unlocked. Enjoy!",
-        done() { return player.mm.points.gte(1) },
-        },
-    },
-    branches:['vc','gr'],
-    row: 4, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return (hasUpgrade('vc', 12)) || player.mm.unlocked}
-
-    
-})
-
 addLayer("pie", {
     name: "truepie", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "π", // This appears on the layer's node. Default is the id with the first letter capitalized
