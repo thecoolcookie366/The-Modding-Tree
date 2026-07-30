@@ -112,7 +112,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-1)) return "<h3>v1.009 endgame: 1e143,600 spacetime!</h3>"},
+	function() {if (player.points.gt(-1)) return "<h3>v1.009 endgame: 1e13 vanilla cookies!</h3>"},
 	//function() {if (player.points.gt(-1)) return "<h2>beta version! do not publish to galaxy</h2>"},
 	function() {if (inChallenge('sst', 11)) return "<i>You are currently in the Endurance Test challenge.</i>"},
 	function() {if (inChallenge('sst', 12)) return "<i>You are currently in the Reversing The Game challenge.</i>"}
@@ -120,7 +120,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e143600"))
+	return player.points.gte(new Decimal("(e^1.79e308)3"))
 }
 
 
