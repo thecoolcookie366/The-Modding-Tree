@@ -7,13 +7,13 @@ let modInfo = {
 	discordName: "Cookie's Creations Server",
 	discordLink: "https://discord.gg/aUbDYX5Z3a",
 	initialStartPoints: new Decimal (0), // Used for hard resets and new players
-	offlineLimit: 24,  // In hours
+	offlineLimit: 296280,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.009",
-	name: "The Speed Update",
+	num: "1.01",
+	name: "The Birthday Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -24,6 +24,15 @@ let changelog = `<h1>Changelog:</h1><br>
 	C = small update <br>
 	<br>
 
+	<h2>v1.01</h2><br>
+		The second biggest update ever!<br>
+		- Added Master Magnets.<br>
+		- Made automation even easier and more expansive.<br>
+		- Extended the offline time limit to 30+ years which is just arbitrarily large.<br>
+		- Updated the 2nd SST challenge. Did a lot of extensions to it too!<br>
+		- The 2nd bonus layer!<br>
+		- Everything else i forgot here (no new hotkeys this update...)<br>
+		<br>
 	<h3>v1.009</h3><br>
 		- Made automation easier to obtain.<br>
 		<br>
@@ -103,6 +112,16 @@ function getPointGen() {
 	if (hasUpgrade('w', 21)) gain = gain.times(upgradeEffect('w', 21))
 	if (hasUpgrade('vc', 11)) gain = gain.times(upgradeEffect('vc', 11))
 	if (hasUpgrade('np', 12)) gain = gain.divide("1e1099")
+	if (hasUpgrade('np', 13)) gain = gain.times("1e1099")
+	if (hasMilestone('pm', 0)) gain = gain.times("2.22e22222")
+	if (hasMilestone('nm', 0)) gain = gain.divide("2.22e22222")
+	if (hasUpgrade('np', 22)) gain = gain.times("2.22e22222")
+	if (hasMilestone('pm', 1)) gain = gain.times("1e10000")
+	if (hasMilestone('nm', 1)) gain = gain.divide("1e10000")
+	if (hasUpgrade('np', 24)) gain = gain.times("1.23e45678")
+	if (hasMilestone('mm', 1)) gain = gain.times("1e100000")
+	if (hasUpgrade('np', 13)) gain = gain.times("-1")
+	if (hasUpgrade('np', 21)) gain = gain.times("-1")
 	return gain
 }
 
@@ -112,15 +131,16 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-1)) return "<h3>v1.009 endgame: 1e13 vanilla cookies!</h3>"},
-	//function() {if (player.points.gt(-1)) return "<h2>beta version! do not publish to galaxy</h2>"},
+	function() {if (player.points.gt(-2)) return "<h3>v1.01 endgame: e16,933,600 spacetime!</h3>"},
+	//function() {if (player.points.gt(-2)) return "<h2>beta version! do not publish to galaxy</h2>"},
 	function() {if (inChallenge('sst', 11)) return "<i>You are currently in the Endurance Test challenge.</i>"},
-	function() {if (inChallenge('sst', 12)) return "<i>You are currently in the Reversing The Game challenge.</i>"}
+	function() {if (inChallenge('sst', 12)) return "<i>You are currently in the Reversing The Game challenge.</i>"},
+	function() {if (inChallenge('sst', 12) && player.np.points.gte("1e1425200")) return "<i>But was it really worth it?</i>"}
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("(e^1.79e308)3"))
+	return player.points.gte(new Decimal("1e16933600"))
 }
 
 
