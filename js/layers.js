@@ -141,6 +141,37 @@ addLayer("p", {
             unlocked() { return hasMilestone("lv", 1);},
         },
 
+        81: {
+            title: "[#9] hi",
+            description: "This upgrade is literally unobtainable. Wait wrong layer. x1e15 spacetime!",
+            cost: new Decimal("0"),
+            unlocked() { return hasUpgrade("tierone", 11);},
+        },
+        82: {
+            title: "[#10] hii",
+            description: "Why does this have two i's!! x1e150 spacetime...",
+            cost: new Decimal("1e100"),
+            unlocked() { return hasUpgrade("tierone", 11);},
+        },
+        83: {
+            title: "[#11] hiii",
+            description: "Aren't these literally recovery upgrades... x1e1.5k spacetime",
+            cost: new Decimal("1e100000"),
+            unlocked() { return hasUpgrade("tierone", 11);},
+        },
+        84: {
+            title: "[#12] hiiii",
+            description: "Stop it and just take the 1e15k spacetime multi!",
+            cost: new Decimal("1e100e6"),
+            unlocked() { return hasUpgrade("tierone", 11);},
+        },
+        85: {
+            title: "[#13] hiiiii",
+            description: "ENOUGH STOP PUTTING THE LETTER I OVER AND OVER AGAIN. Like i said.. x1e150k spacetime.",
+             cost: new Decimal("1e100e9"),
+            unlocked() { return hasUpgrade("tierone", 11);},
+        },
+
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return !inChallenge('sst', 11)},
@@ -1873,7 +1904,7 @@ addLayer("tierone", {
             coolInfo: {
                 title: "Tier 1 (Universe α)",
                 titleStyle: {'color': '#a91c00'},
-                body: "I ran out of name ideas so enjoy this repetitive part of the game :D",
+                body: "I ran out of name ideas so enjoy this repetitive part of the game :D <br><i>make sure to use player.tierone.unlocked = false in the console if you haven't reached 2 master magnets yet</i>",
                 bodyStyle: {'background-color': "#871600"}
             }
         },
@@ -1881,8 +1912,8 @@ addLayer("tierone", {
     upgrades: {
         11: {
             title: "<i>[T1] who asked</i>",
-            description: "<h3>unlocks more point upgrades</h3> (soon)",
-            cost: new Decimal(1e3),
+            description: "<h3>unlocks more point upgrades</h3>",
+            cost: new Decimal(1),
         },
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
@@ -1900,7 +1931,7 @@ addLayer("tiertwo", {
 		points: new Decimal(0),
     }},
     color: "#ff88008c",
-    requires: new Decimal("5"), // Can be a function that takes requirement increases into account
+    requires: new Decimal("2"), // Can be a function that takes requirement increases into account
     resource: "tier 2 power", // Name of prestige currency
     baseResource: "tier 1 power", // Name of resource prestige is based on
     baseAmount() {return player.tierone.points}, // Get the current amount of baseResource
@@ -1918,7 +1949,7 @@ addLayer("tiertwo", {
             coolInfo: {
                 title: "Tier 2 (Universe α)",
                 titleStyle: {'color': '#a95a00'},
-                body: "Idealess. No ideas, no balancing!",
+                body: "Idealess. No ideas, no balancing!<br><i>make sure to use player.tiertwo.unlocked = false in the console if you haven't reached 2 tier 1 power yet</i>",
                 bodyStyle: {'background-color': "#874800"}
             }
         },
@@ -1931,7 +1962,7 @@ addLayer("tiertwo", {
         },
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return false}
+    layerShown(){return (hasUpgrade('tierone', 11)) || player.tiertwo.unlocked}
 
     
 })
@@ -1963,7 +1994,7 @@ addLayer("tierthree", {
             coolInfo: {
                 title: "Tier 3 (Universe α)",
                 titleStyle: {'color': '#a9a300'},
-                body: "did you know it took over 1 month to balance the x2 upgrade?",
+                body: "did you know it took over 1 month to balance the [x2] upgrade?<br><i>make sure to use player.tierthree.unlocked = false in the console if you haven't reached 2 tier 2 power yet</i>",
                 bodyStyle: {'background-color': "#878200"}
             }
         },
@@ -2381,8 +2412,13 @@ addLayer("a", {
         },
         51: {
             name: "Tiered Up",
-            done() { return false;},
-            tooltip: "Get a Tier 1 Power. (soon)",
+            done() { return player.tierone.points.gte(1);},
+            tooltip: "Get a Tier 1 Power.",
+        },
+        52: {
+            name: "Really Tiered Up",
+            done() { return player.tiertwo.points.gte(1);},
+            tooltip: "Get a Tier 2 Power. ",
         },
     },
 })

@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.01",
-	name: "The Birthday Update",
+	num: "1.02",
+	name: "The Tiered Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -23,7 +23,10 @@ let changelog = `<h1>Changelog:</h1><br>
 	B = medium update <br>
 	C = small update <br>
 	<br>
-
+	<h3>v1.02</h3><br>
+		- Added the functionality to the Tier Power 1 upgrade.<br>
+		- Added 5 more point upgrades (RECOVERY UPGRADES, BUT STILL REQUIRED FOR ENDGAME)<br>
+		<br>
 	<h2>v1.01</h2><br>
 		The second biggest update ever!<br>
 		- Added Master Magnets.<br>
@@ -101,7 +104,12 @@ function getPointGen() {
 	if (hasUpgrade('p', 61)) gain = gain.times(100)
 	if (hasUpgrade('p', 71)) gain = gain.times(1.11e111)
 	if (hasUpgrade('p', 72)) gain = gain.times(2.22e222)
-	if (hasUpgrade('e', 31)) gain = gain.times(6.66e66)
+	if (hasUpgrade('p', 81)) gain = gain.times(1e15)
+	if (hasUpgrade('p', 82)) gain = gain.times(1e150)
+	if (hasUpgrade('p', 83)) gain = gain.times("1e1500")
+	if (hasUpgrade('p', 84)) gain = gain.times("1e15000")
+	if (hasUpgrade('p', 85)) gain = gain.times("1e150000")
+	if (hasUpgrade('e', 86)) gain = gain.times(6.66e66)
 	if (hasUpgrade('u', 11)) gain = gain.times(1e12)
 	if (hasUpgrade('pie', 11)) gain = gain.times(2)
 	if (hasUpgrade('pie', 21)) gain = gain.times(5)
@@ -131,7 +139,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-2)) return "<h3>v1.01 endgame: e16,933,600 spacetime!</h3>"},
+	function() {if (player.points.gt(-2)) return "<h3>v1.02 endgame: e33,593,515 spacetime!</h3>"},
 	//function() {if (player.points.gt(-2)) return "<h2>beta version! do not publish to galaxy</h2>"},
 	function() {if (inChallenge('sst', 11)) return "<i>You are currently in the Endurance Test challenge.</i>"},
 	function() {if (inChallenge('sst', 12)) return "<i>You are currently in the Reversing The Game challenge.</i>"},
@@ -140,7 +148,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e16933600"))
+	return player.points.gte(new Decimal("1e33593515"))
 }
 
 
