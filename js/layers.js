@@ -1802,7 +1802,7 @@ addLayer("pie", {
             coolInfo: {
                 title: "Pie (Bonus Universe, v1.005)",
                 titleStyle: {'color': '#9e4d3c'},
-                body: "<b>What is a bonus layer?</b> <br> A bonus layer is a layer that can help you get further. Bonus layers are not required for progression!<br> <i>Enjoy x200 spacetime! Also, the requirement for this layer (1e4,380) is the endgame of v1.005</i>",
+                body: "<h1>woah there wait, this layer will reset everything!</h1><br><b>What is a bonus layer?</b> <br> A bonus layer is a layer that can help you get further. Bonus layers are not required for progression!<br> <i>Enjoy x200 spacetime! Also, the requirement for this layer (1e4,380) is the endgame of v1.005</i>",
                 bodyStyle: {'background-color': "#683126"}
             }
         },
@@ -1859,7 +1859,7 @@ addLayer("bc", {
             coolInfo: {
                 title: "Birthday Cakes (Bonus Universe, v1.01)",
                 titleStyle: {'color': '#8d238f'},
-                body: "v1.01 version of pie!",
+                body: "<h1>woah there wait, this layer will reset everything!</h1><br>v1.01 version of pie!",
                 bodyStyle: {'background-color': "#5b105c"}
             }
         },

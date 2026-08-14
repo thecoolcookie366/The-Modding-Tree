@@ -26,6 +26,7 @@ let changelog = `<h1>Changelog:</h1><br>
 	<h3>v1.02</h3><br>
 		- Added the functionality to the Tier Power 1 upgrade.<br>
 		- Added 5 more point upgrades (RECOVERY UPGRADES, BUT STILL REQUIRED FOR ENDGAME)<br>
+		- Added a warning to bonus layers that they reset everything.<br>
 		<br>
 	<h2>v1.01</h2><br>
 		The second biggest update ever!<br>
