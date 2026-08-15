@@ -110,7 +110,7 @@ function getPointGen() {
 	if (hasUpgrade('p', 83)) gain = gain.times("1e1500")
 	if (hasUpgrade('p', 84)) gain = gain.times("1e15000")
 	if (hasUpgrade('p', 85)) gain = gain.times("1e150000")
-	if (hasUpgrade('e', 86)) gain = gain.times(6.66e66)
+	if (hasUpgrade('e', 31)) gain = gain.times(6.66e66)
 	if (hasUpgrade('u', 11)) gain = gain.times(1e12)
 	if (hasUpgrade('pie', 11)) gain = gain.times(2)
 	if (hasUpgrade('pie', 21)) gain = gain.times(5)
