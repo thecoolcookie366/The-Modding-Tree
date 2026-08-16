@@ -2641,27 +2641,6 @@ addLayer("what", {
     },
 })
 
-addLayer("qna", {
-    name: "questionsanswers",
-    tooltip: "Questions and Answers",
-    symbol: "QnA",
-    position: 4,
-    row: "side",
-    color: "#559e68",
-    resource: "questions, yet 0 answers", 
-    startData() { return {
-        unlocked: true,
-        points: new Decimal(347215),
-    }},
-    infoboxes: {
-        info: {
-            title: "Questions and Answers",
-            body() { return "Here you will find all the answers to your questions. <br><br> Q1: Why is this called The Cookie Tree? <br> A1: For two reasons: Because my name is cookie (obviously) and because the original version of the game was about cookies. <br><br> Q2: These <i>super</i> and <i>ultra</i> layers seem generic, where did you get them from? <br> A2: Because i didn't have original name ideas???" },
-        },
-    },
-    
-})
-
 addLayer("sa", {
     symbol: "SA",
     position: 5,
