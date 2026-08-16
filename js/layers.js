@@ -1,3 +1,66 @@
+addLayer("qwertyuiopasdfghjklzxcvbnm", {
+    name: "something", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "🔊", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 5, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#f42dad",
+    requires: new Decimal(1), // Can be a function that takes requirement increases into account
+    resource: "decibels", // Name of prestige currency
+    baseResource: "spacetime", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.12345, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(2)
+        return mult
+
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        exp = new Decimal (2)
+        return exp
+    },
+    passiveGeneration() {
+        let Gen = 1
+        return Gen
+    },
+    autoUpgrade() {return true},
+    upgrades: {
+        11: {
+            title: "so loud...",
+            description: "get the 'loud' role in the discord server",
+            cost: new Decimal("100"),
+        },
+        12: {
+            title: "you too can be loud and annoying",
+            description: "get the 'louder' role in the discord server",
+            cost: new Decimal("1e50"),
+        },
+        13: {
+            title: "how loud can you get?",
+            description: "get the 'loudest' role in the discord server",
+            cost: new Decimal("1e2500"),
+        },
+        14: {
+            title: "okay you can stop now",
+            description: "get the 'loudester' role in the discord server",
+            cost: new Decimal("1e123456"),
+        },
+        15: {
+            title: "no",
+            description: "get the 'loudestest' role in the discord server",
+            cost: new Decimal("1e8258258"),
+        },
+
+    },
+    row: 101, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){return true},
+
+
+})
+
 addLayer("p", {
     name: "points", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
