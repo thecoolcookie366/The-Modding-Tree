@@ -57,6 +57,7 @@ addLayer("qwertyuiopasdfghjklzxcvbnm", {
     },
     row: 101, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
+    canReset(){return false},
 
 
 })
