@@ -1250,14 +1250,14 @@ addLayer("gr", {
         done() { return player.gr.points.gte(5) }
         },
         1: {
-        requirementDescription: "25 grass",
+        requirementDescription: "15 grass",
         effectDescription: "Auto super upgrades :)",
-        done() { return player.gr.points.gte(25) }
+        done() { return player.gr.points.gte(15) }
         },
         2: {
-        requirementDescription: "125 grass",
+        requirementDescription: "70 grass",
         effectDescription: "Auto water :D",
-        done() { return player.gr.points.gte(125) }
+        done() { return player.gr.points.gte(70) }
         },
         3: {
         requirementDescription: "1e6 grass",
