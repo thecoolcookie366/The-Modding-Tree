@@ -2564,7 +2564,7 @@ addLayer("a", {
         },
         53: {
             name: "So random",
-            done() { return player.rng.points.gte(1);},
+            done() { return hasUpgrade('rng',11)},
             tooltip: "Unlock the dice layer (rarity points). ",
         },
     },
