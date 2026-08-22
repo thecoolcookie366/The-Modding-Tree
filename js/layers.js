@@ -1994,7 +1994,7 @@ addLayer("tiertwo", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#ff88008c",
+    color: "#4dff008c",
     requires: new Decimal("2"), // Can be a function that takes requirement increases into account
     resource: "tier 2 power", // Name of prestige currency
     baseResource: "tier 1 power", // Name of resource prestige is based on
@@ -2012,16 +2012,16 @@ addLayer("tiertwo", {
     infoboxes:{
             coolInfo: {
                 title: "Tier 2 (Universe α)",
-                titleStyle: {'color': '#a95a00'},
+                titleStyle: {'color': '#27a900'},
                 body: "Idealess. No ideas, no balancing!<br><i>make sure to use player.tiertwo.unlocked = false in the console if you haven't reached 2 tier 1 power yet</i>",
-                bodyStyle: {'background-color': "#874800"}
+                bodyStyle: {'background-color': "#198700"}
             }
         },
     branches:['tierone'],
     upgrades: {
         11: {
             title: "<i>[T2] what why</i>",
-            description: "<h3>unlock rng layer, unlock more point upgrades</h3>",
+            description: "<h3>unlock rng layer</h3>",
             cost: new Decimal(1),
         },
     },
@@ -2033,47 +2033,122 @@ addLayer("tiertwo", {
 
 addLayer("rng", {
     name: "rng", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "T₃", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "🎲", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: false,
+        unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#fffb008c",
-    requires: new Decimal("5"), // Can be a function that takes requirement increases into account
-    resource: "tier 3 power", // Name of prestige currency
-    baseResource: "tier 2 power", // Name of resource prestige is based on
-    baseAmount() {return player.tiertwo.points}, // Get the current amount of baseResource
-    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1, // Prestige currency exponent
+    color: "#ececdae2",
+    requires: new Decimal("2"), // Can be a function that takes requirement increases into account
+    resource: "rarity points", // Name of prestige currency
+    baseResource: "spacetime", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1e-7, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
-
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    infoboxes:{
-            coolInfo: {
-                title: "Tier 3 (Universe α)",
-                titleStyle: {'color': '#a9a300'},
-                body: "did you know it took over 1 month to balance the [x2] upgrade?<br><i>make sure to use player.tierthree.unlocked = false in the console if you haven't reached 2 tier 2 power yet</i>",
-                bodyStyle: {'background-color': "#878200"}
-            }
-        },
-    branches:['tiertwo'],
+    passiveGeneration() {
+        let Gen = Math.abs(Math.random() * (1e-4 - 1e-5) + 1e-5)
+        return Gen
+    },
+    autoUpgrade() {return true},
+    branches:[''],
     upgrades: {
         11: {
-            title: "<i>[T3] this is so repetitive</i>",
-            description: "<h3>unlock universe -1, unlock rng expansion, unlock more point upgrades!!! who could've thought</h3>",
+            title: "<h3><span style='color:#a07855;'>Garbage</span></h3>",
+            description: "This does nothing.",
             cost: new Decimal(1),
+        },
+        12: {
+            title: "<h3><span style='color:#cccccc;'>Common</span></h3>",
+            description: "+1 base spacetime. What else would you ask for?",
+            cost: new Decimal(3),
+        },
+        13: {
+            title: "<h3><span style='color:#88cc44;'>Uncommon</span></h3>",
+            description: "+1e10 base spacetime. Oh great",
+            cost: new Decimal(9),
+        },
+        14: {
+            title: "<h3><span style='color:#44aadd;'>Rare</span></h3>",
+            description: "Let's go- no we are not doing this, we are done. I'm never going to- <i>Today's lesson: +1e100 spacetime base!</i>",
+            cost: new Decimal(27),
+        },
+        15: {
+            title: "<h3><span style='color:#aa66dd;'>Epic</span></h3>",
+            description: "Usually i give you multipliers but today you're getting +1e1,000 spacetime base.",
+            cost: new Decimal(81),
+        },
+        21: {
+            title: "<h3><span style='color:#e6aa33;'>Legendary</span></h3>",
+            description: "+3.33e3,333 spacetime base of course!",
+            cost: new Decimal(243),
+        },
+        22: {
+            title: "<h3><span style='color:#cc4444;'>Mythic</span></h3>",
+            description: "+6.66e6,666 spacetime base! let's just go on with the base a lot a lot..",
+            cost: new Decimal(729),
+        },
+        23: {
+            title: "<h3><span style='color:#ffee33;'>Godly</span></h3>",
+            description: "+1e10,000 spacetime base! Why do you need so much...",
+            cost: new Decimal(2187),
+        },
+        24: {
+            title: "<h3><span style='color:#44ddcc;'>Divine</span></h3>",
+            description: "Guess the boost. Okay it's just +e25K base.",
+            cost: new Decimal(6561),
+        },
+        25: {
+            title: "<h3><span style='color:#44dd88;'>Immortal</span></h3>",
+            description: "How much more base will you get? +e100K...?",
+            cost: new Decimal(19683),
+        },
+        31: {
+            title: "<h3><span style='color:#ff44aa;'>Ethereal</span></h3>",
+            description: "This is the last base upgrade, trust me. e1M base added.",
+            cost: new Decimal(59049),
+        },
+        32: {
+            title: "<h3><span style='color:#dd88cc;'>Amazing</span></h3>",
+            description: "Flex this new rarity!",
+            cost: new Decimal(177147),
+        },
+        33: {
+            title: "<h3><span style='color:#ffffff;'>Prime</span></h3>",
+            description: "Flex this newer rarity!",
+            cost: new Decimal(531441),
+        },
+        34: {
+            title: "<h3><span style='color: #FF0000;'>R</span><span style='color: #FF8800;'>a</span><span style='color: #FFFF00;'>i</span><span style='color: #00FF00;'>n</span><span style='color: #00FFFF;'>b</span><span style='color: #0000FF;'>o</span><span style='color: #8800FF;'>w</span></h3>",
+            description: "OH MY GOD IT'S RAINBOW",
+            cost: new Decimal(1594323),
+        },
+        35: {
+            title: "<h3><span style='background: linear-gradient(90deg, #A0B0FF, #E0A0FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>Galactic</span></h3>",
+            description: "IT HAS A GRADIENT?!",
+            cost: new Decimal(4782969),
+        },
+        41: {
+            title: "<h3><span style='background: linear-gradient(90deg, #E0A0C0, #D4B2A7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>Ultima</span></h3>",
+            description: "Unlock<br>██████████████████████████████████████████████████████████,<br>including the first Row 7 Layer! (soon)",
+            cost: new Decimal(14348907),
+            style: { 
+                "height": "300px", 
+                "width": "600px", 
+                "font-size": "16px" 
+            },
         },
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return false}
-
-    
+    layerShown(){return (hasUpgrade('tiertwo', 11)) && player.rng.unlocked},
+    canReset(){return false},    
 })
 
 addLayer("plus", {
@@ -2484,6 +2559,11 @@ addLayer("a", {
             done() { return player.tiertwo.points.gte(1);},
             tooltip: "Get a Tier 2 Power. ",
         },
+        53: {
+            name: "So random",
+            done() { return player.rng.points.gte(1);},
+            tooltip: "Unlock the dice layer (rarity points). ",
+        },
     },
 })
 
@@ -2681,7 +2761,7 @@ addLayer("sa", {
 addLayer("tf", {
     name: "flux",
     tooltip: "Time Flux",
-    symbol: "???",
+    symbol: "TF",
     position: 5,
     row: "side",
     color: "#dcdf2b",

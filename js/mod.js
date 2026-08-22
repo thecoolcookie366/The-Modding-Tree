@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.02",
-	name: "The Tiered Update",
+	num: "1.03",
+	name: "The Random Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -23,6 +23,10 @@ let changelog = `<h1>Changelog:</h1><br>
 	B = medium update <br>
 	C = small update <br>
 	<br>
+	<h3>v1.03</h3><br>
+		- Added the RNG layer.<br>
+		- A bunch of things i forgot i added<br>
+		<br>
 	<h3>v1.02</h3><br>
 		- Added the functionality to the Tier Power 1 upgrade.<br>
 		- Added 5 more point upgrades (RECOVERY UPGRADES, BUT STILL REQUIRED FOR ENDGAME)<br>
@@ -91,6 +95,16 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade('rng', 12)) gain = gain.add(1)
+	if (hasUpgrade('rng', 13)) gain = gain.add(1e10)
+	if (hasUpgrade('rng', 14)) gain = gain.add(1e100)
+	if (hasUpgrade('rng', 15)) gain = gain.add("1e1000")
+	if (hasUpgrade('rng', 21)) gain = gain.add("3.33e3333")
+	if (hasUpgrade('rng', 22)) gain = gain.add("6.66e6666")
+	if (hasUpgrade('rng', 23)) gain = gain.add("1e10000")
+	if (hasUpgrade('rng', 24)) gain = gain.add("1e25e3")
+	if (hasUpgrade('rng', 25)) gain = gain.add("1e100e3")
+	if (hasUpgrade('rng', 31)) gain = gain.add("1e1e6")
 	if (hasUpgrade('p', 11)) gain = gain.add(1)
 	if (hasUpgrade('p', 21)) gain = gain.times(3)
 	if (hasUpgrade('p', 22)) gain = gain.times(3)
@@ -140,7 +154,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	function() {if (player.points.gt(-2)) return "<h3>v1.02 endgame: e33,593,515 spacetime!</h3>"},
+	function() {if (player.points.gt(-2)) return "<h3>v1.03 endgame: e133,600,000 spacetime!</h3>"},
 	//function() {if (player.points.gt(-2)) return "<h2>beta version! do not publish to galaxy</h2>"},
 	function() {if (inChallenge('sst', 11)) return "<i>You are currently in the Endurance Test challenge.</i>"},
 	function() {if (inChallenge('sst', 12)) return "<i>You are currently in the Reversing The Game challenge.</i>"},
@@ -149,7 +163,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e33593515"))
+	return player.points.gte(new Decimal("1e133600000"))
 }
 
 
