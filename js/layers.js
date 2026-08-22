@@ -2060,7 +2060,7 @@ addLayer("rng", {
         let Gen = Math.abs(Math.random() * (1e-4 - 1e-5) + 1e-5)
         return Gen
     },
-    autoUpgrade() {return true},
+    autoUpgrade() {return hasUpgrade('tiertwo',11)},
     branches:[''],
     upgrades: {
         11: {
@@ -2564,7 +2564,7 @@ addLayer("a", {
         },
         53: {
             name: "So random",
-            done() { return hasUpgrade('rng',11)},
+            done() { return hasUpgrade('tiertwo',11)},
             tooltip: "Unlock the dice layer (rarity points). ",
         },
     },
