@@ -880,6 +880,9 @@ addLayer("meta", {
     update() {
         if (player.meta.points.gt("1e1e1e1.796e308")) player.meta.points = new Decimal("1e1e1e1.796e308")
     },
+    update() {
+        if (hasMilestone('gr',0)) player.meta.points = new Decimal("1e1e9")
+    },
     autoUpgrade() {return hasMilestone('gr', 0)},
     infoboxes:{
             coolInfo: {
