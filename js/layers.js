@@ -2031,8 +2031,8 @@ addLayer("tiertwo", {
     
 })
 
-addLayer("tierthree", {
-    name: "thirdtier", // This is optional, only used in a few places, If absent it just uses the layer id.
+addLayer("rng", {
+    name: "rng", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "T₃", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
@@ -2644,7 +2644,7 @@ addLayer("what", {
 
 addLayer("sa", {
     symbol: "SA",
-    position: 5,
+    position: 4,
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
@@ -2674,6 +2674,137 @@ addLayer("sa", {
             done() { return player.e.points.gte(1000) },
             goalTooltip: "Hint: Try using lag to your advantage.", // b54b081604a11200 - this is a useless string
             doneTooltip: "Get 1,000 Energy.",
+        },
+    },
+})
+
+addLayer("tf", {
+    name: "flux",
+    tooltip: "Time Flux",
+    symbol: "???",
+    position: 5,
+    row: "side",
+    color: "#dcdf2b",
+    resource: "seconds of Time Flux", 
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+
+    clickables: {
+        11: {
+           display() { return "Click me for Time Flux!" },
+           canClick() { return true },
+           color() { return "#000000" },
+           gainMult() {
+            mult = new Decimal(1)
+            if (hasUpgrade('tf', 11)) mult = mult.add(upgradeEffect('tf', 11))
+            return mult 
+           },
+            onClick() {
+                player.tf.points = player.tf.points.add(mult)
+            }
+        },
+        21: {
+           display() { return "x1 Speed" },
+           tooltip() { return "0s required"},
+           canClick() { return true },
+           color() { return "#000000" },
+            onClick() {
+                player.devSpeed = 1
+            }
+        },
+        22: {
+           display() { return "x2 Speed" },
+           tooltip() { return "60s required"},
+           canClick() { return player.tf.points.gte("60") },
+           color() { return "#000000" },
+            onClick() {
+                player.devSpeed = 2
+            }
+        },
+        23: {
+           display() { return "x3 Speed" },
+           tooltip() { return "300s required"},
+           canClick() { return player.tf.points.gte("300") },
+           color() { return "#000000" },
+            onClick() {
+                player.devSpeed = 3
+            }
+        },
+        24: {
+           display() { return "x5 Speed" },
+           tooltip() { return "900s required"},
+           canClick() { return player.tf.points.gte("900") },
+           color() { return "#000000" },
+            onClick() {
+                player.devSpeed = 5
+            }
+        },
+        25: {
+           display() { return "x10 Speed" },
+           tooltip() { return "3,600s required"},
+           canClick() { return player.tf.points.gte("3.6e3") },
+           color() { return "#000000" },
+            onClick() {
+                player.devSpeed = 10
+            }
+        },
+        31: {
+           display() { return "x30 Speed" },
+           tooltip() { return "21,600s required"},
+           canClick() { return player.tf.points.gte("21.6e3") },
+           color() { return "#000000" },
+            onClick() {
+                player.devSpeed = 30
+            }
+        },
+        32: {
+           display() { return "x60 Speed" },
+           tooltip() { return "86,400s required"},
+           canClick() { return player.tf.points.gte("86.4e3") },
+           color() { return "#000000" },
+            onClick() {
+                player.devSpeed = 60
+            }
+        },
+        33: {
+           display() { return "x240 Speed" },
+           tooltip() { return "604,800s required"},
+           canClick() { return player.tf.points.gte("604.8e3") },
+           color() { return "#000000" },
+            onClick() {
+                player.devSpeed = 240
+            }
+        },
+        34: {
+           display() { return "x720 Speed" },
+           tooltip() { return "2.592Ms required"},
+           canClick() { return player.tf.points.gte("2.592e6") },
+           color() { return "#000000" },
+            onClick() {
+                player.devSpeed = 720
+            }
+        },
+        35: {
+           display() { return "x3,600 Speed" },
+           tooltip() { return "31.536Ms required"},
+           canClick() { return player.tf.points.gte("31.536e6") },
+           color() { return "#000000" },
+            onClick() {
+                player.devSpeed = 3.6e3
+            }
+        },
+    },
+    upgrades: {
+        11: {
+            title: "Oh my god it's a playtime based boost!!!",
+            description: "Playtime boosts time flux. (too lazy to add a tooltip so it's playtime divided by 1,250)",
+            cost: new Decimal(10000),
+            effect() {
+            return (player.timePlayed)/1250
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+" more timeflux per click!!! wow" }, // Add formatting to the effect
         },
     },
 })
