@@ -2152,59 +2152,6 @@ addLayer("rng", {
     canReset(){return false},    
 })
 
-addLayer("uni", {
-    name: "universes", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "🌌", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-    startData() { return {
-        unlocked: false,
-		points: new Decimal(0),
-    }},
-    nodeStyle: {
-        background: "radial-gradient( #cc00ff, #1f162b)",
-        backgroundOrigin: "border-box",
-        borderColor: "rgba(0,0,0,0.5)",
-        color: "rgb(79, 19, 107)",
-    },
-    color: "#5e1874e2",
-    tooltip: "<i>Universes</i>",
-    requires: new Decimal("1e133600000"), // Can be a function that takes requirement increases into account
-    resource: "universes", // Name of prestige currency
-    baseResource: "spacetime", // Name of resource prestige is based on
-    baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1e6, // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
-        return mult
-
-    },
-    gainExp() { // Calculate the exponent on main currency from bonuses
-        exp = new Decimal (1)
-        return exp
-    },
-    infoboxes:{
-            coolInfo: {
-                title: "Universes (Universe 6)",
-                titleStyle: {'color': '#000000'},
-                body: "I can't believe it...",
-                bodyStyle: {'background-color': "#000000"}
-            }
-        },
-    milestones: {
-        0: {
-        requirementDescription: "<big><i>1 Universe</i></big>",
-        effectDescription: "<i>Welcome to your demise. ^2 spacetime if under 1e100 spacetime, otherwise ^1.001 spacetime.</i> <br><small>all spacetime boosts from now on will be exponents, they are applied last</small>",
-        done() { return player.uni.points.gte(1) },
-        },
-    },
-    branches:['rng'],
-    row: 7, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return (hasUpgrade('rng', 41)) || player.uni.unlocked}
-
-    
-})
-
 addLayer("plus", {
     name: "addition", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "+", // This appears on the layer's node. Default is the id with the first letter capitalized

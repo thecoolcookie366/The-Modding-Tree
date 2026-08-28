@@ -145,8 +145,6 @@ function getPointGen() {
 	if (hasMilestone('mm', 1)) gain = gain.times("1e100000")
 	if (hasUpgrade('np', 13)) gain = gain.times("-1")
 	if (hasUpgrade('np', 21)) gain = gain.times("-1")
-	if (hasMilestone('uni', 0) && player.points.lt("1e100")) gain = gain.pow(2);
-	if (hasMilestone('uni', 0) && player.points.gte("1e100")) gain = gain.pow(1.001);
 	return gain
 }
 
